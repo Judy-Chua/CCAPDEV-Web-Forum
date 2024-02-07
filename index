@@ -1,2 +1,29 @@
+<!DOCTYPE html>
 <html>
+<head>
+	<title>
+		Forum Draft Menu Bar
+	</title>
+	<link rel = "stylesheet" type = "text/css" href = "index.css">
+</head>
+<body>
+	<div class = "menu-bar">
+		<ul class = "menu-actions">
+			<li class = "forum-logo"></li>
+		</ul>
+
+		<ul class = "menu-actions">
+			<li class = "home-button">Home</li>
+			<li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
+			<li class = "search-button"><button type="button" id="query-button" name="qb"></button></li>
+		</ul>
+		<ul class = "menu-actions">
+			<ul class = "menu-actions">
+				<li><button type="button" class="register-button">Register</button></li>
+				<li><button type="button" class="login-button">Login</button></li>
+			</ul>
+			<li class = "user-icon"></li>
+		</ul>
+	</div>
+</body>
 </html>
