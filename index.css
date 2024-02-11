@@ -7,6 +7,12 @@
 	font-family: "Montserrat", sans-serif;
 }
 
+.main-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
 .menu-bar {
 	display: flex;
 	flex-direction: row;
@@ -30,6 +36,7 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .menu-actions>li {
@@ -39,17 +46,18 @@
 .forum-logo {
 	background-image: url('images/forum-logo.png');
 	width: 200px;
-	height: 50px;
-	margin-left: 7px;
+	height: 40px;
+	margin-left: 15px;
 	background-size: 100%;
+	background-position: 0px -50px;
 }
 
 .home-button {
 	font-weight: 700px;
 	color: #efe897;
-	font-size: 22px;
-	padding: 5px;
-	padding-right: 40px;
+	font-size: 20px;
+	padding-right: 20px;
+	line-height: 60px;
 }
 
 
@@ -57,9 +65,10 @@
 	height: 35px;
 	width: 35px;
 	border-radius: 0 3px 3px 0;
+	margin-top: 2px;
 
 	background-image: url('images/search-icon.webp');
-	background-size: 100%;
+	background-size: 100%;	
 }
 
 .search-bar input {
@@ -67,12 +76,11 @@
 	height: 35px;
 
 	border-radius: 3px 0 0 3px;
-	border: 0;
+	border: 0;	
 }
 
 .login-button {
 	font-size: 18px;
-	margin: 7px;
 	font-weight: 400;
 	border-radius: 3px;
 	padding: 6px 12px;
@@ -80,16 +88,17 @@
 	color: #3a4149;
 	background: #efe897;
 	line-height: 1.15;
+	margin: 0px 8px;
 }
 
 .register-button {
 	font-size: 18px;
-	margin: 7px;
 	font-weight: 400;
 	padding: 6px 12px;
 	color: #3a4149;
 	background: #efe897;
 	line-height: 1.15;
+	margin: 0px 8px;
 }
 
 button {
@@ -102,5 +111,13 @@ button {
 
 button:hover {
 	transition: all .2s ease;
-	box-shadow: 0 0 0 0 #fff, 0 0 0 3px #f0f1f5;
+	box-shadow: 0 0 0 0 #fff, 0 0 0 3px #f0f1f5;	
+}
+
+.user-icon {
+	background-image: url('images/user-icon.png');
+
+	width: 50px;
+	height: 50px;
+	margin: 3px 15px 0px;
 }
