@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Specific Post
+	</title>
+	<link rel = "stylesheet" type = "text/css" href = "post.css">
+	<script src = "post-script.js"></script>
+</head>
+<body>
+	<div class = "main-container">
+		<div class = "menu-bar">
+		<ul class = "menu-actions">
+			<li class = "forum-logo"></li>
+		</ul>
+
+		<ul class = "menu-actions">
+			<li><a href="index.html" class="home-button">Home</a></li>
+			<li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
+			<li class = "search-button"><button type="button" id="query-button" name="qb"></button></li>
+		</ul>
+		<ul class = "menu-actions">
+			<ul class = "menu-actions">
+				<li><button type="button" class="register-button">Register</button></li>
+				<li><button type="button" class="login-button">Login</button></li>
+			</ul>
+			<li><a href = "index.html"><img class = "user-icon" src="images/user-icon.png"/></a></li>
+		</ul>
+		</div>
+	</div>
+
+	<div class = "post">
+		<div class = "post-container">
+			<div class = "post-items">
+				<div class = "post-title">
+					Title Number 1
+				</div>
+				<div class = "post-username">
+					by Username 1
+				</div>
+				<div class = "post-desc">
+					Description description description description description description Description description description description description description Description description description description description description Description description description description description description Description description description description description description Description description description description description description
+					Description description description description description description Description description description description description description Description description description description description description Description description description description description description Description description description description description description Description description description description description description
+					Description description description description description description Description description description description description description Description description description description description description Description description description description description description Description description description description description description Description description description description description description
+					Description description description description description description Description description description description description description Description description description description description description Description description description description description description Description description description description description description Description description description description description description
+				</div>
+				<div class = "post-image">
+					
+				</div>
+			</div>
+			<div class = "side-items">
+				<div class = "votes">
+					<div id = "upvote" onclick="changeVote(1)"></div>
+					<div id = "vote-number">90</div>
+					<div id = "downvote" onclick="changeVote(0)"></div>
+				</div>
+				<div class = "tags">
+					<button type="button">Strategy Games</button>
+				</div>
+			</div>
+		</div>
+		<div class = "comment-container">
+			<div class = "comment-title">
+				Comments:
+			</div>
+			<div class = "comment-actions">
+				<ul class = "comment-user">
+					<li class = "user-picture"><img /></li>
+				</ul>
+				<ul class = "comment-user">
+					<li><textarea class="comment-area" placeholder="What are your thoughts?"></textarea>
+						<div class="comment-submit"></div></li>
+				</ul>
+				<div class = "comment-options-container">
+				<ul class = "comment-user">
+					<li><form class = "comment-options"><select>
+							<option value="popular">Popular</option>
+							<option value="popular">Newest</option>
+							<option value="popular">Oldest</option>
+							<option value="popular">Unpopular</option>
+						</select></form>
+					</li>
+				</ul>
+				</div>
+			</div>
+			<div class = "comment">
+				No comments
+			</div>
+		</div>
+	</div>
+</body>
+</html>
