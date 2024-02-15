@@ -29,57 +29,54 @@
 		</div>
 	</div>
 
-	<div class = "post">
-		<div class = "post-container">
-			<div class = "post-items">
-				<div class = "post-title">
-					Title Number 1
+	<div class = "post" id = "post#">
+		<div class = "post-container" id="post-container#">
+			<div class = "post-items" id="post-items#">
+				<div class = "post-title" id="post-title#">
+					Title
 				</div>
-				<div class = "post-username">
-					by Username 1
+				<div class = "post-username" id="post-username#">
+					by username
 				</div>
-				<div class = "post-desc">
-					Description description description description description description Description description description description description description Description description description description description description Description description description description description description Description description description description description description Description description description description description description
-					Description description description description description description Description description description description description description Description description description description description description Description description description description description description Description description description description description description Description description description description description description
-					Description description description description description description Description description description description description description Description description description description description description Description description description description description description Description description description description description description Description description description description description description
-					Description description description description description description Description description description description description description Description description description description description description Description description description description description description Description description description description description description Description description description description description description
+				<div class = "post-desc" id = "post-desc#">
+					Description
 				</div>
-				<div class = "post-image">
+				<div class = "post-image" id = "post-image#">
 					
 				</div>
 			</div>
-			<div class = "side-items">
-				<div class = "votes">
-					<div id = "upvote" onclick="changeVote(1)"></div>
-					<div id = "vote-number">0</div>
-					<div id = "downvote" onclick="changeVote(0)"></div>
+			<div class = "side-items" id="side-items#">
+				<div class = "votes" id="votes#">
+					<div class = "upvote" id = "upvote#" onclick="changeVote(1, '#')"></div>
+					<div class = "vote-number" id = "vote-number#">0</div>
+					<div class = "downvote" id = "downvote#" onclick="changeVote(0, '#')"></div>
 				</div>
-				<div class = "tags">
-					<button type="button">Strategy Games</button>
+				<div class = "tags" id="tags#">
+					<button type="button" id="tag-button#">Tag</button>
 				</div>
 			</div>
 		</div>
-		<div class = "comment-container">
-			<div class = "comment-title-container">
+		<div class = "comment-container" id="comment-container#">
+			<div class = "comment-title-container" id = "comment-title-container#">
 				<ul class = "comment-title-container-ul">
-					<li><div class = "comment-title">Comments:</div></li>
+					<li><div class = "comment-title" id = "comment-title#">Comments:</div></li>
 				</ul>
 				<ul class = "comment-title-container-ul">
-					<li><div class = "post-edit"></div></li>
-					<li><div class = "post-delete"></div></li>
+					<li><div class = "post-edit" id = "post-edit#"></div></li>
+					<li><div class = "post-delete" id = "post-delete#"></div></li>
 				</ul>
 			</div>
-			<div class = "comment-actions">
+			<div class = "comment-actions" id = "comment-actions#">
 				<ul class = "comment-user">
-					<li class = "user-picture"></li>
+					<li class = "user-picture" id = "user-picture#"></li>
 				</ul>
 				<ul class = "comment-user">
-					<li><textarea id="comment-area" placeholder="What are your thoughts?"></textarea>
-						<div class="comment-submit" onclick="submitComment()"></div></li>
+					<li><textarea class="comment-area" id="comment-area#" placeholder="What are your thoughts?"></textarea>
+						<div class="comment-submit" id="comment-submit#" onclick="submitComment('#')"></div></li>
 				</ul>
-				<div class = "comment-options-container">
-				<ul class = "comment-user">
-					<li><form class = "comment-options"><select>
+				<div class = "comment-options-container" id = "comment-options-container#">
+				<ul class = "comment-user" class = "comment-user#">
+					<li><form class = "comment-options" id = "comment-options#"><select>
 							<option value="popular">Popular</option>
 							<option value="popular">Newest</option>
 							<option value="popular">Oldest</option>
@@ -89,11 +86,11 @@
 				</ul>
 				</div>
 			</div>
-			<div id = "comment">
-				<div id = "no-comment">No Comments</div>
+			<div class = "comment" id="comment#">
+				<div class = "no-comment" id="no-comment#">No Comments</div>
 			</div>
 		</div>
 	</div>
-	<div id = "text-response">Hi</div>
+	<div class = "text-response" id = "text-response#"></div>
 </body>
 </html>
