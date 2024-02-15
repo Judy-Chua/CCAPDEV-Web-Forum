@@ -7,7 +7,7 @@
 	font-family: "Montserrat", sans-serif;
 }
 
-.login-container {  
+.signup-container {  
     width: 80%;
     height: 600px;
     margin: 50px;
@@ -17,7 +17,7 @@
 	background: #0e3768;
 }
 
-.login-header {
+.signup-header {
     display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -28,7 +28,7 @@
     margin: 30px;
 }
 
-.sign-up-here {
+.login-here {
 	color: #efe897;
 }
 
@@ -74,6 +74,21 @@
 	background-color: #537BAB;
 }
 
+.ask-email {
+	display: flex;
+	flex-direction: row;    
+	justify-content: space-between;
+    align-self: center;
+    line-height: 30px;
+
+    width: 90%;
+    height: 30px;
+    padding: 15px;
+    margin: 3px;
+
+	background-color: #537BAB;
+}
+
 .ask-password {
 	display: flex;
 	flex-direction: row;
@@ -89,12 +104,27 @@
 	background-color: #537BAB;
 }
 
-.login-footer {
+.confirm-password {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+    align-self: center;
+    line-height: 30px;
+
+    width: 90%;
+    height: 30px;
+    padding: 15px;
+    margin: 3px;
+
+	background-color: #537BAB;
+}
+
+.signup-footer {
     display: flex;  
 	justify-content: center;
 }
 
-.login-main-button {
+.signup-main-button {
     font-size: 18px;
 	font-weight: 400;
 	border-radius: 3px;
@@ -115,6 +145,14 @@
 	border: 0;	
 }
 
+.ask-email input {
+	width: 80%;
+	height: 95%;
+
+	border-radius: 3px;
+	border: 0;	
+}
+
 .ask-password input {
 	width: 80%;
 	height: 95%;
@@ -123,25 +161,55 @@
 	border: 0;	
 }
 
-.user-pw-text {
+.confirm-password input {
+	width: 80%;
+	height: 95%;
+
+	border-radius: 3px;
+	border: 0;	
+}
+
+.user-prompt-text {
     font-weight: bold;
     font-size: larger;
-    margin-left: 30px;
+    text-align: right;
+    margin-left: 19px;
 }
 
-.user-prompts-text {
-	font-weight: bold;
+.email-prompt-text {
+    font-weight: bold;
     font-size: larger;
-    margin-left: 30px;
+    text-align: right;
+    margin-left: 58px;
 }
 
-.login-user-icon {
+.pw-prompt-text {
+    font-weight: bold;
+    font-size: larger;
+    text-align: right;
+    margin-left: 20px;
+}
+
+.confirmpw-prompt-text {
+    font-weight: bold;
+    font-size: 200;
+    text-align: right;
+    margin-left: 10px;
+}
+
+.signup-user-icon {
 	width: 40px;
 	height: 40px;
     align-self: center;
 }
 
-.login-pw-icon {
+.signup-pw-icon {
+	width: 40px;
+	height: 40px;
+    align-self: center;
+}
+
+.signup-email-icon {
 	width: 40px;
 	height: 40px;
     align-self: center;

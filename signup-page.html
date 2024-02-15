@@ -5,7 +5,7 @@
 		ArchersGuild Sign-Up Page
 	</title>
 	<link rel = "stylesheet" type = "text/css" href = "index.css">
-    <link rel = "stylesheet" type = "text/css" href = "login-register.css">
+    <link rel = "stylesheet" type = "text/css" href = "signup-page.css">
 </head>
 <body>
 	<div class = "main-container">
@@ -22,16 +22,16 @@
 			<ul class = "menu-actions">
 				<ul class = "menu-actions">
 					<li><button type="button" class="register-button">Register</button></li>
-					<li><button type="button" class="login-button">Login</button></li>
+					<li><button type="button" class="signup-button">signup</button></li>
 				</ul>
 				<li><a href = "index.html"><img class = "user-icon" src="images/user-icon.png"/></a></li>
 			</ul>
 		</div>
 
-        <div class = "login-container">
-            <div class = "login-header">
+        <div class = "signup-container">
+            <div class = "signup-header">
                 <div class = "redirect-sign-up">
-                    <a href = "login-page.html" class = "sign-up-here">Already registered? Log in here.</a>
+                    <a href = "login-page.html" class = "login-here">Already registered? Log in here.</a>
                 </div>
                 <div class = "welcome-msg">
                     <span class = "welcome1">Welcome to ArchersGuild!</span><br>
@@ -40,28 +40,28 @@
             </div>
             <div class = "req-forms">
                 <div class = "ask-username">
-                    <img class = "login-user-icon" src="images/user-icon.png"/>
-                    <span class = "user-prompts-text">Username |</span>
+                    <img class = "signup-user-icon" src="images/user-icon.png"/>
+                    <span class = "user-prompt-text">Username |</span>
                     <input type="text" id="username" name="username">
                 </div>
-                <div class = "ask-username">
-                    <img class = "login-user-icon" src="images/user-icon.png"/>
-                    <span class = "user-prompts-text">Email |</span>
-                    <input type="text" id="username" name="username">
+                <div class = "ask-email">
+                    <img class = "signup-email-icon" src="images/email-icon.png"/>
+                    <span class = "email-prompt-text">Email |</span>
+                    <input type="text" id="email" name="email" class = "email-textfield">
                 </div>
                 <div class = "ask-password">
-                    <img class = "login-pw-icon" src="images/pw-icon.png"/>
-                    <span class = "user-prompts-text">Password |</span>
+                    <img class = "signup-pw-icon" src="images/pw-icon.png"/>
+                    <span class = "pw-prompt-text">Password |</span>
                     <input type="password" id="pwd1" name="pwd1">
                 </div>
                 <div class = "ask-password">
-                    <img class = "login-pw-icon" src="images/pw-icon.png"/>
-                    <span class = "user-prompts-text">Confirm Password |</span>
+                    <img class = "signup-pw-icon" src="images/pw-icon.png"/>
+                    <span class = "confirmpw-prompt-text">Confirm Password |</span>
                     <input type="password" id="pwd2" name="pwd2">
                 </div>
             </div>
-            <div class = "login-footer">
-                <button type="button" class="login-main-button">Log-in</button>
+            <div class = "signup-footer">
+                <button type="button" class="signup-main-button">Log-in</button>
             </div>
         </div>
 	</div>
