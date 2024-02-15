@@ -6,37 +6,42 @@
 	</title>
 	<link rel = "stylesheet" type = "text/css" href = "index.css">
     <link rel = "stylesheet" type = "text/css" href = "user-profile.css">
-    <script src = "user-disp.js"></script>
+    <link rel="stylesheet" href="mainpage.css">
+    <script src = "mainpage.js"></script>
 </head>
 <body>
 	<div class = "main-container">
 		<div class = "menu-bar">
-			<ul class = "menu-actions">
-				<a href = "tftplayer100-mainpage.html"><li class = "forum-logo"></li></a>
-			</ul>
+            <ul class = "menu-actions">
+                <a href = "mainpage.html"><li class = "forum-logo"></li></a>
+            </ul>
 
-			<ul class = "menu-actions">
-				<li><a href="index.html" class="home-button">Home</a></li>
-				<li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
-				<li class = "search-button"><button type="button" id="query-button" name="qb"></button></li>
-			</ul>
-			<ul class = "menu-actions">
-				<ul class = "menu-actions">
-					<li class = "user-name">tftplayer100</li>
+            <ul class = "menu-actions">
+                <li><a href="mainpage.html" class="home-button">Home</a></li>
+                <li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
+                <li class = "search-button"><a href = "searchresult.html"><button type="button" id="query-button" name="qb"></button></a></li>
+            </ul>
+            <ul class = "menu-actions">
+                <ul class = "menu-actions">
+					<ul class = "menu-actions">
+						<li class = "user-name">tftplayer100</li>
+					</ul>
+					<li><a href = "user-profile.html"><img class = "user-icon" src="images/tftplayer100-user-icon.jpg"/></a></li>
 				</ul>
-				<li><a href = "user-profile.html"><img class = "user-icon" src="images/tftplayer100-user-icon.jpg"/></a></li>
-			</ul>
-		</div>
+                <li><a href = "user-profile.html"><img class = "user-icon" src="images/user-icon.png"/></a></li>
+            </ul>
+        </div>
 
         <div class = "profile-container">
             <div class = "main-profile">
                 <div class = "main-profile-header">
-                    <div class = "posts-tab">Posts</div>
-                    <div class = "comments-tab">Comments</div>
-                    <div class = "upvoted-tab">Upvoted</div>
-                    <div class = "downvoted-tab">Downvoted</div>
+                    <a href = "tftplayer100-profile.html"><div class = "posts-tab">Posts</div></a>
+                    <a href = "tftplayer100-profile-comments.html"><div class = "comments-tab">Comments</div></a>
+                    <a href = "tftplayer100-profile-upvoted.html"><div class = "upvoted-tab">Upvoted</div></a>
+                    <a href = "tftplayer100-profile-downvoted.html"><div class = "downvoted-tab">Downvoted</div></a>
                 </div>
                 <div class="main-profile-content">
+                    <bold>Nothing to see here.</bold>
                 </div>
             </div>
             <div class = "user-display">
