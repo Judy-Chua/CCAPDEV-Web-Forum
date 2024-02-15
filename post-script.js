@@ -2,10 +2,10 @@ var voteCount = 0;
 var voteCommentCount = 0;
 var numComment = 0;
 
-function changeVote(val) {
-    var upElem = document.getElementById("upvote");
-    var downElem = document.getElementById("downvote");
-    var num = parseInt(document.getElementById("vote-number").textContent);
+function changeVote(val, fileNum) {
+    var upElem = document.getElementById("upvote"+fileNum);
+    var downElem = document.getElementById("downvote"+fileNum);
+    var num = parseInt(document.getElementById("vote-number"+fileNum).textContent);
     if (num == null)
         num = 0;
 
@@ -47,20 +47,20 @@ function changeVote(val) {
     }
 
     if (num < 0) {
-        document.getElementById("vote-number").style.backgroundColor = '#f1f2f6';
-        document.getElementById("vote-number").style.color = 'black';
+        document.getElementById("vote-number"+fileNum).style.backgroundColor = '#f1f2f6';
+        document.getElementById("vote-number"+fileNum).style.color = 'black';
     }
     else {
-        document.getElementById("vote-number").style.backgroundColor = '#0e3768';
-        document.getElementById("vote-number").style.color = '#f1f2f6';
+        document.getElementById("vote-number"+fileNum).style.backgroundColor = '#0e3768';
+        document.getElementById("vote-number"+fileNum).style.color = '#f1f2f6';
     }
 
-    document.getElementById("vote-number").innerHTML = num;
+    document.getElementById("vote-number"+fileNum).innerHTML = num;
 }
 
-function submitComment() {
-    var comment = document.getElementById('comment-area').value;
-    var add_comment = document.getElementById('comment');
+function submitComment(fileNum) {
+    var comment = document.getElementById('comment-area'+fileNum).value;
+    var add_comment = document.getElementById('comment'+fileNum);
     var div_comment = document.createElement('div');
     var date = new Date();
     var username = "Username";
@@ -69,7 +69,7 @@ function submitComment() {
         return;
 
     div_comment.className = 'new-comment';
-    var new_comment_id  = "comment" + numComment;
+    var new_comment_id  = "comment" + numComment+fileNum;
     div_comment.setAttribute('id', new_comment_id);
     div_comment.innerHTML = 
     "<div class = 'picture-person'> </div>" +
@@ -104,18 +104,20 @@ function submitComment() {
     add_comment.appendChild(div_comment);
     numComment = numComment + 1;
 
-    var checkDiv = document.getElementById('no-comment') != null;
+    var checkDiv = document.getElementById('no-comment'+fileNum) != null;
     if (checkDiv)
-        add_comment.removeChild(document.getElementById('no-comment'));
+        add_comment.removeChild(document.getElementById('no-comment'+fileNum));
     
-    document.getElementById('comment-area').value = "";
-    setTextResponse("Comment posted!");
+    document.getElementById('comment-area'+fileNum).value = "";
+    setTextResponse("Comment posted!", fileNum);
 }
 
 function deleteComment(comment_id) {
     var find_new_comment_container = document.getElementById(comment_id);
     find_new_comment_container.parentNode.removeChild(find_new_comment_container);
-    setTextResponse("Comment deleted!");
+
+    var fileNum = comment_id.charAt(comment_id.length-1);
+    setTextResponse("Comment deleted!", fileNum);
 }
 
 function editComment(comment_id) {
@@ -152,7 +154,9 @@ function publishComment(comment_id) {
     document.getElementById("s" + comment_id).style.display = "none";
     document.getElementById("e" + comment_id).style.display = "block";
     document.getElementById("date" + comment_id).style.display = "block";
-    setTextResponse("Comment edited!");
+
+    var fileNum = comment_id.charAt(comment_id.length-1);
+    setTextResponse("Comment edited!", fileNum);
 }
 
 function voteComment(comment_id, val) {
@@ -216,8 +220,8 @@ function voteComment(comment_id, val) {
     document.getElementById("numb-"+comment_id).innerHTML = num;
 }
 
-function setTextResponse(response) {
-    var text_response = document.getElementById('text-response');
+function setTextResponse(response, fileNum) {
+    var text_response = document.getElementById('text-response'+fileNum);
 
     text_response.innerHTML = response;
     text_response.style.opacity = '1';
