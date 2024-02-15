@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		TFT Latest Patch Notes
+	</title>
+	<link rel = "stylesheet" type = "text/css" href = "post.css">
+	<script src = "post-script.js"></script>
+</head>
+<body>
+	<div class = "main-container">
+		<div class = "menu-bar">
+		<ul class = "menu-actions">
+			<li class = "forum-logo"></li>
+		</ul>
+
+		<ul class = "menu-actions">
+			<li><a href="index.html" class="home-button">Home</a></li>
+			<li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
+			<li class = "search-button"><button type="button" id="query-button" name="qb"></button></li>
+		</ul>
+		<ul class = "menu-actions">
+			<ul class = "menu-actions">
+				<li><button type="button" class="register-button">Register</button></li>
+				<li><button type="button" class="login-button">Login</button></li>
+			</ul>
+			<li><a href = "index.html"><img class = "user-icon" src="images/user-icon.png"/></a></li>
+		</ul>
+		</div>
+	</div>
+
+	<div class = "post" id = "post2">
+		<div class = "post-container" id="post-container2">
+			<div class = "post-items" id="post-items2">
+				<div class = "post-title" id="post-title2">
+					TFT Latest Patch Notes
+				</div>
+				<div class = "post-username" id="post-username2">
+					by tftplayer100
+				</div>
+				<div class = "post-desc" id = "post-desc2">
+					Has anyone read the lastest tft patch notes? I haven't played the game for a while and 
+					I wanted to know which team comps are the best right now! I hope there is no broken comp at the moment. 
+					
+					Also, CHIBI SONA IS SO CUTE!
+				</div>
+				<div class = "post-image" id = "post-image2">
+					
+				</div>
+			</div>
+			<div class = "side-items" id="side-items2">
+				<div class = "votes" id="votes2">
+					<div class = "upvote" id = "upvote2" onclick="changeVote(1, '2')"></div>
+					<div class = "vote-number" id = "vote-number2">0</div>
+					<div class = "downvote" id = "downvote2" onclick="changeVote(0, '2')"></div>
+				</div>
+				<div class = "tags" id="tags2">
+					<button type="button" id="tag-button2">Strategy Games</button>
+				</div>
+			</div>
+		</div>
+		<div class = "comment-container" id="comment-container2">
+			<div class = "comment-title-container" id = "comment-title-container2">
+				<ul class = "comment-title-container-ul">
+					<li><div class = "comment-title" id = "comment-title2">Comments:</div></li>
+				</ul>
+				<ul class = "comment-title-container-ul">
+					<li><div class = "post-edit" id = "post-edit2"></div></li>
+					<li><div class = "post-delete" id = "post-delete2"></div></li>
+				</ul>
+			</div>
+			<div class = "comment-actions" id = "comment-actions2">
+				<ul class = "comment-user">
+					<li class = "user-picture" id = "user-picture2"></li>
+				</ul>
+				<ul class = "comment-user">
+					<li><textarea class="comment-area" id="comment-area2" placeholder="What are your thoughts?"></textarea>
+						<div class="comment-submit" id="comment-submit2" onclick="submitComment('2')"></div></li>
+				</ul>
+				<div class = "comment-options-container" id = "comment-options-container2">
+				<ul class = "comment-user" class = "comment-user2">
+					<li><form class = "comment-options" id = "comment-options2"><select>
+							<option value="popular">Popular</option>
+							<option value="popular">Newest</option>
+							<option value="popular">Oldest</option>
+							<option value="popular">Unpopular</option>
+						</select></form>
+					</li>
+				</ul>
+				</div>
+			</div>
+			<div class = "comment" id="comment2">
+				<div class = "no-comment" id="no-comment2">No Comments</div>
+			</div>
+		</div>
+	</div>
+	<div class = "text-response" id = "text-response2"></div>
+</body>
+</html>
