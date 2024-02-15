@@ -32,25 +32,27 @@
     <div class = "post">
 		<div class = "edit-container">
             <div class = "edit-title">
-                <input type = "text" placeholder="Add title..." maxlength="100" required>
+                <input type = "text" placeholder="Add title..." maxlength="100" id="title-of-post" required>
             </div>
             <div class = "edit-desc">
-                <textarea placeholder="Add description..." maxlength="10000" required></textarea>
+                <textarea placeholder="Add description..." maxlength="10000" id="desc-of-post" required></textarea>
             </div>
 			<div class = "edit-footer">
                 <ul class= "edit-actions">
 					<li><div class="dropdown">
-                        <button class="add-tags" required>Add Tags</button>
-                        <div class="dropdown-content">
-                        <option value="strategy">+ Strategy</option>
-                        </div>
+                        <select class="add-tags" id="tag-of-post" required>Add Tags
+							<option value="add" disabled selected>Add Tags</option>
+                        	<option value="strategy">Strategy Games</option>
+							<option value="action-adventure" >Action Adventure</option>
+							<option value="board">Board Games</option>
+						</select>
                     </div></li>
-                    <li><button type="button" class = "add-image">Add Image</button></li>
+                    <li><button type="button" class = "add-image" id="image-of-post">Add Image</button></li>
                     <span class = "image-message"></span>
                 </ul>
                 <ul class= "edit-actions">
-					<li><button type="button" class = "edit-cancel">Cancel</button></li>
-                    <li><button type="button" class = "publish-post">Post</button></li>
+					<li><button type="button" class = "edit-cancel" onclick="cancelPost()">Cancel</button></li>
+                    <li><button type="button" class = "publish-post" onclick="publishPost()">Post</button></li>
                 </ul>
 			</div>
 		</div>
