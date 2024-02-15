@@ -129,6 +129,12 @@
     margin-left: 30px;
 }
 
+.user-prompts-text {
+	font-weight: bold;
+    font-size: larger;
+    margin-left: 30px;
+}
+
 .login-user-icon {
 	width: 40px;
 	height: 40px;
