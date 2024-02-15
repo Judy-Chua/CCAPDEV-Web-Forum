@@ -51,7 +51,7 @@
 			<div class = "side-items">
 				<div class = "votes">
 					<div id = "upvote" onclick="changeVote(1)"></div>
-					<div id = "vote-number">90</div>
+					<div id = "vote-number">0</div>
 					<div id = "downvote" onclick="changeVote(0)"></div>
 				</div>
 				<div class = "tags">
@@ -60,16 +60,22 @@
 			</div>
 		</div>
 		<div class = "comment-container">
-			<div class = "comment-title">
-				Comments:
+			<div class = "comment-title-container">
+				<ul class = "comment-title-container-ul">
+					<li><div class = "comment-title">Comments:</div></li>
+				</ul>
+				<ul class = "comment-title-container-ul">
+					<li><div class = "post-edit"></div></li>
+					<li><div class = "post-delete"></div></li>
+				</ul>
 			</div>
 			<div class = "comment-actions">
 				<ul class = "comment-user">
-					<li class = "user-picture"><img /></li>
+					<li class = "user-picture"></li>
 				</ul>
 				<ul class = "comment-user">
-					<li><textarea class="comment-area" placeholder="What are your thoughts?"></textarea>
-						<div class="comment-submit"></div></li>
+					<li><textarea id="comment-area" placeholder="What are your thoughts?"></textarea>
+						<div class="comment-submit" onclick="submitComment()"></div></li>
 				</ul>
 				<div class = "comment-options-container">
 				<ul class = "comment-user">
@@ -83,10 +89,11 @@
 				</ul>
 				</div>
 			</div>
-			<div class = "comment">
-				No comments
+			<div id = "comment">
+				<div id = "no-comment">No Comments</div>
 			</div>
 		</div>
 	</div>
+	<div id = "text-response">Hi</div>
 </body>
 </html>
