@@ -8,7 +8,7 @@ label, p, div,select{
 .pagecolor{
     background-color: #1F3964;
 }
-.main-div{
+.result-div{
     display: grid;
     grid-template-columns: 1000px 500px;
     justify-content: center;
@@ -17,14 +17,14 @@ label, p, div,select{
     margin-top: 20px;
 }
 
-.main-postpage{
+.result-postpage{
     padding: 15px 15px 0 30px;
     width:1000px;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
 }
-.main-rightpage{
+.result-rightpage{
     border-radius: 10px;
     padding: 0 10px 0 10px;
 
@@ -33,7 +33,7 @@ label, p, div,select{
     gap: 10px;
 }
 
-.main-postpage-top{
+.result-postpage-top{
     margin: 0 0 0 0;
     position: relative;
     display: flex;
@@ -42,24 +42,24 @@ label, p, div,select{
     padding-top: 10px;
 }
 
-.main-sortarrows{
+.result-sortarrows{
     height: 30px;
     width: 30px;
 }
 
-.main-postpage-sortbutton{
+.result-postpage-sortbutton{
     margin-right: 10px;
     padding-top: 0;
 }
 
-.main-sortby{
+.result-sortby{
     font-size: 25px;
     margin-left: 10px;
     margin-right: 10px;
     padding-top: 0;
 }
 
-.main-dropdown{
+.result-dropdown{
     height: 35px;
     width: 170px;
     font-size: 17px;
@@ -67,7 +67,7 @@ label, p, div,select{
     padding-top: 0;
 }
 
-.main-createpost-button{
+.result-createpost-button{
     position:absolute;
     padding: 7 10 7 10;
 
@@ -81,7 +81,7 @@ label, p, div,select{
     width: 200px;
 }
 
-.main-postpage-posts{
+.result-postpage-posts{
     border-width: 10px;
     border-color: black;
     padding-bottom: 50px;
@@ -124,16 +124,16 @@ label, p, div,select{
 	height: 40px;
 }
 
-.main-poststitle{
+.result-poststitle{
     font-size: 45px;
     margin-bottom: 10px;
 }
 
-.main-nofound{
+.result-nofound{
     font-size: 22px;
 }
 
-.main-postpage-idvpost{
+.result-postpage-idvpost{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -143,38 +143,38 @@ label, p, div,select{
     padding-bottom: 0;
 }
 
-.main-postpage-vote{
+.result-postpage-vote{
     margin-right: 20px;
 }
 
-.main-postpage-description{
+.result-postpage-description{
     display: flex;
     flex-direction: column;
     margin-left: 0;
     margin-right: 0;
     width: 700px;
 }
-.main-postpage-image{
+.result-postpage-image{
     margin-right: 10px;
 
 }
 
-.main-indpost-title{
+.result-indpost-title{
     font-size: 22px;
     margin-bottom: 0;
 }
 
-.main-indpost-description{
+.result-indpost-description{
     font-size: 15px;
     margin-top: 2px;
     opacity: .7;
 }
 
-.main-indpost-image{
+.result-indpost-image{
     width: 150px;
 }
 
-.main-announcements{
+.result-announcements{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -184,7 +184,7 @@ label, p, div,select{
     
 }
 
-.main-announcements-title{
+.result-announcements-title{
     text-align: center;
 
     font-size: 32px;
@@ -194,12 +194,12 @@ label, p, div,select{
     margin: 0 0 0 0;
 }
 
-.main-announcement-message{
+.result-announcement-message{
     text-align: center;
     font-size: 18px;
 }
 
-.main-tags{
+.result-tags{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -212,7 +212,7 @@ label, p, div,select{
 
 }
 
-.main-gametag{
+.result-gametag{
     padding: 5px 2px 5px 2px;
     border-radius: 10px;
 
@@ -225,7 +225,7 @@ label, p, div,select{
     background-color: #555555;
 }
 
-.main-recentposts{
+.result-recentposts{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -236,7 +236,7 @@ label, p, div,select{
 
 }
 
-.main-recentposts-title{
+.result-recentposts-title{
     padding:0 0 0 0;
     margin: 0 0 0 0;
     font-size: 30px;
@@ -244,7 +244,7 @@ label, p, div,select{
     text-align: center;
 }
 
-.main-recentviewpost{
+.result-recentviewpost{
 
     display: flex;
     justify-content: center;
@@ -257,14 +257,14 @@ label, p, div,select{
 
 }
 
-.main-recentviewpost-title{
+.result-recentviewpost-title{
     font-size: 22px;
     text-decoration: underline;
     margin: 20px 0 0 0;
     padding: 0 0 0 0;
 }
 
-.main-recentviewpost-description{
+.result-recentviewpost-description{
     font-size: 13px;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
