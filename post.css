@@ -74,7 +74,7 @@
 	display: inline-block;
 }
 
-#upvote {
+.upvote {
 	background-image: url('images/up.png');
 	background-size: cover;
 	width: 75px;
@@ -83,20 +83,20 @@
 	cursor: pointer;
 }
 
-#upvote:hover, #upvote:active {
+.upvote:hover, .upvote:active {
 	background-image: url('images/color-up.png');
 	width: 75px;
 	height: 75px;
 }
 
-#vote-number {
+.vote-number {
 	margin-top: 3px;
 	margin-bottom: 3px;
 	text-align: center;
 	border: 0.5px solid #f1f2f6;
 }
 
-#downvote {
+.downvote {
 	background-image: url('images/down.png');
 	background-size: cover;
 	width: 75px;
@@ -105,7 +105,7 @@
 	cursor: pointer;
 }
 
-#downvote:hover, #downvote:active {
+.downvote:hover, .downvote:active {
 	background-image: url('images/color-down.png');
 	width: 75px;
 	height: 75px;
@@ -210,7 +210,7 @@
 	height: 40px;
 }
 
-#comment-area {
+.comment-area {
 	width: 700px;
 	height: 30px;
 	margin: 8px 10px 10px 5px;
@@ -219,7 +219,7 @@
 	overflow-y: scroll;
 }
 
-#comment-area:focus {
+.comment-area:focus {
 	border: 2px solid black;
 	margin: 6px 10px 8px 5px;
 }
@@ -418,7 +418,7 @@
 	height: 30px;
 }
 
-#no-comment {
+.no-comment {
 	background-color: #0e3768;
 	text-align: center;
 	color: white;
@@ -524,7 +524,7 @@
 }
 
 
-#text-response {
+.text-response {
 	position: fixed;
 	padding: 5px 10px;
 	border-radius: 5px;
