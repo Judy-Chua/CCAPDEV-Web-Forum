@@ -6,3 +6,104 @@
 	font-weight: 700;
 	font-family: "Montserrat", sans-serif;
 }
+
+.profile-container {  
+    width: 80%;
+    height: 600px;
+    margin: 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.main-profile {
+    width: 65%;
+    height: 100%;
+    background: #0e3768;
+    border-radius: 3px;
+    padding: 15px;
+}
+
+.main-profile-header {
+    display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+    margin-top: 30px;
+    margin-left: 15px;
+
+    height: 5%;
+    width: 70%;
+}
+
+.posts-tab {
+    border-radius: 3px 3px 0px 0px;
+    background-color: white;
+    width: 100px;
+    text-align: center;
+    padding: 4px 10px;
+    color:  #0e3768;
+}
+
+.comments-tab {
+    border-radius: 3px 3px 0px 0px;
+    background-color: white;
+    width: 100px;
+    text-align: center;
+    padding: 4px 10px;
+    color:  #0e3768;
+}
+
+.upvoted-tab {
+    border-radius: 3px 3px 0px 0px;
+    background-color: white;
+    width: 100px;
+    text-align: center;
+    padding: 4px 10px;
+    color:  #0e3768;
+}
+
+.downvoted-tab {
+    border-radius: 3px 3px 0px 0px;
+    background-color: white;
+    width: 100px;
+    text-align: center;
+    padding: 4px 10px;
+    color:  #0e3768;
+}
+
+
+.main-profile-content {
+    margin: 15px;
+    margin-top: 0px;
+    background-color: white;
+    border-radius: 0px 3px 3px 3px;
+
+    height: 80%;
+    padding: 15px;
+}
+
+.user-display {
+    width: 35%;
+    height: 100%;
+    background-color: gray;
+}
+
+.user-display-1 {
+    height: 50%;
+    border: red 2px solid;
+    padding: 15px;
+}
+
+.user-settings-button {
+    font-size: 18px;
+	font-weight: 400;
+	border-radius: 3px;
+	padding: 6px 12px;
+	border: 0;
+	color: #3a4149;
+	background: #efe897;
+	line-height: 1.15;
+
+    margin: 20px;
+}
