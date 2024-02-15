@@ -3,26 +3,26 @@
         <link rel="stylesheet" href="mainpage.css">
 		<link rel = "stylesheet" type = "text/css" href = "index.css">
 		<script src = "mainpage.js"></script>
-		<title> Popular</title>
+    <script src = "user-disp.js"></script>
+    </head>
 
     <body>
         <div class = "main-container">
 			<div class = "menu-bar">
 				<ul class = "menu-actions">
-					<a href = "mainpage.html"><li class = "forum-logo"></li></a>
+					<a href = "tftplayer100-mainpage.html"><li class = "forum-logo"></li></a>
 				</ul>
 	
 				<ul class = "menu-actions">
-					<li><a href="mainpage.html" class="home-button">Home</a></li>
+					<li><a href="index.html" class="home-button">Home</a></li>
 					<li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
-					<li class = "search-button"><a href = "searchresult.html"><button type="button" id="query-button" name="qb"></button></a></li>
+					<li class = "search-button"><button type="button" id="query-button" name="qb"></button></li>
 				</ul>
 				<ul class = "menu-actions">
 					<ul class = "menu-actions">
-						<li><a href = "signup-page.html"><button type="button" class="register-button">Register</button></a></li>
-						<li><a href = "login-page.html"><button class="login-button">Login</button></a></li>
+						<li class = "user-name">tftplayer100</li>
 					</ul>
-					<li><a href = "user-profile.html"><img class = "user-icon" src="images/user-icon.png"/></a></li>
+					<li><a href = "user-profile.html"><img class = "user-icon" src="images/tftplayer100-user-icon.jpg"/></a></li>
 				</ul>
 			</div>
 		</div>
@@ -31,18 +31,17 @@
                 <div class="main-postpage-top">
 					<button class="main-postpage-sortbutton"> <img class="main-sortarrows"   src="images/sortarrows.png">  </button>
 					<label class="main-sortby"> Sort by:</label>
-					<select class="main-dropdown" onchange="urlHandler(this.value)">
-						<option class="main-option"></option>
-						<option class="main-option" value="popularresult.html" selected>Popular</option>
-						<option class="main-option" value="trendingresult.html">Trending</option>
-						<option class="main-option" value="controversialresult.html">Controversial</option>
+					<select class="main-dropdown">
+					  <option class="main-option" value="option1">Popular</option>
+					  <option class="main-option" value="option2">Trending</option>
+					  <option class="main-option" value="option3">Controversial</option>
 					</select>
 					<a class="link-post" href="edit-post.html"> 
 						<button class="main-createpost-button" href="edit-post.html">  Create New<br> Post </button>
 					</a>
 				</div>
 				<div class="main-postpage-posts">
-					<p class="main-poststitle"> POPULAR POSTS </p>
+					<p class="main-poststitle"> POSTS </p>
 					<div class="main-postpage-idvpost">
 						<div class="main-postpage-vote">
 							<div class = "upvote" id = "upvote#" onclick="changeVote(1, '#')"></div>
@@ -63,13 +62,56 @@
 							
 						</div>
 					</div>
+
+					<div class="main-postpage-idvpost">
+						<div class="main-postpage-vote">
+							<div class = "upvote" id = "upvote2#" onclick="changeVote2(1, '#')"></div>
+							<div class = "vote-number" id = "vote-number2#">0</div>
+							<div class = "downvote" id = "downvote2#" onclick="changeVote2(0, '#')"></div>
+						</div>
+						<div class="main-postpage-image">
+							<a class="link-post" href="Snake-and-Ladders.html"> <img class="main-indpost-image" src="images/snakesandladders.jpg"></a>
+						</div>
+						<div class="main-postpage-description">
+							<p class="main-indpost-title">
+								<a class="link-post" href="Snake-and-Ladders.html"> Snakes and Ladders  </a>
+							</p>
+							<p class="main-indpost-description"> 
+								Hello! Anyone down to play Snakes and Ladders in 12th floor Henry Sy at 10 am on February 20?
+							</p>
+							
+						</div>
+					</div>
+
+					<div class="main-postpage-idvpost">
+						<div class="main-postpage-vote">
+							<div class = "upvote" id = "upvote3#" onclick="changeVote3(1, '#')"></div>
+							<div class = "vote-number" id = "vote-number3#">0</div>
+							<div class = "downvote" id = "downvote3#" onclick="changeVote3(0, '#')"></div>
+						</div>
+						<div class="main-postpage-image">
+							<a class="link-post" href="LF-Chess-Coach.html"> <img class="main-indpost-image" src="images/chess.png"></a>
+						</div>
+						<div class="main-postpage-description">
+							<p class="main-indpost-title">
+								<a class="link-post" href="LF-Chess-Coach.html"> LF Chess Coach </a>
+							</p>
+							<p class="main-indpost-description"> 
+								Hello, everyone! I am currently looking for a chess coach who can help me improve my chess skills. I am very interested in playing right now
+								since I think it is a very fun game, but mostly because I want to beat my friend who keeps on winning against me....
+							</p>
+							
+						</div>
+					</div>
+
+					
 				</div>
             </div>
 
 			<div class="main-rightpage">
 				<div class="main-announcements pagecolor">
 					<p class="main-announcements-title"> Announcements from the developers</p>
-					<p class="main-announcement-message">
+					<p>
 						Thank you for participating for the ArchersGuild 
 						alpha testing. 
 					</p>
