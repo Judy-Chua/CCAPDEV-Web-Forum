@@ -140,6 +140,7 @@
 .ask-username input {
 	width: 80%;
 	height: 95%;
+    font-size: large;
 
 	border-radius: 3px;
 	border: 0;	
@@ -148,6 +149,7 @@
 .ask-email input {
 	width: 80%;
 	height: 95%;
+    font-size: large;
 
 	border-radius: 3px;
 	border: 0;	
@@ -156,6 +158,7 @@
 .ask-password input {
 	width: 80%;
 	height: 95%;
+    font-size: large;
 
 	border-radius: 3px;
 	border: 0;	
@@ -164,6 +167,7 @@
 .confirm-password input {
 	width: 80%;
 	height: 95%;
+    font-size: large;
 
 	border-radius: 3px;
 	border: 0;	
