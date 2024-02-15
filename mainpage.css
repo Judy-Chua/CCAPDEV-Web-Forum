@@ -1,5 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:100,400,700,900');
 
+a:link {
+    color: white;
+}
+  
+a:visited {
+color: white;
+}
+
+a:hover {
+color: white;
+}
+
+a:active {
+color: red;
+}
+
+a:link, a:visited {
+text-decoration: none;
+color: white;
+}
+
 label, p, div,select{
     font-family: "Montserrat", sans-serif;
 }
