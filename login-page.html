@@ -41,7 +41,7 @@
             </div>
             <div class = "req-forms">
                 <div class = "ask-username">
-                    <img class = "login-user-icon" src="images/user-icon.png"/>
+                    <img class = "login-user-icon" src="images/user-icon.png" id = "cur-usericon"/>
                     <span class = "user-pw-text">Username |</span>
                     <input type="text" id="username" name="username">
                 </div>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class = "login-footer">
-                <a href = "mainpage.html"><button type = "button" class="login-main-button" id = "confirm-login-btn">Log-in</button></a>
+                <a href = "mainpage.html"><button type = "button" class="login-main-button" onclick="updateLogStatus()">Log-in</button></a>
             </div>
         </div>
 	</div>

@@ -1,16 +1,13 @@
-document.addEventListener("DOMContentLoaded", function() {
-    var loginBtn = document.getElementById("confirm-login-btn");
-    var userIcon = document.querySelector(".user-icon");
+var isLoggedIn = false;
+var curUserIcon = document.getElementById("cur-usericon");
 
-    var storedIcon = localStorage.getItem("user_icon_src");
-    // if already logged in
-    if (storedIcon) {
-        userIcon.src = storedIcon;
+document.addEventListener("DOMContentLoaded", function changeUserIcon() {
+
+    if (isLoggedIn) {
+        curUserIcon.src = "tftplayer100-user-icon.jpg";
     }
-
-    loginBtn.addEventListener("click", function() {
-        // change user icon once logged in
-        userIcon.src = "images/tftplayer100-user-icon.jpg";
-        localStorage.setItem("user_icon_src", userIcon.src);
-    });
 });
+
+function updateLogStatus() {
+    isLoggedIn = true;
+}
