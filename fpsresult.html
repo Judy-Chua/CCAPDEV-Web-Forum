@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="fpsresult.css">
+		<link rel = "stylesheet" type = "text/css" href = "index.css">
+		<script src = "mainpage.js"></script>
+		<title> FPS </title>
+    </head>
+
+    <body>
+        <div class = "main-container">
+			<div class = "menu-bar">
+				<ul class = "menu-actions">
+					<a href = "mainpage.html"><li class = "forum-logo"></li></a>
+				</ul>
+	
+				<ul class = "menu-actions">
+					<li><a href="mainpage.html" class="home-button">Home</a></li>
+					<li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
+					<li class = "search-button"><a href = "searchresult.html"><button type="button" id="query-button" name="qb"></button></a></li>
+				</ul>
+				<ul class = "menu-actions">
+					<ul class = "menu-actions">
+						<li><a href = "signup-page.html"><button type="button" class="register-button">Register</button></a></li>
+						<li><a href = "login-page.html"><button class="login-button">Login</button></a></li>
+					</ul>
+					<li><a href = "user-profile.html"><img class = "user-icon" src="images/user-icon.png"/></a></li>
+				</ul>
+			</div>
+		</div>
+        <div class="result-div">
+            <div class="result-postpage pagecolor"> 
+                <div class="result-postpage-top">
+					<button class="result-postpage-sortbutton"> <img class="result-sortarrows"   src="images/sortarrows.png">  </button>
+					<label class="result-sortby"> Sort by:</label>
+					<select class="result-dropdown" onchange="urlHandler(this.value)">
+						<option class="result-option"></option>
+						<option class="result-option" value="popularresult.html">Popular</option>
+						<option class="result-option" value="trendingresult.html">Trending</option>
+						<option class="result-option" value="controversialresult.html">Controversial</option>
+					</select>
+					<a class="link-post" href="edit-post.html"> 
+						<button class="result-createpost-button" href="edit-post.html">  Create New<br> Post </button>
+					</a>
+					
+				</div>
+				<div class="result-postpage-posts">
+					<p class="result-poststitle"> Tag: FPS </p>
+                    <p class="result-nofound"> No Results found...</p>
+		
+				</div>
+            </div>
+
+			<div class="result-rightpage">
+				<div class="result-announcements pagecolor">
+					<p class="result-announcements-title"> Announcements from the developers</p>
+					<p class="result-announcement-message">
+						Thank you for participating for the ArchersGuild 
+						alpha testing!
+					</p>
+				</div>
+				<div class="result-tags">
+					<div class="result-gametag firsttag">
+						<a class="gametag" href="fpsresult.html"> FPS </a>
+					</div>
+
+					<div class="result-gametag firsttag">
+						<a class="gametag" href="mobaresult.html"> MOBA</a>
+					</div>
+
+					<div class="result-gametag firsttag">
+						<a class="gametag" href="singleplayerresult.html">Single Player</a>
+					</div>
+
+					<div class="result-gametag firsttag">
+						<a class="gametag" href="multiplayerresult.html">Multiplayer</a>
+					</div>
+				</div>
+
+				<div class="result-recentposts pagecolor">
+					<p class="result-recentposts-title"> Last Viewed Post</p>
+					<div class="result-recentviewpost">
+						<div class="result-recentviewpost-description">
+							<p class="result-recentviewpost-title">
+								<a class="link-post" href="TFT-Latest-Patch-Notes.html">TFT Latest Patch Notes</a>
+							</p>
+							<p class="result-recentviewpost-description"> 
+								Has anyone read the lastest tft patch notes? I haven't played the game for a while and ...
+							</p>
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>
+        
+        </div>
+
+
+
+    </body>
+</html>
