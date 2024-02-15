@@ -2,7 +2,8 @@
     <head>
         <link rel="stylesheet" href="mobaresult.css">
 		<link rel = "stylesheet" type = "text/css" href = "index.css">
-		<title> Home </title>
+		<script src = "mainpage.js"></script>
+		<title> MOBA </title>
     </head>
 
     <body>
@@ -32,9 +33,10 @@
 					<button class="result-postpage-sortbutton"> <img class="result-sortarrows"   src="images/sortarrows.png">  </button>
 					<label class="result-sortby"> Sort by:</label>
 					<select class="result-dropdown" onchange="urlHandler(this.value)">
-					  <option class="result-option" value="option1">Popular</option>
-					  <option class="result-option" value="option2">Trending</option>
-					  <option class="result-option" value="option3">Controversial</option>
+						<option class="result-option"></option>
+						<option class="result-option" value="popularresult.html">Popular</option>
+						<option class="result-option" value="trendingresult.html">Trending</option>
+						<option class="result-option" value="controversialresult.html">Controversial</option>
 					</select>
 					<a class="link-post" href="edit-post.html"> 
 						<button class="result-createpost-button" href="edit-post.html">  Create New<br> Post </button>

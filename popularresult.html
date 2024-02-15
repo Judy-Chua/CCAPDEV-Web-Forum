@@ -3,9 +3,7 @@
         <link rel="stylesheet" href="mainpage.css">
 		<link rel = "stylesheet" type = "text/css" href = "index.css">
 		<script src = "mainpage.js"></script>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title> Home</title>
-    </head>
+		<title> Popular</title>
 
     <body>
         <div class = "main-container">
@@ -35,7 +33,7 @@
 					<label class="main-sortby"> Sort by:</label>
 					<select class="main-dropdown" onchange="urlHandler(this.value)">
 						<option class="main-option"></option>
-						<option class="main-option" value="popularresult.html">Popular</option>
+						<option class="main-option" value="popularresult.html" selected>Popular</option>
 						<option class="main-option" value="trendingresult.html">Trending</option>
 						<option class="main-option" value="controversialresult.html">Controversial</option>
 					</select>
@@ -44,7 +42,7 @@
 					</a>
 				</div>
 				<div class="main-postpage-posts">
-					<p class="main-poststitle"> POSTS </p>
+					<p class="main-poststitle"> POPULAR POSTS </p>
 					<div class="main-postpage-idvpost">
 						<div class="main-postpage-vote">
 							<div class = "upvote" id = "upvote#" onclick="changeVote(1, '#')"></div>
@@ -65,49 +63,6 @@
 							
 						</div>
 					</div>
-
-					<div class="main-postpage-idvpost">
-						<div class="main-postpage-vote">
-							<div class = "upvote" id = "upvote2#" onclick="changeVote2(1, '#')"></div>
-							<div class = "vote-number" id = "vote-number2#">0</div>
-							<div class = "downvote" id = "downvote2#" onclick="changeVote2(0, '#')"></div>
-						</div>
-						<div class="main-postpage-image">
-							<a class="link-post" href="Snake-and-Ladders.html"> <img class="main-indpost-image" src="images/snakesandladders.jpg"></a>
-						</div>
-						<div class="main-postpage-description">
-							<p class="main-indpost-title">
-								<a class="link-post" href="Snake-and-Ladders.html"> Snakes and Ladders  </a>
-							</p>
-							<p class="main-indpost-description"> 
-								Hello! Anyone down to play Snakes and Ladders in 12th floor Henry Sy at 10 am on February 20?
-							</p>
-							
-						</div>
-					</div>
-
-					<div class="main-postpage-idvpost">
-						<div class="main-postpage-vote">
-							<div class = "upvote" id = "upvote3#" onclick="changeVote3(1, '#')"></div>
-							<div class = "vote-number" id = "vote-number3#">0</div>
-							<div class = "downvote" id = "downvote3#" onclick="changeVote3(0, '#')"></div>
-						</div>
-						<div class="main-postpage-image">
-							<a class="link-post" href="LF-Chess-Coach.html"> <img class="main-indpost-image" src="images/chess.png"></a>
-						</div>
-						<div class="main-postpage-description">
-							<p class="main-indpost-title">
-								<a class="link-post" href="LF-Chess-Coach.html"> LF Chess Coach </a>
-							</p>
-							<p class="main-indpost-description"> 
-								Hello, everyone! I am currently looking for a chess coach who can help me improve my chess skills. I am very interested in playing right now
-								since I think it is a very fun game, but mostly because I want to beat my friend who keeps on winning against me....
-							</p>
-							
-						</div>
-					</div>
-
-					
 				</div>
             </div>
 

@@ -31,10 +31,11 @@
                 <div class="main-postpage-top">
 					<button class="main-postpage-sortbutton"> <img class="main-sortarrows"   src="images/sortarrows.png">  </button>
 					<label class="main-sortby"> Sort by:</label>
-					<select class="main-dropdown">
-					  <option class="main-option" value="option1">Popular</option>
-					  <option class="main-option" value="option2">Trending</option>
-					  <option class="main-option" value="option3">Controversial</option>
+					<select class="main-dropdown" onchange="urlHandler(this.value)">
+						<option class="main-option"></option>
+						<option class="main-option" value="popularresult.html">Popular</option>
+						<option class="main-option" value="trendingresult.html">Trending</option>
+						<option class="main-option" value="controversialresult.html">Controversial</option>
 					</select>
 					<button class="main-createpost-button"> Create <br> post </button>
 				</div>
