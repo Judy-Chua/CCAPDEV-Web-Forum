@@ -1,31 +1,29 @@
 <html>
     <head>
-        <link rel="stylesheet" href="fpsresult.css">
+        <link rel="stylesheet" href="mobaresult.css">
 		<link rel = "stylesheet" type = "text/css" href = "index.css">
-		<script src = "mainpage.js"></script>
-		<title> FPS </title>
+		<title> Home </title>
     </head>
 
     <body>
         <div class = "main-container">
 			<div class = "menu-bar">
-			<ul class = "menu-actions">
-				<a href = "mainpage.html"><li class = "forum-logo"></li></a> 
-			</ul>
-
-			<ul class = "menu-actions">
-				<li><a href="mainpage.html" class="home-button">Home</a></li>
-				<li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
-				<li class = "search-button"><button type="button" id="query-button" name="qb"></button></li>
-			</ul>
-			<ul class = "menu-actions">
 				<ul class = "menu-actions">
-					<li><button type="button" class="register-button">Register</button></li>
-					<li><a href = "login-page.html"><button class="login-button">Login</button></a></li>
+					<a href = "tftplayer100-mainpage.html"><li class = "forum-logo"></li></a>
 				</ul>
-				<li><a href = "index.html"><img class = "user-icon" src="images/user-icon.png"/></a></li>
-			</ul>
-		</div>
+	
+				<ul class = "menu-actions">
+					<li><a href="index.html" class="home-button">Home</a></li>
+					<li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
+					<li class = "search-button"><button type="button" id="query-button" name="qb"></button></li>
+				</ul>
+				<ul class = "menu-actions">
+					<ul class = "menu-actions">
+						<li class = "user-name">tftplayer100</li>
+					</ul>
+					<li><a href = "user-profile.html"><img class = "user-icon" src="images/tftplayer100-user-icon.jpg"/></a></li>
+				</ul>
+			</div>
 		</div>
         <div class="result-div">
             <div class="result-postpage pagecolor"> 
@@ -33,10 +31,9 @@
 					<button class="result-postpage-sortbutton"> <img class="result-sortarrows"   src="images/sortarrows.png">  </button>
 					<label class="result-sortby"> Sort by:</label>
 					<select class="result-dropdown" onchange="urlHandler(this.value)">
-						<option class="result-option"></option>
-						<option class="result-option" value="popularresult.html">Popular</option>
-						<option class="result-option" value="trendingresult.html">Trending</option>
-						<option class="result-option" value="controversialresult.html">Controversial</option>
+					  <option class="result-option" value="option1">Popular</option>
+					  <option class="result-option" value="option2">Trending</option>
+					  <option class="result-option" value="option3">Controversial</option>
 					</select>
 					<a class="link-post" href="edit-post.html"> 
 						<button class="result-createpost-button" href="edit-post.html">  Create New<br> Post </button>
@@ -44,8 +41,27 @@
 					
 				</div>
 				<div class="result-postpage-posts">
-					<p class="result-poststitle"> Tag: FPS </p>
-                    <p class="result-nofound"> No Results found...</p>
+					<p class="result-poststitle"> Tag: MOBA </p>
+                    <div class="result-postpage-idvpost">
+						<div class="result-postpage-vote">
+							<div class = "upvote" id = "upvote#" onclick="changeVote(1, '#')"></div>
+							<div class = "vote-number" id = "vote-number#">0</div>
+							<div class = "downvote" id = "downvote#" onclick="changeVote(0, '#')"></div>
+						</div>
+						<div class="result-postpage-image">
+							<a class="link-post" href="TFT-Latest-Patch-Notes.html"> <img class="result-indpost-image" src="images/tftpatchnotes.jpg"></a>
+						</div>
+						<div class="result-postpage-description">
+							<p class="result-indpost-title">
+								<a class="link-post" href="TFT-Latest-Patch-Notes.html"> TFT Latest Patch Notes </a>
+							</p>
+							<p class="result-indpost-description"> 
+								Has anyone read the lastest tft patch notes? I haven't played the game for a while and 
+								I wanted to know which team comps are the best right now! I hope there is no broken comp at the moment. 			
+							</p>
+							
+						</div>
+					</div>
 		
 				</div>
             </div>
@@ -75,7 +91,6 @@
 						<a class="gametag" href="multiplayerresult.html">Multiplayer</a>
 					</div>
 				</div>
-
 				<div class="result-recentposts pagecolor">
 					<p class="result-recentposts-title"> Last Viewed Post</p>
 					<div class="result-recentviewpost">

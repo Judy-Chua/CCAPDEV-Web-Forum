@@ -124,3 +124,7 @@ button:hover {
 	height: 50px;
 	margin: 3px 15px 0px;
 }
+.user-name {
+	color: white;
+	font-size: large;
+}
