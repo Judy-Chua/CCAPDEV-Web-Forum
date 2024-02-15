@@ -86,13 +86,27 @@
 .user-display {
     width: 35%;
     height: 100%;
-    background-color: gray;
 }
 
 .user-display-1 {
-    height: 50%;
-    border: red 2px solid;
+    height: 35%;
     padding: 15px;
+
+    display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.settings-ul-icon {
+	width: 40px;
+	height: 40px;
+}
+
+.user-profile-icon {
+    width: 150px;
+	height: 150px;
+    margin-top: -15px;
+    border-radius: 50%;
 }
 
 .user-settings-button {
@@ -106,4 +120,40 @@
 	line-height: 1.15;
 
     margin: 20px;
+}
+
+.user-display-1-right {
+    width: 50%;
+}
+
+.user-displayname {
+    color: black;
+    margin-top: 70px;
+}
+
+.user-disp-name {
+    font-weight: bolder;
+    font-size: 28px;
+    margin-top: 15px;
+    margin-bottom: 2px;
+}
+
+.user-display-2 {
+    height: 35%;
+    padding: 15px;
+
+    display: flex;
+	flex-direction: column;
+	justify-content: space-between center;
+    align-items: center;
+}
+
+.user-desc {
+    height: 150px;
+    width: 80%;
+    margin: 10px;
+    border-radius: 3px;
+    color: white;
+    padding: 15px;
+    background-color: #537BAB;
 }
