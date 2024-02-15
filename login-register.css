@@ -14,7 +14,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-    background-color: lightgray;
+	background: #0e3768;
 }
 
 .login-header {
@@ -28,18 +28,22 @@
     margin: 30px;
 }
 
+.sign-up-here {
+	color: #efe897;
+}
+
 .welcome-msg {
     display: flex;
 	flex-direction: column;
     text-align: center;
 	justify-content: center;
 
-    color: black;
+    color: white;
 }
 
 .welcome1 {
     font-weight: bolder;
-    font-size: 45px;
+    font-size: 62px;
     margin-top: 15px;
     margin-bottom: 2px;
 }
@@ -67,7 +71,7 @@
     padding: 15px;
     margin: 3px;
 
-	background-color: #1F3964;
+	background-color: #537BAB;
 }
 
 .ask-password {
@@ -82,7 +86,7 @@
     padding: 15px;
     margin: 3px;
 
-	background-color: #1F3964;
+	background-color: #537BAB;
 }
 
 .login-footer {
