@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Specific Post
+	</title>
+	<link rel = "stylesheet" type = "text/css" href = "post.css">
+	<link rel = "stylesheet" type = "text/css" href = "index.css">
+	<script src = "post-script.js"></script>
+	<script src = "user-disp.js"></script>
+</head>
+<body>
+	<div class = "main-container">
+		<div class = "menu-bar">
+			<ul class = "menu-actions">
+				<a href = "tftplayer100-mainpage.html"><li class = "forum-logo"></li></a>
+			</ul>
+
+			<ul class = "menu-actions">
+				<li><a href="tftplayer100-mainpage.html" class="home-button">Home</a></li>
+				<li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
+				<li class = "search-button"><button type="button" id="query-button" name="qb"></button></li>
+			</ul>
+			<ul class = "menu-actions">
+				<ul class = "menu-actions">
+					<li class = "user-name">tftplayer100</li>
+				</ul>
+				<li><a href = "user-profile.html"><img class = "user-icon" src="images/tftplayer100-user-icon.jpg"/></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class = "post" id = "post#">
+		<div class = "post-container" id="post-container#">
+			<div class = "post-items" id="post-items#">
+				<div class = "post-title" id="post-title#">
+					Title
+				</div>
+				<div class = "post-username" id="post-username#">
+					by username
+				</div>
+				<div class = "post-desc" id = "post-desc#">
+					Description
+				</div>
+				<div class = "post-image" id = "post-image#">
+					
+				</div>
+			</div>
+			<div class = "side-items" id="side-items#">
+				<div class = "votes" id="votes#">
+					<div class = "upvote" id = "upvote#" onclick="changeVote(1, '#')"></div>
+					<div class = "vote-number" id = "vote-number#">0</div>
+					<div class = "downvote" id = "downvote#" onclick="changeVote(0, '#')"></div>
+				</div>
+				<div class = "tags" id="tags#">
+					<button type="button" id="tag-button#">Tag</button>
+				</div>
+			</div>
+		</div>
+		<div class = "comment-container" id="comment-container#">
+			<div class = "comment-title-container" id = "comment-title-container#">
+				<ul class = "comment-title-container-ul">
+					<li><div class = "comment-title" id = "comment-title#">Comments:</div></li>
+				</ul>
+				<ul class = "comment-title-container-ul">
+					<li><div class = "post-edit" id = "post-edit#"></div></li>
+					<li><div class = "post-delete" id = "post-delete#"></div></li>
+				</ul>
+			</div>
+			<div class = "comment-actions" id = "comment-actions#">
+				<ul class = "comment-user">
+					<li class = "user-picture" id = "user-picture#"></li>
+				</ul>
+				<ul class = "comment-user">
+					<li><textarea class="comment-area" id="comment-area#" placeholder="What are your thoughts?"></textarea>
+						<div class="comment-submit" id="comment-submit#" onclick="submitComment('#')"></div></li>
+				</ul>
+				<div class = "comment-options-container" id = "comment-options-container#">
+				<ul class = "comment-user" class = "comment-user#">
+					<li><form class = "comment-options" id = "comment-options#"><select>
+							<option value="popular">Popular</option>
+							<option value="popular">Newest</option>
+							<option value="popular">Oldest</option>
+							<option value="popular">Unpopular</option>
+						</select></form>
+					</li>
+				</ul>
+				</div>
+			</div>
+			<div class = "comment" id="comment#">
+				<div class = "no-comment" id="no-comment#">No Comments</div>
+			</div>
+		</div>
+	</div>
+	<div class = "text-response" id = "text-response#"></div>
+</body>
+</html>

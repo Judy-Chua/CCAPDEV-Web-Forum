@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		ArchersGuild Login Page 
+	</title>
+	<link rel = "stylesheet" type = "text/css" href = "index.css">
+    <link rel = "stylesheet" type = "text/css" href = "login-page.css">
+    <script src = "user-disp.js"></script>
+</head>
+<body>
+	<div class = "main-container">
+		<div class = "menu-bar">
+			<ul class = "menu-actions">
+				<a href = "tftplayer100-mainpage.html"><li class = "forum-logo"></li></a>
+			</ul>
+
+			<ul class = "menu-actions">
+				<li><a href="index.html" class="home-button">Home</a></li>
+				<li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
+				<li class = "search-button"><button type="button" id="query-button" name="qb"></button></li>
+			</ul>
+			<ul class = "menu-actions">
+				<ul class = "menu-actions">
+					<li class = "user-name">tftplayer100</li>
+				</ul>
+				<li><a href = "user-profile.html"><img class = "user-icon" src="images/tftplayer100-user-icon.jpg"/></a></li>
+			</ul>
+		</div>
+
+        <div class = "login-container">
+            <div class = "login-header">
+                <div class = "redirect-sign-up">
+                    <a href = "signup-page.html" class = "sign-up-here">New User? Sign up here.</a>
+                </div>
+                <div class = "welcome-msg">
+                    <span class = "welcome1">Welcome to ArchersGuild!</span><br>
+                    <span class = "welcome2">Please log-in to continue.</span>
+                </div>
+            </div>
+            <div class = "req-forms">
+                <div class = "ask-username">
+                    <img class = "login-user-icon" src="images/user-icon.png"/>
+                    <span class = "user-pw-text">Username |</span>
+                    <input type="text" id="username" name="username">
+                </div>
+                <div class = "ask-password">
+                    <img class = "login-pw-icon" src="images/pw-icon.png"/>
+                    <span class = "user-pw-text">Password |</span>
+                    <input type="password" id="pwd" name="pwd">
+                </div>
+            </div>
+            <div class = "login-footer">
+                <a href = "mainpage.html"><button type = "button" class="login-main-button" id = "confirm-login-btn">Log-in</button></a>
+            </div>
+        </div>
+	</div>
+
+
+	
+</body>
+</html>
