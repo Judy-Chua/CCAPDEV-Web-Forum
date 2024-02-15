@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,400,700,900');
+
+
+
+label, p, div,select{
+    font-family: "Montserrat", sans-serif;
+}
+.pagecolor{
+    background-color: #1F3964;
+}
+.result-div{
+    display: grid;
+    grid-template-columns: 1000px 500px;
+    justify-content: center;
+
+    column-gap: 50px;
+    margin-top: 20px;
+}
+
+.result-postpage{
+    padding: 15px 15px 0 30px;
+    width:1000px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+.result-rightpage{
+    border-radius: 10px;
+    padding: 0 10px 0 10px;
+
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.result-postpage-top{
+    margin: 0 0 0 0;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+.result-sortarrows{
+    height: 30px;
+    width: 30px;
+}
+
+.result-postpage-sortbutton{
+    margin-right: 10px;
+    padding-top: 0;
+}
+
+.result-sortby{
+    font-size: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 0;
+}
+
+.result-dropdown{
+    height: 35px;
+    width: 170px;
+    font-size: 17px;
+    font-weight: bold;
+    padding-top: 0;
+}
+
+.result-createpost-button{
+    position:absolute;
+    padding: 7 10 7 10;
+
+    font-size: 25px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+
+    right:10;
+    background-color: white;
+    margin-top: 0;
+    width: 200px;
+}
+
+.result-postpage-posts{
+    border-width: 10px;
+    border-color: black;
+    padding-bottom: 50px;
+}
+
+.upvote {
+	background-image: url('images/up.png');
+	background-size: cover;
+	width: 40px;
+	height: 40px;
+	margin-top: 20px;
+	cursor: pointer;
+}
+
+.upvote:hover, .upvote:active {
+	background-image: url('images/color-up.png');
+	width: 40px;
+	height: 40px;
+}
+
+.vote-number {
+	margin-top: 3px;
+	margin-bottom: 3px;
+	text-align: center;
+	border: 0.5px solid #f1f2f6;
+}
+
+.downvote {
+	background-image: url('images/down.png');
+	background-size: cover;
+	width: 40px;
+	height: 40px;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+.downvote:hover, .downvote:active {
+	background-image: url('images/color-down.png');
+	width: 40px;
+	height: 40px;
+}
+
+.result-poststitle{
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.result-nofound{
+    font-size: 22px;
+}
+
+.result-postpage-idvpost{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.result-postpage-vote{
+    margin-right: 20px;
+}
+
+.result-postpage-description{
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+    width: 700px;
+}
+.result-postpage-image{
+    margin-right: 10px;
+
+}
+
+.result-indpost-title{
+    font-size: 22px;
+    margin-bottom: 0;
+}
+
+.result-indpost-description{
+    font-size: 15px;
+    margin-top: 2px;
+    opacity: .7;
+}
+
+.result-indpost-image{
+    width: 150px;
+}
+
+.result-announcements{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 0 0 0;
+    border-radius: 10px;
+    padding: 20px 15px 12px 15px;
+    
+}
+.result-announcements-title{
+    text-align: center;
+
+    font-size: 32px;
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+.result-announcement-message{
+    text-align: center;
+    font-size: 18px;
+}
+
+.result-tags{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 5px;
+    row-gap: 15px;
+
+
+    margin: 0 0 0 0;
+    border-radius: 10px;
+
+}
+
+.result-gametag{
+    padding: 5px 2px 5px 2px;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.firsttag{
+    background-color: #555555;
+}
+
+.result-recentposts{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin: 0 0 0 0;
+    padding: 20px 15px 12px 15px;
+    border-radius: 10px;
+
+}
+
+.result-recentposts-title{
+    padding:0 0 0 0;
+    margin: 0 0 0 0;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.result-recentviewpost{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+    margin: 0 0 0 0;
+    padding: 7px 5px 7px 5px;
+
+
+}
+
+.result-recentviewpost-title{
+    font-size: 22px;
+    text-decoration: underline;
+    margin: 20px 0 0 0;
+    padding: 0 0 0 0;
+}
+
+.result-recentviewpost-description{
+    font-size: 13px;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    opacity: .9;
+}
+
+.link-post:hover{
+    opacity: 0.7;
+}
+a:active {
+color: red;
+}
+
+a:link, a:visited {
+text-decoration: none;
+color: white;
+}
+
+.gametag:hover{
+    color: #efe897;
+    text-decoration: underline;
+}
