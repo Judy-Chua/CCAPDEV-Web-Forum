@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,400,700,900');
+
+
+:root {
+	color: #f1f2f6;
+	font-size: 14px;
+	font-weight: 700;
+	font-family: "Montserrat", sans-serif;
+}
+
+.profile-container {  
+    width: 80%;
+    height: 600px;
+    margin: 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.main-profile {
+    width: 65%;
+    height: 100%;
+    background: #0e3768;
+    border-radius: 3px;
+    padding: 15px;
+}
+
+.main-profile-header {
+    display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+    margin-top: 30px;
+    margin-left: 15px;
+
+    height: 5%;
+    width: 70%;
+}
+
+.posts-tab {
+    border-radius: 3px 3px 0px 0px;
+    background-color: white;
+    width: 100px;
+    text-align: center;
+    padding: 4px 10px;
+    color:  #0e3768;
+}
+
+.comments-tab {
+    border-radius: 3px 3px 0px 0px;
+    background-color: white;
+    width: 100px;
+    text-align: center;
+    padding: 4px 10px;
+    color:  #0e3768;
+}
+
+.upvoted-tab {
+    border-radius: 3px 3px 0px 0px;
+    background-color: white;
+    width: 100px;
+    text-align: center;
+    padding: 4px 10px;
+    color:  #0e3768;
+}
+
+.downvoted-tab {
+    border-radius: 3px 3px 0px 0px;
+    background-color: white;
+    width: 100px;
+    text-align: center;
+    padding: 4px 10px;
+    color:  #0e3768;
+}
+
+
+.main-profile-content {
+    margin: 15px;
+    margin-top: 0px;
+    background-color: white;
+    border-radius: 0px 3px 3px 3px;
+
+    height: 80%;
+    padding: 15px;
+}
+
+.user-display {
+    width: 35%;
+    height: 100%;
+}
+
+.user-display-1 {
+    height: 35%;
+    padding: 15px;
+
+    margin-left: 20px;
+
+    display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.settings-ul-icon {
+	width: 40px;
+	height: 40px;
+}
+
+.user-profile-icon {
+    width: 150px;
+	height: 150px;
+    margin-top: -15px;
+    border-radius: 50%;
+}
+
+.user-settings-button {
+    font-size: 18px;
+	font-weight: 400;
+	border-radius: 3px;
+	padding: 6px 12px;
+	border: 0;
+	color: #3a4149;
+	background: #efe897;
+	line-height: 1.15;
+
+    margin: 20px;
+}
+
+.user-display-1-right {
+    width: 50%;
+}
+
+.user-displayname {
+    color: black;
+    margin-top: 70px;
+}
+
+.user-disp-name {
+    font-weight: bolder;
+    font-size: 28px;
+    margin-top: 15px;
+    margin-bottom: 2px;
+}
+
+.user-display-2 {
+    height: 35%;
+    padding: 15px;
+
+    display: flex;
+	flex-direction: column;
+	justify-content: space-between center;
+    align-items: center;
+}
+
+.user-desc {
+    height: 150px;
+    width: 80%;
+    margin: 10px;
+    border-radius: 3px;
+    color: white;
+    padding: 15px;
+    background-color: #537BAB;
+}
