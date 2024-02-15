@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,400,700,900');
+
+label, p, div,select, input, button{
+    font-family: "Montserrat", sans-serif;
+}
+.pagecolor{
+    background-color: #1F3964;
+}
+.main-div{
+    display: grid;
+    grid-template-columns: 800px;
+    justify-content: center;
+
+    column-gap: 50px;
+    margin-top: 20px;
+}
+
+.main-postpage{
+    padding: 0 15px 15px 15px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.settings-div{
+    padding: 0 0 0 0;
+    margin: 20px 0 20px 0;
+}
+
+
+.settings-title{
+    font-size: 30px;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+.settings-button{
+
+    display: block;
+    background-color:white;
+    color: black;
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    padding: 5px 7px 5px 7px;
+    margin: 0 0 15px 0;
+}
+
+.settings-changingname{
+    display: none;  
+}
+
+.changingname{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-left: 40px;
+}
+
+.settings-changingusername{
+    display: none;  
+}
+
+.changingusername{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-left: 40px;
+}
+
+.settings-changingpass{
+    display: none;  
+}
+
+.changingpass{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-left: 40px;
+}
+
+.settings-changingprofilepic{
+    display: none;  
+}
+
+.changingprofilepic{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-left: 40px;
+}
+
+.settings-changingdesc{
+    display: none;  
+}
+
+.changingdesc{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-left: 40px;
+}
+
+.settings-input{
+    padding: 7 7 7 7;
+    border-radius: 5px;
+    border-color: black;
+}
+
+
+.settings-confirmbutton{
+    border: none;
+    background-color: white;
+    margin-left: 5px;
+}
+
+.settings-cancelbutton{
+    border: none;
+    background-color: white;
+    margin-left: 5px;
+
+}
+.settings-buttonimg{
+    width: 20px;
+}
