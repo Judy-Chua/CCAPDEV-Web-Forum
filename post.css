@@ -48,15 +48,14 @@
 }
 
 .post-image {
-	background-image: none;
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
-	min-width: 50px;
+	min-width: 300px;
+	min-height: 300px;
 	max-width: 850px;
-	min-height: 50px;
 	max-height: 400px;
-	margin: 0px 0px 20px 70px;
+	margin: 10px 0px 10px 70px;
 }
 
 .side-items {
@@ -538,12 +537,17 @@
 	opacity: 0;
 }
 
+#post-image1 {
+	background-image: url('images/snakesandladders.jpg');
+}
 
+#post-image2 {
+	background-image: url('images/tftpatchnotes.jpg');
+}
 
-
-
-
-
+#post-image3 {
+	background-image: url('images/chess.png');
+}
 
 
 :root {
