@@ -164,6 +164,13 @@ label, p, div,select{
     margin-bottom: 0;
 }
 
+.result-indpost-postedby{
+    font-size: 14px;
+    opacity: .7;
+    margin: 5px 0 5px 0;
+    padding: 0 0 0 0;
+}
+
 .result-indpost-description{
     font-size: 15px;
     margin-top: 2px;

@@ -31,10 +31,11 @@
                 <div class="main-postpage-top">
 					<button class="main-postpage-sortbutton"> <img class="main-sortarrows"   src="images/sortarrows.png">  </button>
 					<label class="main-sortby"> Sort by:</label>
-					<select class="main-dropdown">
-					  <option class="main-option" value="option1">Popular</option>
-					  <option class="main-option" value="option2">Trending</option>
-					  <option class="main-option" value="option3">Controversial</option>
+					<select class="main-dropdown" onchange="urlHandler(this.value)">
+						<option class="main-option"></option>
+						<option class="main-option" value="tftplayer100-popularresult.html">Popular</option>
+						<option class="main-option" value="tftplayer100-trendingresult.html">Trending</option>
+						<option class="main-option" value="tftplayer100-controversialresult.html">Controversial</option>
 					</select>
 					<a class="link-post" href="tftplayer100-edit-post.html"> 
 						<button class="main-createpost-button" href="tftplayer100-edit-post.html">  Create New<br> Post </button>
@@ -49,12 +50,14 @@
 							<div class = "downvote" id = "downvote#" onclick="changeVote(0, '#')"></div>
 						</div>
 						<div class="main-postpage-image">
-							<a class="link-post" href="TFT-Latest-Patch-Notes.html"> <img class="main-indpost-image" src="images/tftpatchnotes.jpg"></a>
+							<a class="link-post" href="tftplayer100-TFT-Latest-Patch-Notes.html"> <img class="main-indpost-image" src="images/tftpatchnotes.jpg"></a>
 						</div>
 						<div class="main-postpage-description">
 							<p class="main-indpost-title">
-								<a class="link-post" href="TFT-Latest-Patch-Notes.html"> TFT Latest Patch Notes </a>
+								<a class="link-post" href="tftplayer100-TFT-Latest-Patch-Notes.html"> TFT Latest Patch Notes </a>
 							</p>
+							<p class="main-indpost-postedby"> Posted by <a class="link-post" href="tftplayer100-profile.html">tftplayer100</a> </p>
+
 							<p class="main-indpost-description"> 
 								Has anyone read the lastest tft patch notes? I haven't played the game for a while and 
 								I wanted to know which team comps are the best right now! I hope there is no broken comp at the moment. 			
@@ -76,6 +79,8 @@
 							<p class="main-indpost-title">
 								<a class="link-post" href="tftplayer100-Snake-and-Ladders.html"> Snakes and Ladders  </a>
 							</p>
+							<p class="main-indpost-postedby"> Posted by <a class="link-post" href="randomUser123-profile-loggedin.html">randomUser123</a> </p>
+
 							<p class="main-indpost-description"> 
 								Hello! Anyone down to play Snakes and Ladders in 12th floor Henry Sy at 10 am on February 20?
 							</p>
@@ -96,6 +101,8 @@
 							<p class="main-indpost-title">
 								<a class="link-post" href="tftplayer100-LF-Chess-Coach.html"> LF Chess Coach </a>
 							</p>
+							<p class="main-indpost-postedby"> Posted by <a class="link-post" href="iAmNewbieChess-profile-loggedin.html">iAmNewbieChess</a> </p>
+
 							<p class="main-indpost-description"> 
 								Hello, everyone! I am currently looking for a chess coach who can help me improve my chess skills. I am very interested in playing right now
 								since I think it is a very fun game, but mostly because I want to beat my friend who keeps on winning against me....
@@ -111,7 +118,7 @@
 			<div class="main-rightpage">
 				<div class="main-announcements pagecolor">
 					<p class="main-announcements-title"> Announcements from the developers</p>
-					<p>
+					<p class="main-indpost-description">
 						Thank you for participating for the ArchersGuild 
 						alpha testing. 
 					</p>

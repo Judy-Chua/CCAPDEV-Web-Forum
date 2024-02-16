@@ -128,3 +128,44 @@ button:hover {
 	color: white;
 	font-size: large;
 }
+
+.welcomingpage{
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.welcomingtitle{
+	color: black;
+	font-family: "Montserrat", sans-serif;
+	font-size: 120px;
+	padding: 0 0 0 0;
+	margin:60px 0 0 0;
+
+}
+
+.welcomingmessage{
+	color: black;
+	font-family: "Montserrat", sans-serif;
+	padding: 0 0 0 0;
+	margin:20px 0 0 0;
+	font-size: 40px;
+
+}
+
+.welcomingbuttons{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	font-family: "Montserrat", sans-serif;
+
+	padding: 0 0 0 0;
+	margin:20px 0 0 0;
+}
+
+.welcomingbuttondesign{
+	background-color: #1F3964;
+	color: white;
+	width: 100px;
+	font-size: 20px;
+}
