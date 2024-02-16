@@ -2,7 +2,7 @@ var voteCount = 0;
 var voteCommentCount = 0;
 var numComment = 0;
 
-function changeVote(val, fileNum) {
+function changeVote(val, fileNum, initial) {
     var upElem = document.getElementById("upvote"+fileNum);
     var downElem = document.getElementById("downvote"+fileNum);
     var num = parseInt(document.getElementById("vote-number"+fileNum).textContent);
@@ -18,7 +18,7 @@ function changeVote(val, fileNum) {
             voteCount = 1;
         }
             
-        else if (voteCount == 1) {
+        else if (voteCount == 1 || initial == 1) {
             upElem.style.backgroundImage = "url('images/up.png')";
             num = num - 1;
             voteCount = 0;
@@ -35,7 +35,7 @@ function changeVote(val, fileNum) {
             num = num - 2;
             voteCount = -1;
         }
-        else if (voteCount == -1) {
+        else if (voteCount == -1 || initial == 1) {
             downElem.style.backgroundImage = "url('images/down.png')";
             num = num + 1;
             voteCount = 0;
@@ -63,7 +63,7 @@ function submitComment(fileNum) {
     var add_comment = document.getElementById('comment'+fileNum);
     var div_comment = document.createElement('div');
     var date = new Date();
-    var username = "Username";
+    var username = "tftplayer100";
 
     if (!comment)
         return;
@@ -72,7 +72,7 @@ function submitComment(fileNum) {
     var new_comment_id  = "comment" + numComment+fileNum;
     div_comment.setAttribute('id', new_comment_id);
     div_comment.innerHTML = 
-    "<div class = 'picture-person'> </div>" +
+    "<div class = 'picture-person' id='p" +new_comment_id+ "'> </div>" +
     "<div class = 'comment-person'>" + 
         "<div class = 'username-comment'>" +
             "<div class = 'username-person'>" + username + "</div>" +
@@ -103,6 +103,7 @@ function submitComment(fileNum) {
 
     add_comment.appendChild(div_comment);
     numComment = numComment + 1;
+    document.getElementById("p"+new_comment_id).style.backgroundImage = "url('images/tftplayer100-user-icon.jpg')";
 
     var checkDiv = document.getElementById('no-comment'+fileNum) != null;
     if (checkDiv)
