@@ -262,8 +262,8 @@
 }
 
 .picture-person {
-	background-image: url('images/user-icon.png');
 	background-size: cover;
+	border-radius: 100%;
 	margin: 5px 10px 5px 10px;
 	width: 40px;
 	height: 40px;
@@ -547,6 +547,18 @@
 
 #post-image3 {
 	background-image: url('images/chess.png');
+}
+
+#pcomment901, #pcomment911, #pcomment921, #pcomment902, #pcomment912, #pcomment922 {
+	background-image: url('images/randomUser123-user-icon.jpeg');
+}
+
+#pcomment932 {
+	background-image: url('images/tftplayer100-user-icon.jpg');
+}
+
+#pcomment903, #pcomment913, #pcomment923 {
+	background-image: url('images/iAmNewbieChess-user-icon.jpg');
 }
 
 
