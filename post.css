@@ -561,6 +561,12 @@
 	background-image: url('images/iAmNewbieChess-user-icon.jpg');
 }
 
+#upvote1, #upvote2, #upvote3 {
+	background-image: url("images/color-up.png");
+}
+
+
+
 
 :root {
 	color: #f1f2f6;
