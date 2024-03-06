@@ -1,180 +1,218 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>
-		Snake and Ladders
-	</title>
-	<link rel = "stylesheet" type = "text/css" href = "post.css">
-	<script src = "post-script.js"></script>
-	<script src = "user-disp.js"></script>
-</head>
-<body>
-	<div class = "main-container">
-		<div class = "menu-bar">
-			<ul class = "menu-actions">
-				<a href = "mainpage.html"><li class = "forum-logo"></li></a>
-			</ul>
+	<head>
+		<title>
+			Snake and Ladders
+		</title>
+		<link rel="stylesheet" type="text/css" href="post.css">
+		<link rel="stylesheet" type="text/css" href="index.css">
+		<script src="post-script.js"></script>
+		<script src="user-disp.js"></script>
+	</head>
 
-			<ul class = "menu-actions">
-				<li><a href="mainpage.html" class="home-button">Home</a></li>
-				<li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
-				<li class = "search-button"><a href = "searchresult.html"><button type="button" id="query-button" name="qb"></button></a></li>
-			</ul>
-			<ul class = "menu-actions">
-				<ul class = "menu-actions">
-					<li><a href = "signup-page.html"><button type="button" class="register-button">Register</button></a></li>
-					<li><a href = "login-page.html"><button class="login-button">Login</button></a></li>
+	<body>
+		<div class="main-container">
+			<div class="menu-bar">
+				<ul class="menu-actions">
+					<a href="mainpage.html">
+						<li class="forum-logo"></li>
+					</a>
 				</ul>
-				<li><a href = "user-profile.html"><img class = "user-icon" src="images/user-icon.png"/></a></li>
-			</ul>
-		</div>
-	</div>
 
-	<div class = "post" id = "post1">
-		<div class = "post-container" id="post-container1">
-			<div class = "post-items" id="post-items1">
-				<div class = "post-title" id="post-title1">
-					Snakes and Ladders
-				</div>
-				<div class = "post-username" id="post-username1">
-					by 
-					<a href = "randomUser123-profile.html" class="user-link">randomUser123</a>
-				</div>
-				<div class = "post-desc" id = "post-desc1">
-					Hello! Anyone down to play Snakes and Ladders in 12th floor Henry Sy at 10 am on February 20?
-				</div>
-				<div class = "post-image" id = "post-image1">
-					
-				</div>
-			</div>
-			<div class = "side-items" id="side-items1">
-				<div class = "votes" id="votes1">
-					<div class = "upvote" id = "upvote1"></div>
-					<div class = "vote-number" id = "vote-number1">3</div>
-					<div class = "downvote" id = "downvote1"></div>
-				</div>
-				<div class = "tags" id="tags1">
-					<button type="button" id="tag-button1">Multiplayer</button>
-				</div>
+				<ul class="menu-actions">
+					<li><a href="mainpage.html" class="home-button">Home</a></li>
+					<li class="search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
+					<li class="search-button"><a href="searchresult.html"><button type="button" id="query-button" name="qb"></button></a></li>
+				</ul>
+				<ul class="menu-actions">
+					<ul class="menu-actions">
+						<li><a href="signup-page.html"><button type="button" class="register-button">Register</button></a></li>
+						<li><a href="login-page.html"><button class="login-button">Login</button></a></li>
+					</ul>
+					<li><a href="user-profile.html"><img class="user-icon" src="images/user-icon.png" /></a></li>
+				</ul>
 			</div>
 		</div>
-		<div class = "comment-container" id="comment-container1">
-			<div class = "comment-title-container" id = "comment-title-container1">
-				<ul class = "comment-title-container-ul">
-					<li><div class = "comment-title" id = "comment-title1">Comments:</div></li>
-				</ul>
-				<ul class = "comment-title-container-ul">
-					<li></li>
-				</ul>
-			</div>
-			<div class = "comment-actions" id = "comment-actions1">
-				<ul class = "comment-user">
-					<li class = "user-picture" id = "user-picture1"></li>
-				</ul>
-				<ul class = "comment-user">
-					<li><textarea class="comment-area" id="comment-area1" placeholder="What are your thoughts?"></textarea>
-						<div class="comment-submit" id="comment-submit1"></div></li>
-				</ul>
-				<div class = "comment-options-container" id = "comment-options-container1">
-				<ul class = "comment-user" class = "comment-user1">
-					<li><form class = "comment-options" id = "comment-options1"><select>
-							<option value="popular">Popular</option>
-							<option value="popular">Newest</option>
-							<option value="popular">Oldest</option>
-							<option value="popular">Unpopular</option>
-						</select></form>
-					</li>
-				</ul>
-				</div>
-			</div>
-			<div class = "comment" id="comment1">
-				<div class = "no-comment" id="no-comment1"></div>
-				<div class = "new-comment" id="comment901">
-					<div class = 'picture-person' id="pcomment901"></div>
-					<div class = 'comment-person'>
-						<div class = 'username-comment'>
-							<div class = 'username-person'>randomUser123</div>
-							<div class = 'username-dash'>|</div>
-							<div class = 'username-date'>2/16/2024 1:00:47 PM</div>
-						</div>
-					
-						<div class = 'content-comment'>
-							<div class = 'comment-comment' id='cccomment901'>
-								Up
-							</div>
-						</div>
-						<div class = 'actions-comment-container'>
-						<ul class = 'actions-comment'>
-							<li><div class = 'comment-upvote' id='upvo-comment901' onclick='voteComment("comment901", 1)'></div></li>
-							<li><div class = 'comment-votenum' id='numb-comment901'>0</div></li>
-							<li><div class = 'comment-downvote' id='down-comment901' onclick='voteComment("comment901", 0)'></div></li>
-							<li><div class = 'comment-reply'>Reply</div></li>
-						</ul>
-						<ul class = 'actions-comment'>
-							<li><div class = 'comment-report'></div></li>
-						</ul>
-						</div>
+
+		<div class="post" id="post1">
+			<div class="post-container" id="post-container1">
+				<div class="post-items" id="post-items1">
+					<div class="post-title" id="post-title1">
+						Snakes and Ladders
+					</div>
+					<div class="post-username" id="post-username1">
+						by
+						<a href="randomUser123-profile.html" class="user-link">randomUser123</a>
+					</div>
+					<div class="post-desc" id="post-desc1">
+						Hello! Anyone down to play Snakes and Ladders in 12th floor Henry Sy at 10 am on February 20?
+					</div>
+					<div class="post-image" id="post-image1">
+
 					</div>
 				</div>
-
-				<div class = "new-comment" id="comment911">
-					<div class = 'picture-person' id="pcomment911"> </div>
-					<div class = 'comment-person'>
-						<div class = 'username-comment'>
-							<div class = 'username-person'>randomUser123</div>
-							<div class = 'username-dash'>|</div>
-							<div class = 'username-date'>2/17/2024 4:24:26 PM</div>
-						</div>
-					
-						<div class = 'content-comment'>
-							<div class = 'comment-comment' id='cccomment911'>
-								Up
-							</div>
-						</div>
-						<div class = 'actions-comment-container'>
-						<ul class = 'actions-comment'>
-							<li><div class = 'comment-upvote' id='upvo-comment911' onclick='voteComment("comment911", 1)'></div></li>
-							<li><div class = 'comment-votenum' id='numb-comment911'>0</div></li>
-							<li><div class = 'comment-downvote' id='down-comment911' onclick='voteComment("comment911", 0)'></div></li>
-							<li><div class = 'comment-reply'>Reply</div></li>
-						</ul>
-						<ul class = 'actions-comment'>
-							<li><div class = 'comment-report'></div></li>
-						</ul>
-						</div>
+				<div class="side-items" id="side-items1">
+					<div class="votes" id="votes1">
+						<div class="upvote" id="upvote1"></div>
+						<div class="vote-number" id="vote-number1">3</div>
+						<div class="downvote" id="downvote1"></div>
 					</div>
-				</div>
-
-				<div class = "new-comment" id="comment921">
-					<div class = 'picture-person' id="pcomment921"> </div>
-					<div class = 'comment-person'>
-						<div class = 'username-comment'>
-							<div class = 'username-person'>randomUser123</div>
-							<div class = 'username-dash'>|</div>
-							<div class = 'username-date'>2/19/2024 6:33:23 PM</div>
-						</div>
-					
-						<div class = 'content-comment'>
-							<div class = 'comment-comment' id='cccomment921'>
-								Up :(
-							</div>
-						</div>
-						<div class = 'actions-comment-container'>
-						<ul class = 'actions-comment'>
-							<li><div class = 'comment-upvote' id='upvo-comment921' onclick='voteComment("comment921", 1)'></div></li>
-							<li><div class = 'comment-votenum' id='numb-comment921'>0</div></li>
-							<li><div class = 'comment-downvote' id='down-comment921' onclick='voteComment("comment921", 0)'></div></li>
-							<li><div class = 'comment-reply'>Reply</div></li>
-						</ul>
-						<ul class = 'actions-comment'>
-							<li><div class = 'comment-report'></div></li>
-						</ul>
-						</div>
+					<div class="tags" id="tags1">
+						<button type="button" id="tag-button1">Multiplayer</button>
 					</div>
 				</div>
 			</div>
+			<div class="comment-container" id="comment-container1">
+				<div class="comment-title-container" id="comment-title-container1">
+					<ul class="comment-title-container-ul">
+						<li>
+							<div class="comment-title" id="comment-title1">Comments:</div>
+						</li>
+					</ul>
+					<ul class="comment-title-container-ul">
+						<li></li>
+					</ul>
+				</div>
+				<div class="comment-actions" id="comment-actions1">
+					<ul class="comment-user">
+						<li class="user-picture" id="user-picture1"></li>
+					</ul>
+					<ul class="comment-user">
+						<li><textarea class="comment-area" id="comment-area1" placeholder="What are your thoughts?"></textarea>
+							<div class="comment-submit" id="comment-submit1"></div>
+						</li>
+					</ul>
+					<div class="comment-options-container" id="comment-options-container1">
+						<ul class="comment-user" class="comment-user1">
+							<li>
+								<form class="comment-options" id="comment-options1"><select>
+										<option value="popular">Popular</option>
+										<option value="popular">Newest</option>
+										<option value="popular">Oldest</option>
+										<option value="popular">Unpopular</option>
+									</select></form>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="comment" id="comment1">
+					<div class="no-comment" id="no-comment1"></div>
+					<div class="new-comment" id="comment901">
+						<div class='picture-person' id="pcomment901"></div>
+						<div class='comment-person'>
+							<div class='username-comment'>
+								<div class='username-person'>randomUser123</div>
+								<div class='username-dash'>|</div>
+								<div class='username-date'>2/16/2024 1:00:47 PM</div>
+							</div>
+
+							<div class='content-comment'>
+								<div class='comment-comment' id='cccomment901'>
+									Up
+								</div>
+							</div>
+							<div class='actions-comment-container'>
+								<ul class='actions-comment'>
+									<li>
+										<div class='comment-upvote' id='upvo-comment901' onclick='voteComment("comment901", 1)'></div>
+									</li>
+									<li>
+										<div class='comment-votenum' id='numb-comment901'>0</div>
+									</li>
+									<li>
+										<div class='comment-downvote' id='down-comment901' onclick='voteComment("comment901", 0)'></div>
+									</li>
+									<li>
+										<div class='comment-reply'>Reply</div>
+									</li>
+								</ul>
+								<ul class='actions-comment'>
+									<li>
+										<div class='comment-report'></div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="new-comment" id="comment911">
+						<div class='picture-person' id="pcomment911"> </div>
+						<div class='comment-person'>
+							<div class='username-comment'>
+								<div class='username-person'>randomUser123</div>
+								<div class='username-dash'>|</div>
+								<div class='username-date'>2/17/2024 4:24:26 PM</div>
+							</div>
+
+							<div class='content-comment'>
+								<div class='comment-comment' id='cccomment911'>
+									Up
+								</div>
+							</div>
+							<div class='actions-comment-container'>
+								<ul class='actions-comment'>
+									<li>
+										<div class='comment-upvote' id='upvo-comment911' onclick='voteComment("comment911", 1)'></div>
+									</li>
+									<li>
+										<div class='comment-votenum' id='numb-comment911'>0</div>
+									</li>
+									<li>
+										<div class='comment-downvote' id='down-comment911' onclick='voteComment("comment911", 0)'></div>
+									</li>
+									<li>
+										<div class='comment-reply'>Reply</div>
+									</li>
+								</ul>
+								<ul class='actions-comment'>
+									<li>
+										<div class='comment-report'></div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="new-comment" id="comment921">
+						<div class='picture-person' id="pcomment921"> </div>
+						<div class='comment-person'>
+							<div class='username-comment'>
+								<div class='username-person'>randomUser123</div>
+								<div class='username-dash'>|</div>
+								<div class='username-date'>2/19/2024 6:33:23 PM</div>
+							</div>
+
+							<div class='content-comment'>
+								<div class='comment-comment' id='cccomment921'>
+									Up :(
+								</div>
+							</div>
+							<div class='actions-comment-container'>
+								<ul class='actions-comment'>
+									<li>
+										<div class='comment-upvote' id='upvo-comment921' onclick='voteComment("comment921", 1)'></div>
+									</li>
+									<li>
+										<div class='comment-votenum' id='numb-comment921'>0</div>
+									</li>
+									<li>
+										<div class='comment-downvote' id='down-comment921' onclick='voteComment("comment921", 0)'></div>
+									</li>
+									<li>
+										<div class='comment-reply'>Reply</div>
+									</li>
+								</ul>
+								<ul class='actions-comment'>
+									<li>
+										<div class='comment-report'></div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-	<div class = "text-response" id = "text-response1"></div>
-</body>
+		<div class="text-response" id="text-response1"></div>
+	</body>
 </html>
