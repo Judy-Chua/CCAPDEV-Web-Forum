@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		ArchersGuild Sign-Up Page 
+	</title>
+	<link rel = "stylesheet" type = "text/css" href = "index.css">
+    <link rel = "stylesheet" type = "text/css" href = "signup-page.css">
+    <script src = "signup-validation.js"></script>
+</head>
+<body>
+	<div class = "main-container">
+		<div class = "menu-bar">
+            <ul class = "menu-actions">
+                <a href = "mainpage.html"><li class = "forum-logo"></li></a>
+            </ul>
+
+            <ul class = "menu-actions">
+                <li><a href="mainpage.html" class="home-button">Home</a></li>
+                <li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
+                <li class = "search-button"><a href = "searchresult.html"><button type="button" id="query-button" name="qb"></button></a></li>
+            </ul>
+            <ul class = "menu-actions">
+                <ul class = "menu-actions">
+                    <li><a href = "signup-page.html"><button type="button" class="register-button">Register</button></a></li>
+                    <li><a href = "login-page.html"><button class="login-button">Login</button></a></li>
+                </ul>
+                <li><a href = "user-profile.html"><img class = "user-icon" src="images/user-icon.png"/></a></li>
+            </ul>
+        </div>
+
+        <div class = "signup-container">
+            <div class = "signup-header">
+                <div class = "redirect-sign-up">
+                    <a href = "login-page.html" class = "login-here">Already registered? Log in here.</a>
+                </div>
+                <div class = "welcome-msg">
+                    <span class = "welcome1">Welcome to ArchersGuild!</span><br>
+                    <span class = "welcome2">Please sign up to continue.</span>
+                </div>
+            </div>
+            <div class = "req-forms">
+                <div class = "ask-username">
+                    <img class = "signup-user-icon" src="images/user-icon.png"/>
+                    <span class = "user-prompt-text">Username |</span>
+                    <input type="text" id="username" name="username">
+                </div>
+                <div class = "ask-email">
+                    <img class = "signup-email-icon" src="images/email-icon.png"/>
+                    <span class = "email-prompt-text">Email |</span>
+                    <input type="text" id="email" name="email" class = "email-textfield">
+                </div>
+                <div class = "ask-password">
+                    <img class = "signup-pw-icon" src="images/pw-icon.png"/>
+                    <span class = "pw-prompt-text">Password |</span>
+                    <input type="password" id="pwd1" name="pwd1">
+                </div>
+                <div class = "ask-password">
+                    <img class = "signup-pw-icon" src="images/pw-icon.png"/>
+                    <span class = "confirmpw-prompt-text">Confirm Password |</span>
+                    <input type="password" id="pwd2" name="pwd2">
+                </div>
+            </div>
+            <div class = "signup-footer">   
+                <button type="button" class="signup-main-button" id = "confirm-signup-btn">Sign Up</button>
+            </div>  
+        </div>
+	</div>
+
+
+	
+</body>
+</html>

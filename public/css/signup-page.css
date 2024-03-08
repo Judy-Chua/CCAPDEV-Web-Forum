@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,400,700,900');
+
+
+:root {
+	color: #f1f2f6;
+	font-size: 14px;
+	font-weight: 700;
+	font-family: "Montserrat", sans-serif;
+}
+
+.signup-container {  
+    width: 80%;
+    height: 600px;
+    margin: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background: #0e3768;
+}
+
+.signup-header {
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.redirect-sign-up {
+    text-align: right;
+    margin: 30px;
+}
+
+.login-here {
+	color: #efe897;
+}
+
+.welcome-msg {
+    display: flex;
+	flex-direction: column;
+    text-align: center;
+	justify-content: center;
+
+    color: white;
+}
+
+.welcome1 {
+    font-weight: bolder;
+    font-size: 62px;
+    margin-top: 15px;
+    margin-bottom: 2px;
+}
+
+.welcome2 {
+    font-weight: 400;
+    margin-bottom: 70px;
+}
+
+.req-forms {
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.ask-username {
+	display: flex;
+	flex-direction: row;    
+	justify-content: space-between;
+    align-self: center;
+    line-height: 30px;
+
+    width: 90%;
+    height: 30px;
+    padding: 15px;
+    margin: 3px;
+
+	background-color: #537BAB;
+}
+
+.ask-email {
+	display: flex;
+	flex-direction: row;    
+	justify-content: space-between;
+    align-self: center;
+    line-height: 30px;
+
+    width: 90%;
+    height: 30px;
+    padding: 15px;
+    margin: 3px;
+
+	background-color: #537BAB;
+}
+
+.ask-password {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+    align-self: center;
+    line-height: 30px;
+
+    width: 90%;
+    height: 30px;
+    padding: 15px;
+    margin: 3px;
+
+	background-color: #537BAB;
+}
+
+.confirm-password {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+    align-self: center;
+    line-height: 30px;
+
+    width: 90%;
+    height: 30px;
+    padding: 15px;
+    margin: 3px;
+
+	background-color: #537BAB;
+}
+
+.signup-footer {
+    display: flex;  
+	justify-content: center;
+}
+
+.signup-main-button {
+    font-size: 18px;
+	font-weight: 400;
+	border-radius: 3px;
+	padding: 6px 12px;
+	border: 0;
+	color: #3a4149;
+	background: #efe897;
+	line-height: 1.15;
+
+    margin: 20px;
+}
+
+.ask-username input {
+	width: 80%;
+	height: 95%;
+    font-size: large;
+
+	border-radius: 3px;
+	border: 0;	
+}
+
+.ask-email input {
+	width: 80%;
+	height: 95%;
+    font-size: large;
+
+	border-radius: 3px;
+	border: 0;	
+}
+
+.ask-password input {
+	width: 80%;
+	height: 95%;
+    font-size: large;
+
+	border-radius: 3px;
+	border: 0;	
+}
+
+.confirm-password input {
+	width: 80%;
+	height: 95%;
+    font-size: large;
+
+	border-radius: 3px;
+	border: 0;	
+}
+
+.user-prompt-text {
+    font-weight: bold;
+    font-size: larger;
+    text-align: right;
+    margin-left: 19px;
+}
+
+.email-prompt-text {
+    font-weight: bold;
+    font-size: larger;
+    text-align: right;
+    margin-left: 58px;
+}
+
+.pw-prompt-text {
+    font-weight: bold;
+    font-size: larger;
+    text-align: right;
+    margin-left: 20px;
+}
+
+.confirmpw-prompt-text {
+    font-weight: bold;
+    font-size: 200;
+    text-align: right;
+    margin-left: 10px;
+}
+
+.signup-user-icon {
+	width: 40px;
+	height: 40px;
+    align-self: center;
+}
+
+.signup-pw-icon {
+	width: 40px;
+	height: 40px;
+    align-self: center;
+}
+
+.signup-email-icon {
+	width: 40px;
+	height: 40px;
+    align-self: center;
+}
