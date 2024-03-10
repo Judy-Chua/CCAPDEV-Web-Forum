@@ -82,15 +82,27 @@ Comment.create({
 
 
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '\\' + 'index.html');
+    // uncomment this vvv for windows
+    //res.sendFile(__dirname + '\\' + 'index.html');
+
+    // command for macos
+    res.sendFile(__dirname + '//' + 'index.html');
 });
 
 app.get('/login-page.html', function(req, res){
-    res.sendFile(__dirname + '\\' + 'login-page.html');
+    // uncomment this vvv for windows
+    // res.sendFile(__dirname + '\\' + 'login-page.html');
+
+    // command for macos
+    res.sendFile(__dirname + '//' + 'index.html');
 });
 
 app.get('/signup-page.html', function(req, res){
-    res.sendFile(__dirname + '\\' + 'signup-page.html');
+    // uncomment this vvv for windows
+    // res.sendFile(__dirname + '\\' + 'signup-page.html');
+
+    // command for macos
+    res.sendFile(__dirname + '//' + 'index.html');
 });
 
 app.get('/mainpage', async(req, res) => {
