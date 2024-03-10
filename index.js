@@ -83,33 +83,34 @@ Comment.create({
 
 app.get('/', function (req, res) {
     // uncomment this vvv for windows
-    //res.sendFile(__dirname + '\\' + 'index.html');
+    res.sendFile(__dirname + '\\' + 'index.html');
 
     // command for macos
-    res.sendFile(__dirname + '//' + 'index.html');
+    // res.sendFile(__dirname + '//' + 'index.html');
 });
 
-app.get('/login-page.html', function(req, res){
-    // uncomment this vvv for windows
-    // res.sendFile(__dirname + '\\' + 'login-page.html');
+app.get('/login-page', async (req, res) => {
+    const loggeduser = await User.findOne({ isLoggedIn: "1"});
+    console.log(loggeduser);
 
-    // command for macos
-    res.sendFile(__dirname + '//' + 'index.html');
+    res.render("login-page", {loggeduser});
 });
 
-app.get('/signup-page.html', function(req, res){
-    // uncomment this vvv for windows
-    // res.sendFile(__dirname + '\\' + 'signup-page.html');
+app.get('/signup-page', async (req, res) => {
+    const loggeduser = await User.findOne({ isLoggedIn: "1"});
+    console.log(loggeduser);
 
-    // command for macos
-    res.sendFile(__dirname + '//' + 'index.html');
-});
+    res.render("signup-page", {loggeduser});
+  });
 
 app.get('/mainpage', async(req, res) => {
     const allPosts = await Post.find({})
     console.log(allPosts);
-    res.render('mainpage',{allPosts})
-    
+
+    const loggeduser = await User.findOne({ isLoggedIn: "1"});
+    console.log(loggeduser);
+
+    res.render('mainpage',{allPosts, loggeduser})
 });
 
 var server = app.listen(3000, function () {
