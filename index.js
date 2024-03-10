@@ -17,22 +17,19 @@ app.use(express.static('public')) // we'll add a static directory named "public"
 var hbs = require('hbs')
 app.set('view engine','hbs');
 
-Comment.create({
-    commentId: 12345,
-    userId: 54321,
-    theComment: "Hello World",
-    upvotes: [1,2,3,4],
-    downvotes: [4321],
-    date: 2022/12/12,
-    popVal: 45
-});
-
-
-
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '\\' + 'index.html');
+});
+
+app.get('/login-page.html', function(req, res){
+    res.sendFile(__dirname + '\\' + 'login-page.html');
+});
+
+app.get('/signup-page.html', function(req, res){
+    res.sendFile(__dirname + '\\' + 'signup-page.html');
 });
 
 var server = app.listen(3000, function () {
     console.log('Node server is running..');
 });
+
