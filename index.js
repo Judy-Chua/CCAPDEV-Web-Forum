@@ -154,15 +154,6 @@ app.get('/login-page', function(req, res){
     //res.sendFile(__dirname + '//' + 'index.html');
 });
 
-app.get('/login-page', function(req, res){
-    // uncomment this vvv for windows
-    console.log('you added html');
-    res.sendFile(__dirname + '\\' + 'login-page.html');
-
-    // command for macos
-    //res.sendFile(__dirname + '//' + 'index.html');
-    
-});
 
 app.get('/signup-page.html', function(req, res){
     // uncomment this vvv for windows
