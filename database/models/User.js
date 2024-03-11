@@ -1,12 +1,13 @@
 const mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
-    userId: Number,
+    userId: String,
     username:String,
     name:String,
     password:String,
-    profilePicture:String,
-    description:String,
+    profilePic:String,
+    desc:String,
+    isLoggedIn: String,
     upvotes: [],
     downvotes: [],
     dateCreated: Date,

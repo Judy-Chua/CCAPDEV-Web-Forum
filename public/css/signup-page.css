@@ -197,7 +197,7 @@
 
 .confirmpw-prompt-text {
     font-weight: bold;
-    font-size: 200;
+    font-size: larger;
     text-align: right;
     margin-left: 10px;
 }

@@ -3,7 +3,7 @@ mongoose.connect('mongodb://localhost/archerGuildDB')
 
 const express = require('express')
 const app = new express()
-
+module.exports = mongoose;
 
 const Post = require("./database/models/Post")
 const Comment = require("./database/models/Comment")
@@ -177,8 +177,11 @@ app.get('/signup-page.html', function(req, res){
 app.get('/mainpage', async(req, res) => {
     const allPosts = await Post.find({})
     console.log(allPosts);
-    res.render('mainpage',{allPosts})
-    
+
+    const loggeduser = await User.findOne({ isLoggedIn: "1"});
+    console.log(loggeduser);
+
+    res.render('mainpage',{allPosts, loggeduser})
 });
 
 var server = app.listen(3000, function () {
