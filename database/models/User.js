@@ -7,8 +7,6 @@ const UserSchema = new mongoose.Schema({
     password:String,
     profilePicture:String,
     description:String,
-    posts:[],
-    comments:[],
     upvotes: [],
     downvotes: [],
     dateCreated: Date,
