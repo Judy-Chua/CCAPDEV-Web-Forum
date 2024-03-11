@@ -3,7 +3,7 @@ mongoose.connect('mongodb://localhost/archerGuildDB')
 
 const express = require('express')
 const app = new express()
-
+module.exports = mongoose;
 
 const Post = require("./database/models/Post")
 const Comment = require("./database/models/Comment")
@@ -83,10 +83,10 @@ Comment.create({
 
 app.get('/', function (req, res) {
     // uncomment this vvv for windows
-    res.sendFile(__dirname + '\\' + 'index.html');
+    // res.sendFile(__dirname + '\\' + 'index.html');
 
     // command for macos
-    // res.sendFile(__dirname + '//' + 'index.html');
+    res.sendFile(__dirname + '//' + 'index.html');
 });
 
 app.get('/login-page', async (req, res) => {
