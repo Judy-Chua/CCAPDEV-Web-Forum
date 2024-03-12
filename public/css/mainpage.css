@@ -88,7 +88,7 @@ label, p, div,select{
 }
 
 .upvote {
-	background-image: url('images/up.png');
+	background-image: url('../images/up.png');
 	background-size: cover;
 	width: 40px;
 	height: 40px;
@@ -97,7 +97,7 @@ label, p, div,select{
 }
 
 .upvote:hover, .upvote:active {
-	background-image: url('images/color-up.png');
+	background-image: url('../images/color-up.png');
 	width: 40px;
 	height: 40px;
 }
@@ -110,7 +110,7 @@ label, p, div,select{
 }
 
 .downvote {
-	background-image: url('images/down.png');
+	background-image: url('../images/down.png');
 	background-size: cover;
 	width: 40px;
 	height: 40px;
@@ -119,7 +119,7 @@ label, p, div,select{
 }
 
 .downvote:hover, .downvote:active {
-	background-image: url('images/color-down.png');
+	background-image: url('../images/color-down.png');
 	width: 40px;
 	height: 40px;
 }

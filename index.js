@@ -148,24 +148,42 @@ app.get('/', function (req, res) {
 
 app.get('/login-page', function(req, res){
     // uncomment this vvv for windows
-    res.sendFile(__dirname + '\\' + 'login-page.html');
+    res.render('login-page')
 
     // command for macos
     //res.sendFile(__dirname + '//' + 'index.html');
 });
 
 
-app.get('/signup-page.html', function(req, res){
+app.get('/signup-page', function(req, res){
     // uncomment this vvv for windows
-    res.sendFile(__dirname + '\\' + 'signup-page.html');
+    res.render('signup-page')
 
     // command for macos
     //res.sendFile(__dirname + '//' + 'index.html');
 });
 
+app.get('/mainpage/Adri20', async(req, res) => {
+    const loggeduser = await User.findOne({username: 'Adri20'});
+    console.log(loggeduser.username);
 
+    const allPosts = await Post.find({})
+    console.log(allPosts);
 
-app.get('/mainpage', async(req, res) => {
+    res.render('mainpage',{allPosts, loggeduser})
+});
+
+app.get('/mainpage/Clarisse35', async(req, res) => {
+    const loggeduser = await User.findOne({username: 'Clarisse35'});
+    console.log(loggeduser.username);
+
+    const allPosts = await Post.find({})
+    console.log(allPosts);
+
+    res.render('mainpage',{allPosts, loggeduser})
+});
+
+app.get('/mainpage/Judy89', async(req, res) => {
     const allPosts = await Post.find({})
     console.log(allPosts);
 
