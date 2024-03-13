@@ -224,7 +224,8 @@ app.get('/mainpage/0', async(req, res) => {
 
 app.get('/mainpage/Adri20', async(req, res) => {
     const loggeduser = await User.findOne({username: 'Adri20'});
-    console.log(loggeduser.username);
+    console.log(loggeduser.username );
+
 
     const allPosts = await Post.find({})
     console.log(allPosts);

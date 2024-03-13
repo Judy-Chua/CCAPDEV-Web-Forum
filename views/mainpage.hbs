@@ -2,7 +2,7 @@
     <head>
         <link rel="stylesheet" type = "text/css" href="../css/mainpage.css">
 		<link rel = "stylesheet" type = "text/css" href = "../css/index.css">
-		<script src = "../mainpage.js"></script>
+		<script src = "../js/mainpage.js"></script>
 		<script src = "../user-disp.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title> Home</title>
@@ -21,10 +21,6 @@
 					<li class = "search-button"><a href = "searchresult.html"><button type="button" id="query-button" name="qb"></button></a></li>
 				</ul>
 				<ul class = "menu-actions">
-					<ul class = "menu-actions">
-						<li><a href = "/signup-page/{{loggeduser.username}}"><button type="button" class="register-button">Register</button></a></li>
-						<li><a href = "/login-page/{{loggeduser.username}}"><button class="login-button">Login</button></a></li>
-					</ul>
 					<li> <span class = "user-name">{{loggeduser.username}}</span></li>
                 	<li><a href = "/user-profile/{{loggeduser.username}}-posts"><img class = "user-icon" src="{{loggeduser.profilePicture}}"/></a></li>
 				</ul>
@@ -52,9 +48,9 @@
 					{{#each allPosts}}
 					<div class="main-postpage-idvpost">
 						<div class="main-postpage-vote">
-							<div class = "upvote" id = "upvote3#" onclick="changeVote3(1, '#')"></div>
-							<div class = "vote-number" id = "vote-number3#">0</div>
-							<div class = "downvote" id = "downvote3#" onclick="changeVote3(0, '#')"></div>
+							<div class = "upvote" id = "upvote3#" onclick="changeVote(1, {{this.postId}}, {{loggeduser.userId}})"></div>
+							<div class = "vote-number{{this.postId}}" id = "vote-number3#" > </div>
+							<div class = "downvote" id = "downvote3#" onclick="changeVote(0, {{this.postId}}, {{loggeduser.userId}})"></div>
 						</div>
 						<div class="main-postpage-image">
 							<a class="link-post" href="LF-Chess-Coach.html"> <img class="main-indpost-image" src="{{this.image}}"></a>
