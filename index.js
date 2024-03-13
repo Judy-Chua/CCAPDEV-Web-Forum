@@ -20,9 +20,7 @@ app.set('view engine','hbs');
 
 const date = new Date();
 
-
 /*
-
 // for not logged in
 User.create({
     userId: 10004,
@@ -150,8 +148,6 @@ Comment.create({
     popVal: 3
 });
 */
-
-
 
 
 app.get('/', function (req, res) {
