@@ -1,0 +1,96 @@
+<html>
+<head>
+	<title>
+		ArchersGuild User's Profile Page
+	</title>
+	<link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+    <link rel = "stylesheet" type = "text/css" href = "../css/user-profile.css">
+    <link rel = "stylesheet" type = "text/css" href = "../css/mainpage.css">
+	<script src = "../js/user-disp.js"></script>
+</head>
+<body>
+	<div class = "main-container">
+		<div class = "menu-bar">
+            <ul class = "menu-actions">
+                <a href = "/mainpage/{{loggeduser.username}}"><li class = "forum-logo"></li></a>
+            </ul>
+
+            <ul class = "menu-actions">
+                <li><a href="/mainpage/{{loggeduser.username}}" class="home-button">Home</a></li>
+                <li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
+                <li class = "search-button"><a href = "searchresult.html"><button type="button" id="query-button" name="qb"></button></a></li>
+            </ul>
+            <ul class = "menu-actions">
+                <ul class = "menu-actions">
+                    <li><a href = "/signup-page/{{loggeduser.username}}"><button type="button" class="register-button">Register</button></a></li>
+                    <li><a href = "/login-page/{{loggeduser.username}}"><button class="login-button">Login</button></a></li>
+                </ul>
+                <li> <span class = "user-name">{{loggeduser.username}}</span></li>
+                <li><a href = "/user-profile/{{loggeduser.username}}-posts"><img class = "user-icon" src="{{loggeduser.profilePicture}}"/></a></li>
+            </ul>
+        </div>
+
+        <div class = "profile-container">
+            <div class = "main-profile">
+                <div class = "main-profile-header">
+                    <a href = "/signup-page"><div class = "posts-tab">Posts</div></a>
+                    <div class = "comments-tab">Comments</div>
+                    <div class = "upvoted-tab">Upvoted</div>
+                    <div class = "downvoted-tab">Downvoted</div>
+                </div>
+                <div class="main-profile-content">
+                    {{#each user_posts}}
+					<div class="main-postpage-idvpost">
+						<div class="main-postpage-vote">
+							<div class = "upvote" id = "upvote3#" onclick="changeVote3(1, '#')"></div>
+							<div class = "vote-number" id = "vote-number3#">0</div>
+							<div class = "downvote" id = "downvote3#" onclick="changeVote3(0, '#')"></div>
+						</div>
+						<div class="main-postpage-image">
+							<a class="link-post" href="LF-Chess-Coach.html"> <img class="main-indpost-image" src="{{this.image}}"></a>
+						</div>
+						<div class="main-postpage-description">
+							<p class="main-indpost-title">
+								<a class="link-post" href="LF-Chess-Coach.html"> {{this.title}} </a>
+							</p>
+							<p class="main-indpost-postedby"> Posted by <a class="link-post" href="iAmNewbieChess-profile-notloggedin.html"> BLANK </a> </p>
+							<p class="main-indpost-description"> 
+								{{this.description}}
+							</p>
+							
+						</div>
+					</div>
+                    {{/each}}
+                </div>
+            </div>
+            <div class = "user-display">
+                <div class = "user-display-1">
+                    <div class = "user-display-1-left">
+                        <div class = "settings-ul">
+                            <a href = "usersettings.html"><img class = "settings-ul-icon" src="../images/settings-icon.png"/></a> 
+                        </div>
+                        <div class = "profile-icon">
+                            <img class = "user-profile-icon" src="{{loggeduser.profilePicture}}"/>
+                        </div>
+                    </div>
+                    <div class = "user-display-1-right">
+                        <div class = "user-displayname">
+                        <span class = "user-disp-name">{{loggeduser.name}}</span><br>
+                        <span class = "user-disp-username">{{loggeduser.username}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class = "user-display-2">
+                    <div class="user-desc">
+                        {{loggeduser.description}}
+                    </div>
+                    <div class="user-settings">
+                        <a href = "usersettings.html"><button type = "button" class="user-settings-button">User Settings</button>
+                        </a></div>
+                </div>
+            </div>
+        </div>
+	</div>
+	
+</body>
+</html>

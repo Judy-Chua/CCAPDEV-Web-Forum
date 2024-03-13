@@ -19,7 +19,23 @@ var hbs = require('hbs')
 app.set('view engine','hbs');
 
 const date = new Date();
+
+
 /*
+
+// for not logged in
+User.create({
+    userId: 10004,
+    username: '0',
+    name: '',
+    password: '',
+    profilePicture:'/images/user-icon.png',    
+    description:'',
+    upvotes: [],
+    downvotes: [],
+    dateCreated: date
+ });
+
 User.create({
     userId: 10000,
     username: 'Adri20',
@@ -140,27 +156,74 @@ Comment.create({
 
 app.get('/', function (req, res) {
     // uncomment this vvv for windows
-    res.sendFile(__dirname + '\\' + 'index.html');
+    // res.sendFile(__dirname + '\\' + 'index.html');
 
     // command for macos
-    //res.sendFile(__dirname + '//' + 'index.html');
+    res.sendFile(__dirname + '//' + 'index.html');
 });
 
-app.get('/login-page', function(req, res){
-    // uncomment this vvv for windows
-    res.render('login-page')
+app.get('/signup-page/0', async(req, res) => {
+    const loggeduser = await User.findOne({ userId : "10004"}); // dummy's userId
+    console.log(loggeduser);
 
-    // command for macos
-    //res.sendFile(__dirname + '//' + 'index.html');
+    res.render('signup-page', {loggeduser});
 });
 
+app.get('/signup-page/Adri20', async(req, res) => {
+    const loggeduser = await User.findOne({ userId : "10000"}); // Adri20's userId
+    console.log(loggeduser);
 
-app.get('/signup-page', function(req, res){
-    // uncomment this vvv for windows
-    res.render('signup-page')
+    res.render('signup-page', {loggeduser});
+});
 
-    // command for macos
-    //res.sendFile(__dirname + '//' + 'index.html');
+app.get('/signup-page/Clarisse35', async(req, res) => {
+    const loggeduser = await User.findOne({ userId : "10001"}); // Clarisse35's userId
+    console.log(loggeduser);
+
+    res.render('signup-page', {loggeduser});
+});
+
+app.get('/signup-page/Judy89', async(req, res) => {
+    const loggeduser = await User.findOne({ userId : "10002"}); // Judy89's userId
+    console.log(loggeduser);
+
+    res.render('signup-page', {loggeduser});
+});
+
+// login
+app.get('/login-page/0', async(req, res) => {
+    const loggeduser = await User.findOne({ userId : "10004"}); // dummy's userId
+    console.log(loggeduser);
+
+    res.render('login-page', {loggeduser});
+});
+
+app.get('/login-page/Adri20', async(req, res) => {
+    const loggeduser = await User.findOne({ userId : "10000"}); // Adri20's userId
+    console.log(loggeduser);
+
+    res.render('login-page', {loggeduser});
+});
+
+app.get('/login-page/Clarisse35', async(req, res) => {
+    const loggeduser = await User.findOne({ userId : "10001"}); // Clarisse35's userId
+    console.log(loggeduser);
+
+    res.render('login-page', {loggeduser});
+});
+
+app.get('/login-page/Judy89', async(req, res) => {
+    const loggeduser = await User.findOne({ userId : "10002"}); // Judy89's userId
+    console.log(loggeduser);
+
+    res.render('login-page', {loggeduser});
+});
+
+// mainpage
+app.get('/mainpage/0', async(req, res) => {
+    const loggeduser = await User.findOne({username: '0'});
+    console.log(loggeduser.username);
+    res.render('mainpage',{loggeduser})
 });
 
 app.get('/mainpage/Adri20', async(req, res) => {
@@ -187,11 +250,56 @@ app.get('/mainpage/Judy89', async(req, res) => {
     const allPosts = await Post.find({})
     console.log(allPosts);
 
-    const loggeduser = await User.findOne({ isLoggedIn: "1"});
+    const loggeduser = await User.findOne({username: 'Judy89'});
     console.log(loggeduser);
 
     res.render('mainpage',{allPosts, loggeduser})
 });
+
+
+// User Profile Routes
+
+// posts
+app.get('/user-profile/0-posts', async(req, res) => {
+    const user_posts = await Post.find({postUser : "10004"}); // dummy's userId
+    console.log(user_posts);
+
+    const loggeduser = await User.findOne({ username : "0"});
+    console.log(loggeduser);
+
+    res.render('user-profile',{user_posts, loggeduser})
+});
+
+app.get('/user-profile/Adri20-posts', async(req, res) => {
+    const user_posts = await Post.find({postUser : "10000"}); // Adri20's userId
+    console.log(user_posts);
+
+    const loggeduser = await User.findOne({ username : "Adri20"});
+    console.log(loggeduser);
+
+    res.render('user-profile',{user_posts, loggeduser})
+});
+
+app.get('/user-profile/Clarisse35-posts', async(req, res) => {
+    const user_posts = await Post.find({postUser : "10001"}); // Clarisse35's userId
+    console.log(user_posts);
+
+    const loggeduser = await User.findOne({ username : "Clarisse35"});
+    console.log(loggeduser);
+
+    res.render('user-profile',{user_posts, loggeduser})
+});
+
+app.get('/user-profile/Judy89-posts', async(req, res) => {
+    const user_posts = await Post.find({postUser : "10002"}); // Judy89's userId
+    console.log(user_posts);
+
+    const loggeduser = await User.findOne({ username : "Judy89"});
+    console.log(loggeduser);
+
+    res.render('user-profile',{user_posts, loggeduser})
+});
+
 
 var server = app.listen(3000, function () {
     console.log('Node server is running..');

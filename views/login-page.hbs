@@ -12,27 +12,28 @@
 	<div class = "main-container">
 		<div class = "menu-bar">
             <ul class = "menu-actions">
-                <a href = "/mainpage"><li class = "forum-logo"></li></a>
+                <a href = "/mainpage/{{loggeduser.username}}"><li class = "forum-logo"></li></a>
             </ul>
 
             <ul class = "menu-actions">
-                <li><a href="/mainpage" class="home-button">Home</a></li>
+                <li><a href="/mainpage/{{loggeduser.username}}" class="home-button">Home</a></li>
                 <li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
                 <li class = "search-button"><a href = "searchresult.html"><button type="button" id="query-button" name="qb"></button></a></li>
             </ul>
             <ul class = "menu-actions">
                 <ul class = "menu-actions">
-                    <li><a href = "/signup-page"><button type="button" class="register-button">Register</button></a></li>
-                    <li><a href = "/login-page"><button class="login-button">Login</button></a></li>
+                    <li><a href = "/signup-page/{{loggeduser.username}}"><button type="button" class="register-button">Register</button></a></li>
+                    <li><a href = "/login-page/{{loggeduser.username}}"><button class="login-button">Login</button></a></li>
                 </ul>
-               <li><a href = "user-profile.html"><img class = "user-icon" src="{{loggeduser.profilePic}}"/></a></li>
+                <li> <span class = "user-name">{{loggeduser.username}}</span></li>
+                <li><a href = "/user-profile/{{loggeduser.username}}-posts"><img class = "user-icon" src="{{loggeduser.profilePicture}}"/></a></li>
             </ul>
         </div>
 
         <div class = "login-container">
             <div class = "login-header">
                 <div class = "redirect-sign-up">
-                    <a href = "signup-page.html" class = "sign-up-here">New User? Sign up here.</a>
+                    <a href = "/signup-page/{{loggeduser.username}}" class = "sign-up-here">New User? Sign up here.</a>
                 </div>
                 <div class = "welcome-msg">
                     <span class = "welcome1">Welcome to ArchersGuild!</span><br>
@@ -41,12 +42,12 @@
             </div>
             <div class = "req-forms">
                 <div class = "ask-username">
-                    <img class = "login-user-icon" src="images/user-icon.png"/>
+                    <img class = "login-user-icon" src="/images/user-icon.png"/>
                     <span class = "user-pw-text">Username |</span>
                     <input type="text" id="username" name="username">
                 </div>
                 <div class = "ask-password">
-                    <img class = "login-pw-icon" src="images/pw-icon.png"/>
+                    <img class = "login-pw-icon" src="/images/pw-icon.png"/>
                     <span class = "user-pw-text">Password |</span>
                     <input type="password" id="pwd" name="pwd">
                 </div>
