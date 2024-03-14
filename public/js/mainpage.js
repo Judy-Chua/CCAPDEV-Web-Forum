@@ -1,7 +1,6 @@
 var voteCount = 0;
 var voteCount2 = 0;
 var voteCount3 = 0;
-const Post = require("./database/models/Post")
 function changeVote(val, fileNum) {
     var upElem = document.getElementById("upvote"+fileNum);
     var downElem = document.getElementById("downvote"+fileNum);

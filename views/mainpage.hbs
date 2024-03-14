@@ -31,8 +31,9 @@
                 <div class="main-postpage-top">
 					<button class="main-postpage-sortbutton"> <img class="main-sortarrows"   src="/images/sortarrows.png">  </button>
 					<label class="main-sortby"> Sort by:</label>
-					<select class="main-dropdown" onchange="urlHandler(this.value)">
-						<option class="main-option"></option> 
+					{{switch}}
+					<select class="main-dropdown" id="main-dropdown" onchange="urlHandler(this.value,'{{setting}}')">
+						<option class="main-option" value="/mainpage/{{loggeduser.username}}"></option> 
 						<option class="main-option" value="/popularResults/{{loggeduser.username}}">Popular</option>
 						<option class="main-option" value="/trendingResults/{{loggeduser.username}}">Trending</option>
 						<option class="main-option" value="/controversialResults/{{loggeduser.username}}">Controversial</option>
