@@ -33,9 +33,9 @@
 					<label class="main-sortby"> Sort by:</label>
 					<select class="main-dropdown" onchange="urlHandler(this.value)">
 						<option class="main-option"></option>
-						<option class="main-option" value="popularresult.html">Popular</option>
-						<option class="main-option" value="trendingresult.html">Trending</option>
-						<option class="main-option" value="controversialresult.html">Controversial</option>
+						<option class="main-option" value="/popularPosts/{{loggeduser.username}}">Popular</option>
+						<option class="main-option" value="/results/{{loggeduser.username}}">Trending</option>
+						<option class="main-option" value="/results/{{loggeduser.username}}">Controversial</option>
 					</select>
 					<a class="link-post" href="edit-post.html"> 
 						<button class="main-createpost-button" href="edit-post.html">  Create New<br> Post </button>
@@ -48,9 +48,9 @@
 					{{#each allPosts}}
 					<div class="main-postpage-idvpost">
 						<div class="main-postpage-vote">
-							<div class = "upvote" id = "upvote3#" onclick="changeVote(1, {{this.postId}}, {{loggeduser.userId}})"></div>
-							<div class = "vote-number" id = "vote-number{{this.postId}}"> {{this.votes}} </div>
-							<div class = "downvote" id = "downvote3#" onclick="changeVote(0, {{this.postId}}, {{loggeduser.userId}})"></div>
+							<a href="/upvote"> <div class = "upvote" id = "upvote3#"></div></a>
+							<a> <div class = "vote-number" id = "vote-number{{this.postId}}"> {{this.votes}} </div></a>
+							<a> <div class = "downvote" id = "downvote3#" onclick="changeVote(0, {{this.postId}}, {{loggeduser.userId}})"></div></a>
 						</div>
 						<div class="main-postpage-image">
 							<a class="link-post" href="LF-Chess-Coach.html"> <img class="main-indpost-image" src="{{this.image}}"></a>

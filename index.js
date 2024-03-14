@@ -178,13 +178,30 @@ app.get('/login-page/:username', async(req, res) => {
 app.get('/mainpage/:username', async(req, res) => {
     const uname = req.params.username;
     const loggeduser = await User.findOne({username: uname});
-    console.log(loggeduser.username);
 
     const allPosts = await Post.find({});
     console.log(allPosts);
+    res.render('mainpage',{allPosts, loggeduser});
+});
+
+app.get('/popularPosts/:username', async(req, res) => {
+    const uname = req.params.username;
+    const loggeduser = await User.findOne({username: uname});
+
+    const allPosts = await Post.find({}).sort({popVal:-1});
+    console.log(allPosts);
+    res.render('mainpage',{allPosts, loggeduser});
+});
+
+/*
+    const uname = req.params.username;
+    const loggeduser = await User.findOne({username: uname});
+
+    const allPosts = await Post.find().sort({popVal:-1});
+    console.log(allPosts);
 
     res.render('mainpage',{allPosts, loggeduser});
-
+    */
     /*
     function updateVoteCount(postId){
         const changeVotePost = await Post.findOne({postId: postId});
@@ -202,8 +219,6 @@ app.get('/mainpage/:username', async(req, res) => {
             if(specificPost.downvotes.includes(userId))
             {
                 onePost = await Post.update({postId : postId}, {$pull: {downvotes: {userId}}});
-                
-
             }
         }
         else{ // if downvoted
@@ -217,31 +232,24 @@ app.get('/mainpage/:username', async(req, res) => {
         }
     }
     */
-});
 
-app.get('/mainpage/Clarisse35', async(req, res) => {
-    const loggeduser = await User.findOne({username: 'Clarisse35'});
-    console.log(loggeduser.username);
 
-    const allPosts = await Post.find({})
-    console.log(allPosts);
-
-    res.render('mainpage',{allPosts, loggeduser})
-});
-
-app.get('/mainpage/Judy89', async(req, res) => {
-    const allPosts = await Post.find({})
-    console.log(allPosts);
-
-    const loggeduser = await User.findOne({username: 'Judy89'});
-    console.log(loggeduser);
-
-    res.render('mainpage',{allPosts, loggeduser})
-});
 
 
 // User Profile Routes
 
+app.get('/user-profile/:username/posts', async(req, res) => {
+    const uname = req.params.username;
+    const user = await User.findOne({username : uname})
+    const user_posts = await Post.find({postUser : user.userId}); // Adri20's userId
+    console.log(user_posts);
+
+    res.render('user-profile',{user_posts, user})
+});
+
+
+
+/*
 // posts
 app.get('/user-profile/0-posts', async(req, res) => {
     const user_posts = await Post.find({postUser : "10004"}); // dummy's userId
@@ -282,6 +290,7 @@ app.get('/user-profile/Judy89-posts', async(req, res) => {
 
     res.render('user-profile',{user_posts, loggeduser})
 });
+*/
 
 
 var server = app.listen(3000, function () {
