@@ -283,6 +283,85 @@ app.get('/user-profile/Judy89-posts', async(req, res) => {
     res.render('user-profile',{user_posts, loggeduser})
 });
 
+//for post image uploading in edit.hbs (not yet tested)
+app.post('/uploadPostImage', upload.single('file-image'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).send('No file uploaded.'); //404 means file not found
+    }
+
+    var filePath = req.file.path; //filepath of the image
+    var transferPath = './public/images/' + req.file.originalname; //filepath for the images folder
+
+    //read the file first to upload it to images (local) folder
+    fs.readFile(filePath, (errorFile, data) => {
+        if (errorFile) {
+            return res.status(500).send("Error reading file: " + errorFile); //500 means internal error
+        }
+
+        fs.writeFile(transferPath, data, (error_writing) => {
+            if (error_writing) {
+                return res.status(500).send("Error writing file: " + error_writing);
+            } else {
+                return res.status(200).send("File uploaded successfully");
+            }
+        });
+    });
+});
+
+//helper function for post.hbs
+hbs.registerHelper('getUserProfPic', async function(userId) {
+    const comment_user = await User.findOne({userId: userId});
+    if (comment_user) {
+        return comment_user.profilePicture;
+    } else {
+        return null;
+    }
+});
+
+//helper function for post.hbs
+hbs.registerHelper('getUsername', async function(userId) {
+    const comment_user = await User.findOne({userId: userId});
+    if (comment_user) {
+        return comment_user.username;
+    } else {
+        return null;
+    }
+});
+
+app.get('/post/:title', async(req, res) => {
+    const post_title = req.params.title;
+    const specific_post = await Post.findOne({title: post_title});
+    const loggeduser = await User.findOne({ username: 'Adri20'}); //change to isLogged: '1'
+    const allComments = await Comment.find({});
+    
+    var postComments = [];
+    if (specific_post) {
+        for (var i = 0; i < allComments.length; i++) {
+            if (specific_post.comments.includes(allComments[i].commentId)) {
+                postComments.push(allComments[i]);
+            }
+        }
+    }
+    const post_user = await User.findOne({userId: specific_post.postUser});
+
+    var post_info;
+    if (specific_post) {
+        const votes = specific_post.upvotes.length - specific_post.downvotes.length;
+        post_info = {
+            title: specific_post.title,
+            username: post_user.username,
+            description: specific_post.description,
+            image: specific_post.image,
+            getVotes: votes,
+            allTags: specific_post.tag,
+            allComments: postComments
+        }
+    } else {
+        post_info = null;
+    }
+    res.render('post', { loggeduser, post_info})
+});
+
 
 var server = app.listen(3000, function () {
     console.log('Node server is running..');
