@@ -10,6 +10,11 @@ const Comment = require("./database/models/Comment")
 const User = require("./database/models/User")
 const path = require('path') 
 
+//for file upload
+const fs = require('fs'); //file system for uploading images
+const multer = require('multer'); //for file upload
+const upload = multer({ dest: './public/images/'}); //upload to this destination
+
 
 app.use(express.json()) // use json
 app.use(express.urlencoded( {extended: true})); // files consist of more than strings
