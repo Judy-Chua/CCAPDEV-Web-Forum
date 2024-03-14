@@ -10,6 +10,11 @@ const Comment = require("./database/models/Comment")
 const User = require("./database/models/User")
 const path = require('path') 
 
+//for file upload
+const fs = require('fs'); //file system for uploading images
+const multer = require('multer'); //for file upload
+const upload = multer({ dest: './public/images/'}); //upload to this destination
+
 
 app.use(express.json()) // use json
 app.use(express.urlencoded( {extended: true})); // files consist of more than strings
@@ -178,6 +183,7 @@ app.get('/login-page/:username', async(req, res) => {
 app.get('/mainpage/:username', async(req, res) => {
     const uname = req.params.username;
     const loggeduser = await User.findOne({username: uname});
+    console.log(loggeduser.username);
 
     const allPosts = await Post.find({});
     console.log(allPosts);
@@ -289,6 +295,232 @@ app.get('/user-profile/Judy89-posts', async(req, res) => {
     console.log(loggeduser);
 
     res.render('user-profile',{user_posts, loggeduser})
+});
+
+// comments
+app.get('/user-profile/Adri20-comments', async(req, res) => {
+    const userIdtofind = 10000;
+    const user_comms = await Comment.find({userId : userIdtofind}); // Adri20's userId
+    console.log(user_comms.theComment);
+
+    const user_posts = await Post.find({comments: userIdtofind});
+    console.log(user_posts);
+
+    const loggeduser = await User.findOne({ userId : userIdtofind});
+    console.log(loggeduser);
+
+    res.render('user-profile',{user_posts, loggeduser})
+});
+
+app.get('/user-profile/Clarisse35-comments', async(req, res) => {
+    const userIdtofind = 10001;
+    const user_comms = await Comment.find({userId : userIdtofind}); // Adri20's userId
+    console.log(user_comms.theComment);
+
+    const user_posts = await Post.find({comments: userIdtofind});
+    console.log(user_posts);
+
+    const loggeduser = await User.findOne({ userId : userIdtofind});
+    console.log(loggeduser);
+
+    res.render('user-profile',{user_posts, loggeduser})
+});
+
+app.get('/user-profile/Judy89-comments', async(req, res) => {
+    const userIdtofind = 10002;
+    const user_comms = await Comment.find({userId : userIdtofind}); // Adri20's userId
+    console.log(user_comms.theComment);
+
+    const user_posts = await Post.find({comments: userIdtofind});
+    console.log(user_posts);
+
+    const loggeduser = await User.findOne({ userId : userIdtofind});
+    console.log(loggeduser);
+
+    res.render('user-profile',{user_posts, loggeduser})
+});
+
+
+// upvotes
+
+app.get('/user-profile/Adri20-upvotes', async(req, res) => {
+    const userIdtofind = 10000;
+    // TODO: add in upvotes from comments to user_posts
+
+    //const user_comms = await Comment.find({ upvotes: userIdtofind });
+    // console.log(user_comms.theComment);
+
+    const user_posts = await Post.find({ upvotes: userIdtofind});
+    console.log(user_posts);
+
+    const loggeduser = await User.findOne({ userId : userIdtofind});
+    // console.log(loggeduser);
+
+    res.render('user-profile',{user_posts, loggeduser})
+});
+
+
+app.get('/user-profile/Clarisse35-upvotes', async(req, res) => {
+    const userIdtofind = 10001;
+    // TODO: add in upvotes from comments to user_posts
+
+    //const user_comms = await Comment.find({ upvotes: userIdtofind });
+    // console.log(user_comms.theComment);
+
+    const user_posts = await Post.find({ upvotes: userIdtofind});
+    console.log(user_posts);
+
+    const loggeduser = await User.findOne({ userId : userIdtofind});
+    // console.log(loggeduser);
+
+    res.render('user-profile',{user_posts, loggeduser})
+});
+
+app.get('/user-profile/Judy89-upvotes', async(req, res) => {
+    const userIdtofind = 10002;
+    // TODO: add in upvotes from comments to user_posts
+
+    //const user_comms = await Comment.find({ upvotes: userIdtofind });
+    // console.log(user_comms.theComment);
+
+    const user_posts = await Post.find({ upvotes: userIdtofind});
+    console.log(user_posts);
+
+    const loggeduser = await User.findOne({ userId : userIdtofind});
+    // console.log(loggeduser);
+
+    res.render('user-profile',{user_posts, loggeduser})
+});
+
+
+// downvotes
+
+app.get('/user-profile/Adri20-downvotes', async(req, res) => {
+    const userIdtofind = 10000;
+    // TODO: add in upvotes from comments to user_posts
+
+    //const user_comms = await Comment.find({ upvotes: userIdtofind });
+    // console.log(user_comms.theComment);
+
+    const user_posts = await Post.find({ downvotes: userIdtofind});
+    console.log(user_posts);
+
+    const loggeduser = await User.findOne({ userId : userIdtofind});
+    // console.log(loggeduser);
+
+    res.render('user-profile',{user_posts, loggeduser})
+});
+
+
+app.get('/user-profile/Clarisse35-downvotes', async(req, res) => {
+    const userIdtofind = 10001;
+    // TODO: add in upvotes from comments to user_posts
+
+    //const user_comms = await Comment.find({ upvotes: userIdtofind });
+    // console.log(user_comms.theComment);
+
+    const user_posts = await Post.find({ downvotes: userIdtofind});
+    console.log(user_posts);
+
+    const loggeduser = await User.findOne({ userId : userIdtofind});
+    // console.log(loggeduser);
+
+    res.render('user-profile',{user_posts, loggeduser})
+});
+
+app.get('/user-profile/Judy89-downvotes', async(req, res) => {
+    const userIdtofind = 10002;
+    // TODO: add in upvotes from comments to user_posts
+
+    //const user_comms = await Comment.find({ upvotes: userIdtofind });
+    // console.log(user_comms.theComment);
+
+    const user_posts = await Post.find({ downvotes: userIdtofind});
+    console.log(user_posts);
+
+    const loggeduser = await User.findOne({ userId : userIdtofind});
+    // console.log(loggeduser);
+
+    res.render('user-profile',{user_posts, loggeduser})
+});
+
+//for post image uploading in edit.hbs (not yet tested)
+app.post('/uploadPostImage', upload.single('file-image'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).send('No file uploaded.'); //404 means file not found
+    }
+
+    var filePath = req.file.path; //filepath of the image
+    var transferPath = './public/images/' + req.file.originalname; //filepath for the images folder
+
+    //read the file first to upload it to images (local) folder
+    fs.readFile(filePath, (errorFile, data) => {
+        if (errorFile) {
+            return res.status(500).send("Error reading file: " + errorFile); //500 means internal error
+        }
+
+        fs.writeFile(transferPath, data, (error_writing) => {
+            if (error_writing) {
+                return res.status(500).send("Error writing file: " + error_writing);
+            } else {
+                return res.status(200).send("File uploaded successfully");
+            }
+        });
+    });
+});
+
+//helper function for post.hbs
+hbs.registerHelper('getUserProfPic', async function(userId) {
+    const comment_user = await User.findOne({userId: userId});
+    if (comment_user) {
+        return comment_user.profilePicture;
+    } else {
+        return null;
+    }
+});
+
+//helper function for post.hbs
+hbs.registerHelper('getUsername', async function(userId) {
+    const comment_user = await User.findOne({userId: userId});
+    if (comment_user) {
+        return comment_user.username;
+    } else {
+        return null;
+    }
+});
+
+app.get('/post/:title', async(req, res) => {
+    const post_title = req.params.title;
+    const specific_post = await Post.findOne({title: post_title});
+    const loggeduser = await User.findOne({ username: 'Adri20'}); //change to isLogged: '1'
+    const allComments = await Comment.find({});
+    
+    var postComments = [];
+    if (specific_post) {
+        for (var i = 0; i < allComments.length; i++) {
+            if (specific_post.comments.includes(allComments[i].commentId)) {
+                postComments.push(allComments[i]);
+            }
+        }
+    }
+    const post_user = await User.findOne({userId: specific_post.postUser});
+
+    var post_info;
+    if (specific_post) {
+        const votes = specific_post.upvotes.length - specific_post.downvotes.length;
+        post_info = {
+            title: specific_post.title,
+            username: post_user.username,
+            description: specific_post.description,
+            image: specific_post.image,
+            getVotes: votes,
+            allTags: specific_post.tag,
+            allComments: postComments
+        }
+    } else {
+        post_info = null;
+    }
+    res.render('post', { loggeduser, post_info})
 });
 */
 
