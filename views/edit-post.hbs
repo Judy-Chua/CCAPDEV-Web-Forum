@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Post Draft</title>
+        <link rel = "stylesheet" type = "text/css" href = "../css/post.css">
+        <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script src = "../js/edit.js"></script>
+        <script src = "../js/user-disp.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+	    <div class = "main-container">
+			<div class = "menu-bar">
+				<ul class = "menu-actions">
+					<a href = "/mainpage/{{loggeduser.username}}"><li class = "forum-logo"></li></a>
+				</ul>
+	
+				<ul class = "menu-actions">
+					<li><a href="/mainpage/{{loggeduser.username}}" class="home-button">Home</a></li>
+					<li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
+					<li class = "search-button"><a href = "searchresult.html"><button type="button" id="query-button" name="qb"></button></a></li>
+				</ul>
+				<ul class = "menu-actions">
+					<ul class = "menu-actions">
+						<li><a href = "/signup-page/{{loggeduser.username}}"><button type="button" class="register-button">Register</button></a></li>
+						<li><a href = "/login-page/{{loggeduser.username}}"><button class="login-button">Login</button></a></li>
+					</ul>
+					<li> <span class = "user-name">{{loggeduser.username}}</span></li>
+                	<li><a href = "/user-profile/{{loggeduser.username}}-posts"><img class = "user-icon" src="{{loggeduser.profilePicture}}"/></a></li>
+				</ul>
+			</div>
+		</div>
+
+        <div class = "post">
+            <div class = "edit-container">
+                <div class = "edit-title">
+                    <input type = "text" placeholder="Add title..." maxlength="100" id="title-of-post" required />
+                </div>
+                <div class = "edit-desc">
+                    <textarea placeholder="Add description..." maxlength="10000" id="desc-of-post" required></textarea>
+                </div>
+                <div class = "edit-footer">
+                    <ul class= "edit-actions">
+                        <li><div class="dropdown">
+                            <select class="add-tags" id="tag-of-post" required>Add Tags
+                                <option value="add" disabled selected>Add Tags</option>
+                                <option value="strategy">Strategy Games</option>
+                                <option value="action-adventure" >Action Adventure</option>
+                                <option value="board">Board Games</option>
+                            </select>
+                        </div></li>
+                        <li><button type="button" class = "add-image" id="image-of-post">Add Image</button></li>
+                        <form id="add-post-image" action="/uploadPostImage" method="post" enctype="multipart/form-data">
+                            <input type="file" id="file-image" name="file-image" accept="image/*">
+                            <input type="hidden" id="hidden-img-tag"> 
+                        </form>
+                        <span id="image-message"></span>
+                    </ul>
+                    <ul class= "edit-actions">
+                        <li><button type="button" class = "edit-cancel">Cancel</button></li>
+                        <li><button type="button" class = "publish-post">Post</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
