@@ -53,13 +53,13 @@
 							<div class = "downvote" id = "downvote3#" onclick="changeVote(0, {{this.postId}}, {{loggeduser.userId}})"></div>
 						</div>
 						<div class="main-postpage-image">
-							<a class="link-post" href="LF-Chess-Coach.html"> <img class="main-indpost-image" src="{{this.image}}"></a>
+							<a class="link-post" href="/post/{{this.title}}"> <img class="main-indpost-image" src="{{this.image}}"></a>
 						</div>
 						<div class="main-postpage-description">
 							<p class="main-indpost-title">
-								<a class="link-post" href="LF-Chess-Coach.html"> {{this.title}} </a>
+								<a class="link-post" href="/post/{{this.title}}"> {{this.title}} </a>
 							</p>
-							<p class="main-indpost-postedby"> Posted by <a class="link-post" href="iAmNewbieChess-profile-notloggedin.html"> BLANK </a> </p>
+							<p class="main-indpost-postedby"> Posted by <a class="link-post" href="/user-profile/{{ ******** (function for getting username from postUser) ******}}-posts"> BLANK </a> </p>
 							<p class="main-indpost-description"> 
 								{{this.description}}
 							</p>
