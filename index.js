@@ -157,7 +157,6 @@ Comment.create({
 });
 */
 
-
 app.get('/', function (req, res) {
     // uncomment this vvv for windows
     // res.sendFile(__dirname + '\\' + 'index.html');
@@ -184,21 +183,113 @@ app.get('/mainpage/:username', async(req, res) => {
     const uname = req.params.username;
     const loggeduser = await User.findOne({username: uname});
     console.log(loggeduser.username);
+    console.log(loggeduser.userId);
 
     const allPosts = await Post.find({});
     console.log(allPosts);
     res.render('mainpage',{allPosts, loggeduser});
 });
 
-app.get('/popularPosts/:username', async(req, res) => {
+app.get('/popularResults/:username', async(req, res) => {
     const uname = req.params.username;
+    const setting = 1;
     const loggeduser = await User.findOne({username: uname});
-
     const allPosts = await Post.find({}).sort({popVal:-1});
     console.log(allPosts);
     res.render('mainpage',{allPosts, loggeduser});
 });
 
+app.get('/trendingResults/:username', async(req, res) => {
+    const uname = req.params.username;
+    const setting = 1;
+    const loggeduser = await User.findOne({username: uname});
+    const allPosts = await Post.find({}).sort({trendVal:-1});
+    console.log(allPosts);
+    res.render('mainpage',{allPosts, loggeduser});
+});
+
+app.get('/controversialResults/:username', async(req, res) => {
+    const uname = req.params.username;
+    const setting = 1;
+    const loggeduser = await User.findOne({username: uname});
+    const allPosts = await Post.find({}).sort({controVal: -1});
+    console.log(allPosts);
+    res.render('mainpage',{allPosts, loggeduser});
+});
+
+app.get('/upVote/:post/vote/:username', async(req, res) => {
+    const uname = req.params.username;
+    const post = parseInt(req.params.post);
+    console.log(post);
+
+    const specificPost = await Post.findOne({postId: post});
+    const loggeduser = await User.findOne({username: uname});
+
+    const userId = loggeduser.userId;
+    const postId = specificPost.postId;
+
+    var voteCount = specificPost.votes;
+
+    if (!specificPost.upvotes.includes(userId)){ // if not yet upvoted
+
+        const onePost = await Post.updateOne({postId : postId}, {$push: {upvotes: userId}});
+        var onePostAgain = await Post.updateOne(
+            { postId: postId }, 
+            { 
+              $inc: { votes: 1 } 
+            }
+        );
+
+        if(specificPost.downvotes.includes(userId))
+        {
+            onePostAgain = await Post.updateOne(
+                { postId: postId }, 
+                { 
+                  $pull: { downvotes: userId }, 
+                }
+            );
+        }
+    }
+});
+
+app.get('/countVote/:post', async(req, res) => {
+
+    const post = parseInt(req.params.post);
+    const result = await Post.findOne({postId: post});
+    res.send(''+ result.votes);
+});
+
+app.get('/downVote/:post/vote/:username', async(req, res) => {
+    const uname = req.params.username;
+    const post = parseInt(req.params.post);
+
+    const specificPost = await Post.findOne({postId: post});
+    const loggeduser = await User.findOne({username: uname});
+
+    const userId = loggeduser.userId;
+    const postId = specificPost.postId;
+
+    if (!specificPost.downvotes.includes(userId)){ // if not yet downvoted
+
+        const onePost = await Post.updateOne({postId : postId}, {$push: {downvotes: userId}});
+        var onePostAgain = await Post.updateOne(
+            { postId: postId }, 
+            { 
+              $inc: { votes: -1 } 
+            }
+        );
+
+        if(specificPost.upvotes.includes(userId))
+        {
+            onePostAgain = await Post.updateOne(
+                { postId: postId }, 
+                { 
+                  $pull: { upvotes: userId },  
+                }
+              );
+        }
+    }
+});
 /*
     const uname = req.params.username;
     const loggeduser = await User.findOne({username: uname});
@@ -213,7 +304,7 @@ app.get('/popularPosts/:username', async(req, res) => {
         const changeVotePost = await Post.findOne({postId: postId});
         var newVote = changeVotePost.votes;
     }
-    
+
     function changeVote(val, postId, userId){
     
         const specificPost = await Post.find({postId: postId});
@@ -237,7 +328,7 @@ app.get('/popularPosts/:username', async(req, res) => {
             }
         }
     }
-    */
+    
 
 
 

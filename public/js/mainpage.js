@@ -1,22 +1,7 @@
 var voteCount = 0;
 var voteCount2 = 0;
 var voteCount3 = 0;
-
-const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/archerGuildDB')
-
 const Post = require("./database/models/Post")
-const express = require('express')
-const app = new express()
-module.exports = mongoose;
-
-app.use(express.static('public')) // we'll add a static directory named "public"
-
-var hbs = require('hbs')
-app.set('view engine','hbs');
-
-
-
 function changeVote(val, fileNum) {
     var upElem = document.getElementById("upvote"+fileNum);
     var downElem = document.getElementById("downvote"+fileNum);
@@ -186,5 +171,63 @@ function changeVote3(val, fileNum) {
 }
 function urlHandler(value) {                               
     window.location.assign(`${value}`);
+}
+
+function upVote(postId, username){
+    console.log('upvoted')
+    console.log(username)
+    fetch('/upVote/' +postId +'/vote/' + username, {method: 'GET'})
+    .then(function(response) {
+        if(response.ok) {
+          return;
+        }
+        throw new Error('Request failed.');
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+
+    setInterval(function() {
+        fetch('/countVote/'+ postId, {method: 'GET'})
+          .then(function(response) {
+            if(response.ok) return response.json();
+            throw new Error('Request failed.');
+          })
+          .then(function(data) {
+            document.getElementById('vote-number'+ postId).innerHTML = data;
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      }, 1000);
+}
+
+function downVote(postId, username){
+    console.log('upvoted')
+    console.log(username)
+    fetch('/downVote/' +postId +'/vote/' + username, {method: 'GET'})
+    .then(function(response) {
+        if(response.ok) {
+          return;
+        }
+        throw new Error('Request failed.');
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+
+    setInterval(function() {
+        fetch('/countVote/'+ postId, {method: 'GET'})
+          .then(function(response) {
+            if(response.ok) return response.json();
+            throw new Error('Request failed.');
+          })
+          .then(function(data) {
+            document.getElementById('vote-number' + postId).innerHTML = data;
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      }, 500);
 }
 

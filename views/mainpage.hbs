@@ -32,10 +32,10 @@
 					<button class="main-postpage-sortbutton"> <img class="main-sortarrows"   src="/images/sortarrows.png">  </button>
 					<label class="main-sortby"> Sort by:</label>
 					<select class="main-dropdown" onchange="urlHandler(this.value)">
-						<option class="main-option"></option>
-						<option class="main-option" value="/popularPosts/{{loggeduser.username}}">Popular</option>
-						<option class="main-option" value="/results/{{loggeduser.username}}">Trending</option>
-						<option class="main-option" value="/results/{{loggeduser.username}}">Controversial</option>
+						<option class="main-option"></option> 
+						<option class="main-option" value="/popularResults/{{loggeduser.username}}">Popular</option>
+						<option class="main-option" value="/trendingResults/{{loggeduser.username}}">Trending</option>
+						<option class="main-option" value="/controversialResults/{{loggeduser.username}}">Controversial</option>
 					</select>
 					<a class="link-post" href="edit-post.html"> 
 						<button class="main-createpost-button" href="edit-post.html">  Create New<br> Post </button>
@@ -48,16 +48,16 @@
 					{{#each allPosts}}
 					<div class="main-postpage-idvpost">
 						<div class="main-postpage-vote">
-							<a href="/upvote"> <div class = "upvote" id = "upvote3#"></div></a>
-							<a> <div class = "vote-number" id = "vote-number{{this.postId}}"> {{this.votes}} </div></a>
-							<a> <div class = "downvote" id = "downvote3#" onclick="changeVote(0, {{this.postId}}, {{loggeduser.userId}})"></div></a>
+							<div class = "upvote" id = "upvote3#" onclick="upVote({{this.postId}}, '{{../loggeduser.username}}')"></div>
+							<div class = "vote-number" id = "vote-number{{this.postId}}"> {{this.votes}} </div>
+							<div class = "downvote" id = "downvote3#" onclick="downVote({{this.postId}}, '{{../loggeduser.username}}')"></div>
 						</div>
 						<div class="main-postpage-image">
 							<a class="link-post" href="/post/{{this.title}}"> <img class="main-indpost-image" src="{{this.image}}"></a>
 						</div>
 						<div class="main-postpage-description">
 							<p class="main-indpost-title">
-								<a class="link-post" href="/post/{{this.title}}"> {{this.title}} </a>
+								<a class="link-post" href="/post/{{this.title}}"> {{this.title}}</a>
 							</p>
 							<!-- removed href muna para no error when running -->
 							<p class="main-indpost-postedby"> Posted by <a class="link-post"> BLANK </a> </p>
