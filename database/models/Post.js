@@ -10,6 +10,7 @@ const PostSchema = new mongoose.Schema({
     tag: [],
     upvotes: [],
     downvotes: [],
+    votes: Number,
     popVal: Number,
     trendVal: Number,
     controVal: Number,

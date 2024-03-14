@@ -80,6 +80,7 @@ Post.create({
     tag: ['Singleplayer'],
     upvotes: [10001],
     downvotes: [],
+    votes: 1,
     popVal: 1,
     trendVal: 2,
     controVal: 3,
@@ -96,6 +97,7 @@ Post.create({
     tag: ['MOBA', 'Multiplayer'],
     upvotes: [10002],
     downvotes: [],
+    votes: 1,
     popVal: 2,
     trendVal: 3,
     controVal: 1,
@@ -112,6 +114,7 @@ Post.create({
     tag: ['MOBA', 'Multiplayer'],
     upvotes: [10002],
     downvotes: [],
+    votes: 1,
     popVal: 3,
     trendVal: 1,
     controVal: 2,
@@ -158,79 +161,62 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '//' + 'index.html');
 });
 
-app.get('/signup-page/0', async(req, res) => {
-    const loggeduser = await User.findOne({ userId : "10004"}); // dummy's userId
-    console.log(loggeduser);
-
+app.get('/signup-page/:username', async(req, res) => {
+    const uname = req.params.username;
+    const loggeduser = await User.findOne({ username : uname}); // dummy's userId
     res.render('signup-page', {loggeduser});
 });
 
-app.get('/signup-page/Adri20', async(req, res) => {
-    const loggeduser = await User.findOne({ userId : "10000"}); // Adri20's userId
-    console.log(loggeduser);
-
-    res.render('signup-page', {loggeduser});
-});
-
-app.get('/signup-page/Clarisse35', async(req, res) => {
-    const loggeduser = await User.findOne({ userId : "10001"}); // Clarisse35's userId
-    console.log(loggeduser);
-
-    res.render('signup-page', {loggeduser});
-});
-
-app.get('/signup-page/Judy89', async(req, res) => {
-    const loggeduser = await User.findOne({ userId : "10002"}); // Judy89's userId
-    console.log(loggeduser);
-
-    res.render('signup-page', {loggeduser});
-});
-
-// login
-app.get('/login-page/0', async(req, res) => {
-    const loggeduser = await User.findOne({ userId : "10004"}); // dummy's userId
+app.get('/login-page/:username', async(req, res) => {
+    const uname = req.params.username;
+    const loggeduser = await User.findOne({ username : uname}); // dummy's userId
     console.log(loggeduser);
 
     res.render('login-page', {loggeduser});
 });
 
-app.get('/login-page/Adri20', async(req, res) => {
-    const loggeduser = await User.findOne({ userId : "10000"}); // Adri20's userId
-    console.log(loggeduser);
-
-    res.render('login-page', {loggeduser});
-});
-
-app.get('/login-page/Clarisse35', async(req, res) => {
-    const loggeduser = await User.findOne({ userId : "10001"}); // Clarisse35's userId
-    console.log(loggeduser);
-
-    res.render('login-page', {loggeduser});
-});
-
-app.get('/login-page/Judy89', async(req, res) => {
-    const loggeduser = await User.findOne({ userId : "10002"}); // Judy89's userId
-    console.log(loggeduser);
-
-    res.render('login-page', {loggeduser});
-});
-
-// mainpage
-app.get('/mainpage/0', async(req, res) => {
-    const loggeduser = await User.findOne({username: '0'});
+app.get('/mainpage/:username', async(req, res) => {
+    const uname = req.params.username;
+    const loggeduser = await User.findOne({username: uname});
     console.log(loggeduser.username);
-    res.render('mainpage',{loggeduser})
-});
 
-app.get('/mainpage/Adri20', async(req, res) => {
-    const loggeduser = await User.findOne({username: 'Adri20'});
-    console.log(loggeduser.username );
-
-
-    const allPosts = await Post.find({})
+    const allPosts = await Post.find({});
     console.log(allPosts);
 
-    res.render('mainpage',{allPosts, loggeduser})
+    res.render('mainpage',{allPosts, loggeduser});
+
+    /*
+    function updateVoteCount(postId){
+        const changeVotePost = await Post.findOne({postId: postId});
+        var newVote = changeVotePost.votes;
+    }
+    
+    function changeVote(val, postId, userId){
+    
+        const specificPost = await Post.find({postId: postId});
+
+        if (val && !specificPost.upvotes.includes(userId)){ // if upvoted
+
+            const onePost = await Post.update({postId : postId}, {$push: {upvotes: {userId}}});
+            
+            if(specificPost.downvotes.includes(userId))
+            {
+                onePost = await Post.update({postId : postId}, {$pull: {downvotes: {userId}}});
+                
+
+            }
+        }
+        else{ // if downvoted
+
+            const onePost = await Post.update({postId : postId}, {$push: {downvotes: {userId}}}); 
+            
+            if(specificPost.upvotes.includes(userId))
+            {
+                onePost = await Post.update({postId : postId}, {$pull: {upvotes: {userId}}});
+            }
+        }
+    }
+    */
 });
 
 app.get('/mainpage/Clarisse35', async(req, res) => {
