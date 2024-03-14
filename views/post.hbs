@@ -1,0 +1,126 @@
+<html>
+    <head>
+        <title> {{post_info.title}} </title>
+        <link rel = "stylesheet" type = "text/css" href = "../css/post.css">
+        <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script src = "../js/post.js"></script>
+        <script src = "../js/user-disp.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class = "main-container">
+			<div class = "menu-bar">
+				<ul class = "menu-actions">
+					<a href = "/mainpage/{{loggeduser.username}}"><li class = "forum-logo"></li></a>
+				</ul>
+	
+				<ul class = "menu-actions">
+					<li><a href="/mainpage/{{loggeduser.username}}" class="home-button">Home</a></li>
+					<li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
+					<li class = "search-button"><a href = "searchresult.html"><button type="button" id="query-button" name="qb"></button></a></li>
+				</ul>
+				<ul class = "menu-actions">
+					<ul class = "menu-actions">
+						<li><a href = "/signup-page/{{loggeduser.username}}"><button type="button" class="register-button">Register</button></a></li>
+						<li><a href = "/login-page/{{loggeduser.username}}"><button class="login-button">Login</button></a></li>
+					</ul>
+					<li> <span class = "user-name">{{loggeduser.username}}</span></li>
+                	<li><a href = "/user-profile/{{loggeduser.username}}-posts"><img class = "user-icon" src="{{loggeduser.profilePicture}}"/></a></li>
+				</ul>
+			</div>
+		</div>
+
+        <div class = "post">
+            <div class = "post-container">
+                <div class = "post-items">
+                    <div class = "post-title"> {{post_info.title}} </div>
+                    <div class = "post-username"> by {{post_info.username}} </div>
+                    <div class = "post-desc"> {{post_info.description}} </div>
+                    <div class = "post-image"><img class = "post-image" src="{{post_info.image}}"/></div>
+                </div>
+                <div class = "side-items">
+                    <div class = "votes">
+                        <div class = "upvote"></div>
+                        <div class = "vote-number">{{post_info.getVotes}}</div>
+                        <div class = "downvote"></div>
+                    </div>
+                    
+                    <div class = "tags">
+                        {{#each post_info.allTags}}
+                        <button type="button">{{this.tag}}</button>
+                         {{/each}}
+                    </div>
+                   
+                </div>
+            </div>
+            <div class = "comment-container">
+                <div class = "comment-title-container">
+                    <ul class = "comment-title-container-ul">
+                        <li><div class = "comment-title">Comments:</div></li>
+                    </ul>
+                    <ul class = "comment-title-container-ul">
+                        <li><div class = "post-edit"></div></li>
+                        <li><div class = "post-delete"></div></li>
+                    </ul>
+                </div>
+                <div class = "comment-actions">
+                    <ul class = "comment-user">
+                        <li><img class="user-picture" src="{{loggeduser.profilePicture}}" /></li>
+                    </ul>
+                    <ul class = "comment-user">
+                        <li><textarea class="comment-area" placeholder="What are your thoughts?"></textarea>
+                            <div class="comment-submit"></div></li>
+                    </ul>
+                    <div class = "comment-options-container">
+                    <ul class = "comment-user">
+                        <li><form class = "comment-options"><select>
+                                <option value="popular">Popular</option>
+                                <option value="newest">Newest</option>
+                                <option value="oldest">Oldest</option>
+                            </select></form>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+                <div class = "comment">
+                    {{#if post_info.allComments.length}}
+                        {{#each post_info.allComments}}
+                            <div class="new-comment">
+                                <div class = 'picture-person'><img class="picture-person" src="{{getUserProfPic this.userId}}" /></div>
+                                <div class = 'comment-person'> 
+                                    <div class = 'username-comment'>
+                                        <div class = 'username-person'>{{getUsername this.userId}}</div>
+                                        <div class = 'username-dash'>|</div>
+                                        <div class = 'username-date'>{{this.date}}</div>
+                                    </div>
+                                    <div class = 'content-comment'>
+                                        <div class = 'comment-comment'>{{this.theComment}}</div>
+                                    </div>
+                                    <div class = 'actions-comment-container'>
+                                    <ul class = 'actions-comment'>
+                                        <li><div class = 'comment-upvote'></div></li>
+                                        <li><div class = 'comment-votenum'>{{this.getCommentVotes}}</div></li>
+                                        <li><div class = 'comment-downvote'></div></li>
+                                        <li><div class = 'comment-reply'>Reply</div></li>
+                                    </ul>
+                                    <ul class = 'actions-comment'>
+                                        <li><div class = 'comment-edit-date'></div>
+                                        <li><div class = 'comment-submit-edit'></div>
+                                        <li><div class = 'comment-edit'></div></li>
+                                        <li><div class = 'comment-delete'></div></li>
+                                        <li><div class = 'comment-report'></div></li>
+                                    </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        {{/each}}
+                    {{else}}
+                        <div class = "no-comment">No Comments</div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        <div class = "text-response"></div>
+    </body>
+</html>
