@@ -107,9 +107,9 @@
 	width: auto;
 	background-color: #b0d8e3;
 	text-align: center;
-	margin: 0px 10px 5px 10px;
-	padding: 5px 5px 5px 5px;
-	font-size: 15px;
+	margin: 0px 10px 15px 10px;
+	padding: 7px 7px 7px 7px;
+	font-size: 20px;
 	color: black;
 }
 
@@ -140,7 +140,7 @@
 }
 
 .post-edit {
-	background-image: url('./images/edit.png');
+	background-image: url('../images/edit.png');
 	background-size: cover;
 	width: 50px;
 	height: 50px;
@@ -149,13 +149,13 @@
 }
 
 .post-edit:hover {
-	background-image: url('./images/color-edit.png');
+	background-image: url('../images/color-edit.png');
 	width: 50px;
 	height: 50px;
 }
 
 .post-delete {
-	background-image: url('./images/trash.png');
+	background-image: url('../images/trash.png');
 	background-size: cover;
 	width: 50px;
 	height: 50px;
@@ -164,7 +164,7 @@
 }
 
 .post-delete:hover {
-	background-image: url('./images/reply-trash-can.png');
+	background-image: url('../images/reply-trash-can.png');
 	width: 50px;
 	height: 50px;
 }
@@ -214,7 +214,7 @@
 }
 
 .comment-submit {
-	background-image: url('./images/checkmark.png');
+	background-image: url('../images/checkmark.png');
 	background-size: cover;
 	border-radius: 0px;
 	background-color: none;
@@ -225,7 +225,7 @@
 }
 
 .comment-submit:hover, .comment-submit:active {
-	background-image: url('./images/color-checkmark.png');
+	background-image: url('../images/color-checkmark.png');
 	width: 40px;
 	height: 40px;
 }
@@ -252,7 +252,7 @@
 }
 
 .picture-person {
-	background-image: url('./images/user-icon.png');
+	background-image: url('../images/user-icon.png');
 	background-size: cover;
 	margin: 5px 10px 5px 10px;
 	width: 40px;
@@ -310,7 +310,7 @@
 }
 
 .comment-upvote {
-	background-image: url('./images/reply-up.png');
+	background-image: url('../images/reply-up.png');
 	background-size: cover;
 	width: 30px;
 	height: 30px;
@@ -325,7 +325,7 @@
 }
 
 .comment-downvote {
-	background-image: url('./images/reply-down.png');
+	background-image: url('../images/reply-down.png');
 	background-size: cover;
 	width: 30px;
 	height: 30px;
@@ -350,7 +350,7 @@
 }
 
 .comment-submit-edit {
-	background-image: url('./images/checkmark.png');
+	background-image: url('../images/checkmark.png');
 	background-size: cover;
 	width: 30px;
 	height: 30px;
@@ -359,13 +359,13 @@
 }
 
 .comment-submit-edit:hover {
-	background-image: url('./images/checked.png');
+	background-image: url('../images/checked.png');
 	width: 30px;
 	height: 30px;
 }
 
 .comment-edit {
-	background-image: url('./images/reply-edit.png');
+	background-image: url('../images/reply-edit.png');
 	background-size: cover;
 	width: 30px;
 	height: 30px;
@@ -374,13 +374,13 @@
 }
 
 .comment-edit:hover {
-	background-image: url('./images/reply-color-edit.png');
+	background-image: url('../images/reply-color-edit.png');
 	width: 30px;
 	height: 30px;
 }
 
 .comment-delete {
-	background-image: url('./images/reply-trash-can.png');
+	background-image: url('../images/reply-trash-can.png');
 	background-size: cover;
 	width: 30px;
 	height: 30px;
@@ -388,13 +388,13 @@
 }
 
 .comment-delete:hover {
-	background-image: url('./images/reply-color-trash-can.png');
+	background-image: url('../images/reply-color-trash-can.png');
 	width: 30px;
 	height: 30px;
 }
 
 .comment-report {
-	background-image: url('./images/report.png');
+	background-image: url('../images/report.png');
 	background-size: cover;
 	width: 30px;
 	height: 30px;
@@ -402,7 +402,7 @@
 }
 
 .comment-report:hover {
-	background-image: url('./images/color-report.png');
+	background-image: url('../images/color-report.png');
 	width: 30px;
 	height: 30px;
 }
@@ -474,12 +474,15 @@
 }
 
 .add-tags {
+	font-size: 15px;
     margin-left: 40px;
     width: 150px;
 	cursor: pointer;
+	height: auto;
+	overflow-y: auto;
 }
 
-.add-tags > option {
+.add-tags option {
 	color: black;
 	padding: 10px 2px;
 	display: block;
