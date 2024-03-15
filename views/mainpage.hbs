@@ -14,7 +14,6 @@
             <ul class = "menu-actions">
                 <a href = "/mainpage/{{loggeduser.username}}"><li class = "forum-logo"></li></a>
             </ul>
-
 			<ul class="menu-actions">
 				<li><a href="/mainpage/{{loggeduser.username}}" class="home-button">Home</a></li>
 				<li class = "search-bar">
@@ -24,10 +23,6 @@
 				<li class = "search-button"><button type="submit" id="query-button" name="qb"></button></form></li>
 			</ul>
             <ul class = "menu-actions">
-                <ul class = "menu-actions">
-                    <li><a href = "/signup-page/{{loggeduser.username}}"><button type="button" class="register-button">Register</button></a></li>
-                    <li><a href = "/login-page/{{loggeduser.username}}"><button class="login-button">Login</button></a></li>
-                </ul>
                 <li> <span class = "user-name">{{loggeduser.username}}</span></li>
                 <li><a href = "/user-profile/{{loggeduser.username}}-posts"><img class = "user-icon" src="{{loggeduser.profilePicture}}"/></a></li>
             </ul>
@@ -37,7 +32,6 @@
         <div class="main-div">
             <div class="main-postpage pagecolor"> 
                 <div class="main-postpage-top">
-					<button class="main-postpage-sortbutton"> <img class="main-sortarrows"   src="/images/sortarrows.png">  </button>
 					<label class="main-sortby"> Sort by:</label>
 					
 					<select class="main-dropdown" id="main-dropdown" onchange="urlHandler(this.value,'{{setting}}')">
@@ -46,32 +40,33 @@
 						<option class="main-option" value="/trendingResults/{{loggeduser.username}}">Trending</option>
 						<option class="main-option" value="/controversialResults/{{loggeduser.username}}">Controversial</option>
 					</select>
-					<a class="link-post" href="edit-post.html"> 
-						<button class="main-createpost-button" href="edit-post.html">  Create New<br> Post </button>
+					<a class="link-post" href="/create-post" >
+						<button class="main-createpost-button" href="/create-post">  Create New<br> Post </button>
 					</a>
 				</div>
 				<div class="main-postpage-posts">
 					<p class="main-poststitle"> POSTS </p>
 					 
-					{{#each allPosts}}
+					{{#each post_array}}
+					
 					<div class="main-postpage-idvpost">
 						<div class="main-postpage-vote">
-							<div class = "upvote" id = "upvote3#" onclick="upVote({{this.postId}}, '{{../loggeduser.username}}')"></div>
-							<div class = "vote-number" id = "vote-number{{this.postId}}"> {{this.votes}} </div>
-							<div class = "downvote" id = "downvote3#" onclick="downVote({{this.postId}}, '{{../loggeduser.username}}')"></div>
+							<div class = "upvote" id = "upvote3#" onclick="upVote({{this.post.postId}}, '{{../loggeduser.username}}')"></div>
+							<div class = "vote-number" id = "vote-number{{this.post.postId}}"> {{this.post.votes}} </div>
+							<div class = "downvote" id = "downvote3#" onclick="downVote({{this.post.postId}}, '{{../loggeduser.username}}')"></div>
 						</div>
 						<div class="main-postpage-image">
-							<a class="link-post" href="/post/{{this.title}}"> <img class="main-indpost-image" src="{{this.image}}"></a>
+							<a class="link-post" href="/post/{{../loggeduser.username}}-{{this.post.title}}"> <img class="main-indpost-image" src="{{this.post.image}}"></a>
 						</div>
 						<div class="main-postpage-description">
 							<p class="main-indpost-title">
-								<a class="link-post" href="/post/{{this.title}}"> {{this.title}}</a>
+								<a class="link-post" href="/post/{{../loggeduser.username}}-{{this.post.title}}"> {{this.post.title}}</a>
 							</p>
 							<!-- removed href muna para no error when running -->
-							<p class="main-indpost-postedby"> Posted by <a class="link-post"> BLANK </a> </p>
+							<p class="main-indpost-postedby"> Posted by <a class="link-post"> {{this.username}} </a> </p>
 
 							<p class="main-indpost-description"> 
-								{{this.description}}
+								{{this.post.description}}
 							</p>
 							
 						</div>
@@ -107,18 +102,6 @@
 					</div>
 				</div>
 				<div class="main-recentposts pagecolor">
-					<p class="main-recentposts-title"> Last Viewed Post</p>
-					<div class="main-recentviewpost">
-						<div class="main-recentviewpost-description">
-							<p class="main-recentviewpost-title">
-								<a class="link-post" href="TFT-Latest-Patch-Notes.html">TFT Latest Patch Notes</a>
-							</p>
-							<p class="main-recentviewpost-description"> 
-								Has anyone read the lastest tft patch notes? I haven't played the game for a while and ...
-							</p>
-							
-						</div>
-					</div>
 					
 				</div>
 			</div>

@@ -85,7 +85,7 @@ User.create({
 Post.create({
     postId: 20000,
     postUser: 10002,
-    title: 'Has anyone notice this dog?!',
+    title: 'Has anyone notice this dog!',
     description: 'I was playing skyrim yesterday and saw this dog. I dont know his name but I call them Booster.',
     comments:[30000],
     image: '/images/skyrimdog.png',
@@ -194,7 +194,22 @@ app.get('/mainpage/:username', async(req, res) => {
 
     const allPosts = await Post.find({});
     console.log(allPosts);
-    res.render('mainpage',{allPosts, loggeduser});
+
+    var post_array = []
+
+    for (var i=0;i < allPosts.length;i++){
+        const oneUser = await User.findOne({userId: allPosts[i].postUser});
+
+        console.log(oneUser.username)
+        var post_info = {
+            post: allPosts[i],
+            username: oneUser.username
+        }
+
+        post_array.push(post_info)
+    }
+
+    res.render('mainpage',{post_array, loggeduser});
 });
 
 app.get('/popularResults/:username', async(req, res) => {
@@ -203,7 +218,20 @@ app.get('/popularResults/:username', async(req, res) => {
     const loggeduser = await User.findOne({username: uname});
     const allPosts = await Post.find({}).sort({popVal:-1});
     console.log(allPosts);
-    res.render('mainpage',{allPosts, loggeduser});
+    var post_array = []
+
+    for (var i=0;i < allPosts.length;i++){
+        const oneUser = await User.findOne({userId: allPosts[i].postUser});
+
+        console.log(oneUser.username)
+        var post_info = {
+            post: allPosts[i],
+            username: oneUser.username
+        }
+
+        post_array.push(post_info)
+    }
+    res.render('mainpage',{post_array, loggeduser});
 });
 
 app.get('/trendingResults/:username', async(req, res) => {
@@ -212,7 +240,20 @@ app.get('/trendingResults/:username', async(req, res) => {
     const loggeduser = await User.findOne({username: uname});
     const allPosts = await Post.find({}).sort({trendVal:-1});
     console.log(allPosts);
-    res.render('mainpage',{allPosts, loggeduser});
+    var post_array = []
+
+    for (var i=0;i < allPosts.length;i++){
+        const oneUser = await User.findOne({userId: allPosts[i].postUser});
+
+        console.log(oneUser.username)
+        var post_info = {
+            post: allPosts[i],
+            username: oneUser.username
+        }
+
+        post_array.push(post_info)
+    }
+    res.render('mainpage',{post_array, loggeduser});
 });
 
 app.get('/controversialResults/:username', async(req, res) => {
@@ -221,7 +262,20 @@ app.get('/controversialResults/:username', async(req, res) => {
     const loggeduser = await User.findOne({username: uname});
     const allPosts = await Post.find({}).sort({controVal: -1});
     console.log(allPosts);
-    res.render('mainpage',{allPosts, loggeduser});
+    var post_array = []
+
+    for (var i=0;i < allPosts.length;i++){
+        const oneUser = await User.findOne({userId: allPosts[i].postUser});
+
+        console.log(oneUser.username)
+        var post_info = {
+            post: allPosts[i],
+            username: oneUser.username
+        }
+
+        post_array.push(post_info)
+    }
+    res.render('mainpage',{post_array, loggeduser});
 });
 
 app.get('/upVote/:post/vote/:username', async(req, res) => {
@@ -318,9 +372,22 @@ app.get('/searchresults/:username', async(req, res) => {
             {"description":new RegExp(searchQuery, "i")}
         ]
     });
-    console.log('SEARCH QUERY' + searchQuery)
-    console.log('POSTS', searchedPosts)
-    res.render('searchresult',{loggeduser, searchedPosts, searchQuery});
+
+    var post_array = []
+
+    for (var i=0;i < searchedPosts.length;i++){
+        const oneUser = await User.findOne({userId: searchedPosts[i].postUser});
+
+        console.log(oneUser.username)
+        var post_info = {
+            post: searchedPosts[i],
+            username: oneUser.username
+        }
+
+        post_array.push(post_info);
+    }
+
+    res.render('searchresult',{loggeduser, post_array, searchQuery});
 });
 
 app.get('/tagMoba/:username', async(req, res) => {
@@ -331,7 +398,21 @@ app.get('/tagMoba/:username', async(req, res) => {
     const searchedPosts = await Post.find(
        {tag: searchQuery},
     );
-    res.render('searchresult',{loggeduser, searchedPosts, searchQuery});
+
+    var post_array = []
+
+    for (var i=0;i < searchedPosts.length;i++){
+        const oneUser = await User.findOne({userId: searchedPosts[i].postUser});
+
+        console.log(oneUser.username)
+        var post_info = {
+            post: searchedPosts[i],
+            username: oneUser.username
+        }
+
+        post_array.push(post_info);
+    }
+    res.render('searchresult',{loggeduser, post_array, searchQuery});
 });
 
 app.get('/tagFPS/:username', async(req, res) => {
@@ -342,7 +423,21 @@ app.get('/tagFPS/:username', async(req, res) => {
     const searchedPosts = await Post.find(
        {tag: searchQuery},
     );
-    res.render('searchresult',{loggeduser, searchedPosts, searchQuery});
+
+    var post_array = []
+
+    for (var i=0;i < searchedPosts.length;i++){
+        const oneUser = await User.findOne({userId: searchedPosts[i].postUser});
+
+        console.log(oneUser.username)
+        var post_info = {
+            post: searchedPosts[i],
+            username: oneUser.username
+        }
+
+        post_array.push(post_info);
+    }
+    res.render('searchresult',{loggeduser,post_array, searchQuery});
 });
 
 app.get('/tagSinglePlayer/:username', async(req, res) => {
@@ -353,7 +448,21 @@ app.get('/tagSinglePlayer/:username', async(req, res) => {
     const searchedPosts = await Post.find(
        {tag: searchQuery},
     );
-    res.render('searchresult',{loggeduser, searchedPosts, searchQuery});
+
+    var post_array = []
+
+    for (var i=0;i < searchedPosts.length;i++){
+        const oneUser = await User.findOne({userId: searchedPosts[i].postUser});
+
+        console.log(oneUser.username)
+        var post_info = {
+            post: searchedPosts[i],
+            username: oneUser.username
+        }
+
+        post_array.push(post_info);
+    }
+    res.render('searchresult',{loggeduser, post_array, searchQuery});
 });
 
 app.get('/tagMultiPlayer/:username', async(req, res) => {
@@ -364,49 +473,22 @@ app.get('/tagMultiPlayer/:username', async(req, res) => {
     const searchedPosts = await Post.find(
        {tag: searchQuery},
     );
-    res.render('searchresult',{loggeduser, searchedPosts, searchQuery});
+
+    var post_array = []
+
+    for (var i=0;i < searchedPosts.length;i++){
+        const oneUser = await User.findOne({userId: searchedPosts[i].postUser});
+
+        console.log(oneUser.username)
+        var post_info = {
+            post: searchedPosts[i],
+            username: oneUser.username
+        }
+
+        post_array.push(post_info);
+    }
+    res.render('searchresult',{loggeduser, post_array, searchQuery});
 });
-/*
-    const uname = req.params.username;
-    const loggeduser = await User.findOne({username: uname});
-
-    const allPosts = await Post.find().sort({popVal:-1});
-    console.log(allPosts);
-
-    res.render('mainpage',{allPosts, loggeduser});
-    */
-    /*
-    function updateVoteCount(postId){
-        const changeVotePost = await Post.findOne({postId: postId});
-        var newVote = changeVotePost.votes;
-    }
-
-    function changeVote(val, postId, userId){
-    
-        const specificPost = await Post.find({postId: postId});
-
-        if (val && !specificPost.upvotes.includes(userId)){ // if upvoted
-
-            const onePost = await Post.update({postId : postId}, {$push: {upvotes: {userId}}});
-            
-            if(specificPost.downvotes.includes(userId))
-            {
-                onePost = await Post.update({postId : postId}, {$pull: {downvotes: {userId}}});
-            }
-        }
-        else{ // if downvoted
-
-            const onePost = await Post.update({postId : postId}, {$push: {downvotes: {userId}}}); 
-            
-            if(specificPost.upvotes.includes(userId))
-            {
-                onePost = await Post.update({postId : postId}, {$pull: {upvotes: {userId}}});
-            }
-        }
-    }
-    
-*/
-
 
 
 // User Profile Routes
@@ -482,58 +564,170 @@ app.get('/usersettings/:username', async(req, res) => {
     res.render('usersettings',{loggeduser});
 });
 
-//helper function for post.hbs
-hbs.registerHelper('getUserProfPic', async function(userId) {
-    const comment_user = await User.findOne({userId: userId});
-    if (comment_user) {
-        return comment_user.profilePicture;
-    } else {
-        return null;
-    }
-});
 
-//helper function for post.hbs
-hbs.registerHelper('getUsername', async function(userId) {
-    const comment_user = await User.findOne({userId: userId});
-    if (comment_user) {
-        return comment_user.username;
-    } else {
-        return null;
-    }
-});
-
-app.get('/post/:title', async(req, res) => {
+app.get('/post/:username-:title', async(req, res) => {
     const post_title = req.params.title;
+    console.log('SPECIFIC POST' + post_title);
+
     const specific_post = await Post.findOne({title: post_title});
-    const loggeduser = await User.findOne({ username: 'Adri20'}); //change to isLogged: '1'
+    console.log('SPECIFIC POST' + specific_post);
+
+    if (!post_title || !specific_post) {
+        return res.end();
+    } 
+
+    const username = req.params.username;
+    const loggeduser = await User.findOne({ username: username}); //change to isLogged: '1'
     const allComments = await Comment.find({});
-    
+
     var postComments = [];
+    var highestId = 3000;
     if (specific_post) {
         for (var i = 0; i < allComments.length; i++) {
             if (specific_post.comments.includes(allComments[i].commentId)) {
                 postComments.push(allComments[i]);
             }
+            if (allComments[i].commentId > highestId) {
+                highestId = allComments[i].commentId;
+            }
         }
     }
-    const post_user = await User.findOne({userId: specific_post.postUser});
+
+    var newPostComments = [];
+    for (var i = 0; i < postComments.length; i++) {
+        var comVotes = postComments[i].upvotes.length - postComments[i].downvotes.length;
+        const comment_user = await User.findOne({ userId: postComments[i].userId});
+        if (comment_user) {
+            var newComment = {
+                picture: comment_user.profilePicture,
+                username: comment_user.username,
+                date: postComments[i].date,
+                content: postComments[i].theComment,
+                votes: comVotes,
+                commentId: postComments[i].commentId
+            };
+            newPostComments.push(newComment);
+        }
+    }
+
+    var nextCommentId = highestId + 1;
+
+    const post_user = await User.findOne({ userId: specific_post.postUser});
 
     var post_info;
     if (specific_post) {
         const votes = specific_post.upvotes.length - specific_post.downvotes.length;
         post_info = {
+            postId: specific_post.postId,
             title: specific_post.title,
             username: post_user.username,
             description: specific_post.description,
             image: specific_post.image,
             getVotes: votes,
             allTags: specific_post.tag,
-            allComments: postComments
+            allComments: newPostComments
         }
     } else {
         post_info = null;
     }
-    res.render('post', { loggeduser, post_info})
+    
+    res.render('post', { loggeduser, post_info, nextCommentId})
+});
+
+app.get('/edit/:username-:title', async(req, res) => {
+    const username = req.params.username;
+    const loggeduser = await User.findOne({ username: username});
+    const post_title = req.params.title;
+    const specific_post = await Post.findOne({title: post_title});
+
+    var title;
+    var description;
+    var tag;
+    var postId;
+    if (specific_post) {
+        title = specific_post.title;
+        description = specific_post.description;
+        tagFPS = specific_post.tag.includes('FPS');
+        tagMOBA = specific_post.tag.includes('MOBA');
+        tagSinglePlayer = specific_post.tag.includes('Single Player');
+        tagMultiplayer = specific_post.tag.includes('Multiplayer');
+        tagEmpty = false;
+        postId = specific_post.postId;
+    } else {
+        title = "";
+        description = "";
+        tag = [];
+        tagEmpty = true;
+        tagFPS = false;
+        tagMOBA = false;
+        tagSinglePlayer = false;
+        tagMultiplayer = false;
+        postId = 0;
+    }
+
+    res.render('edit', { loggeduser, title, description, tagEmpty, tagFPS, tagMOBA, tagSinglePlayer, tagMultiplayer, postId})
+});
+
+app.get('/create-post/:username', async(req, res) => { 
+    const username = req.params.username;
+    const loggeduser = await User.findOne({ username: username});
+    var allPost = await Post.find({});
+    var post_num = 2000;
+    for (var i = 0; i < allPost.length; i++) {
+        if (allPost[i].postId > post_num) {
+            post_num = allPost[i].postId;
+        }
+    }
+    var nextPostId = post_num + 1;
+
+    title = "";
+    description = "";
+    tagEmpty = true;
+    tagFPS = false; 
+    tagMOBA = false; 
+    tagSinglePlayer = false;
+    tagMultiplayer = false;
+    postId = nextPostId;
+
+    res.render('edit', { loggeduser, title, description, tagEmpty, tagFPS, tagMOBA, tagSinglePlayer, tagMultiplayer, postId})
+});
+
+app.delete('/comments/:commentId', async (req, res) => {
+    const commentId = req.params.commentId;
+    try {
+        await Comment.deleteOne({ commentId }); //delete that comment from Comment database
+        await Post.updateMany({comments: commentId}, {$pull: {comments: commentId}}); //update Post database and remove commentId
+ 
+        res.status(200).json({ message: 'Comment deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting comment:', error);
+        res.status(500).json({ error: 'An internal server error occurred' });
+    }
+});
+
+app.post('/comments/:postId', async (req, res) => {
+    const postId = req.params.postId;
+    try {
+        var { commentId, userId, theComment, upvotes, downvotes, date, popVal } = req.body;
+
+        var newComment = new Comment({ 
+            commentId: commentId,
+            userId: userId,
+            theComment: theComment,
+            upvotes: upvotes,
+            downvotes: downvotes,
+            date: date,
+            popVal: popVal
+        });
+
+        await newComment.save();
+                                                                    //just in case updated Post is needed
+        await Post.findOneAndUpdate({postId: postId}, {$push: {comments: commentId}}, {new: true});
+        res.status(200).json({ message: 'Comment added successfully' });
+    } catch (error) {
+        console.error('Error deleting comment:', error);
+        res.status(500).json({ error: 'An internal server error occurred' });
+    }
 });
 
 

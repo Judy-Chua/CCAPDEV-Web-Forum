@@ -159,95 +159,95 @@ $(document).ready(function() {
     $(".comment-submit").click(function(){
         var commentTextArea = $(this).siblings('.comment-area');
         var comment = commentTextArea.val();
-        var currUser = "{{loggeduser.username}}"; //access handlebar
         var commentDate = formatDate(new Date());
 
-        console.log("Comment by " + currUser + "(" + commentDate + "): " + comment);
-        /*
-         
-        User.findOne({username: currUser}, (error, user) => {
-            if (error) {
-                console.log("Error finding this user: " + user);
-                return;
-            }
-            if (user) {
-                var loggedUser = user.userId;
+        var commentId = $("#commentId").val();
+        var userId = $("#userId").val();
+        var postId = $("#postId").val();
 
-                var latestId = 0;
-                var newCommentId = 0;
-                Comment.find({}, 'commentId', { sort: {'commentId':-1}}, function(error, comArr) {
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        if(comArr.length > 0) {
-                            latestId = comArr[0].commentId; //it is in descending order
-                        } else {
-                            latestId = 29999;
-                        }
-                        newCommentId = latestId + 1;
+        console.log(comment);
 
-                        const new_comment = new Comment({
-                            commentId: newCommentId,
-                            userId: loggedUser,
-                            theComment: comment,
-                            upvotes: [],
-                            downvotes: [],
-                            date: commentDate,
-                            popVal: 0
-                        });
-
-                        new_comment.save(function(error_post, result) {
-                            if (error_post) {
-                                console.log(error_post);
-                            } else {
-                                console.log(result);
-                            }
-                        });
-                    }
-
+        //add comment to database
+        fetch('/comments/'+postId, {method: 'POST', headers: {'Content-Type': 'application/json'},
+                                body: JSON.stringify({
+                                    commentId: commentId,
+                                    userId: userId,
+                                    theComment: comment,
+                                    upvotes: [],
+                                    downvotes: [],
+                                    date: commentDate,
+                                    popVal: 0
+                                })  })
+        .then(function(response) {
+            if (response.ok) {
+                console.log('Comment deleted successfully');
             } else {
-                console.log("User not found");
+                throw new Error('Request failed');
             }
-        */
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 
+        commentTextArea.val("");
         setTextResponse("Comment posted!");
     });
 
     $(".comment-delete").click(function() {
-        //for now: go back to mainpage
-        location.href = "/mainpage/Adri20";
-        //delete the comment data from database
+        var commentId = $(this).attr("name");
+        fetch('/comment/'+commentId, { method: 'DELETE'})
+        .then(function(response) {
+            if (response.ok) {
+                console.log('Comment deleted successfully');
+            } else {
+                throw new Error('Request failed');
+            }
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
     });
 
     $(".comment-edit").click(function() {
-        var content = $(".comment-comment");
-        var edit = $(".comment-edit-area");
+        var currComment = $(this).closest('.new-comment'); //to differentiate each since they are in a class
+        var content = currComment.find(".comment-comment");
+        var edit = currComment.find(".comment-edit-area");
         if (!edit.length) {
-            edit = $("<textarea></textarea>"); //create textarea
+            edit = $("<textarea></textarea>").addClass("comment-edit-area"); //create textarea
             edit.val(content.text());
             content.after(edit);
         }
 
-        content.hide();
-        edit.show();
+        content.hide(); //hide content
+        edit.show(); //to show editable text area
 
-        $(".comment-submit-edit").show();
-        $(".comment-edit").hide();
+        currComment.find(".comment-submit-edit").show(); //show submit icon
+        $(this).hide(); //hide edit icon
     });
 
     $(".comment-submit-edit").click(function() {
-        $(".comment-comment").html($(".comment-edit-area").val());
-        $(".comment-comment").show();
-        $(".comment-edit-area").edit();
+        var currComment = $(this).closest('.new-comment');
 
+        var content = currComment.find(".comment-comment");
+        var edit = currComment.find(".comment-edit-area");
+        var editDate = currComment.find(".comment-edit-date");
         var date = new Date();
 
-        $(".comment-edit-date").text("last edited last " + formatDate(date));
-        $(".comment-submit-edit").hide();
-        $(".comment-edit").show();
-        $(".comment-edit-date").show();
+        editDate.text("edited last " + formatDate(date));
+        content.text(edit.val());
+
+        currComment.find(".comment-edit").show();
+        editDate.show();
+        content.show();
+        edit.hide();
+        $(this).hide();
 
         setTextResponse("Comment edited!");
+    });
+
+    $(".post-delete").click(function() {
+        //add functionalities for deleting this post from database
+        location.href = "/mainpage/Adri20"; //revert back to mainpage
     });
     
     function setTextResponse(response) { //animate the fade of action done
