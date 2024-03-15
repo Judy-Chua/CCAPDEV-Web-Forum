@@ -73,10 +73,11 @@
 	background-size: 100%;	
 }
 
-.search-bar input {
+.search-bar{
 	width: 500px;
 	height: 35px;
 
+	padding-left:6px;
 	border-radius: 3px 0 0 3px;
 	border: 0;	
 }

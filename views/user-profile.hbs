@@ -25,10 +25,6 @@
 			</ul>
             
             <ul class = "menu-actions">
-                <ul class = "menu-actions">
-                    <li><a href = "/signup-page/{{loggeduser.username}}"><button type="button" class="register-button">Register</button></a></li>
-                    <li><a href = "/login-page/{{loggeduser.username}}"><button class="login-button">Login</button></a></li>
-                </ul>
                 <li> <span class = "user-name">{{loggeduser.username}}</span></li>
                 <li><a href = "/user-profile/{{loggeduser.username}}-posts"><img class = "user-icon" src="{{loggeduser.profilePicture}}"/></a></li>
             </ul>
@@ -52,15 +48,14 @@
 						</div>
 						<div class="main-postpage-image">
                             <!-- TODO: href link to be edited after finished routing to /post/ in index.js -->
-							<a class="link-post" href="/post/{{loggeduser.username}}/{{this.title}}"> <img class="main-indpost-image" src="{{this.image}}"></a>
+							<a class="link-post" href="/post/{{loggeduser.username}}-{{this.title}}"> <img class="main-indpost-image" src="{{this.image}}"></a>
 						</div>
 						<div class="main-postpage-description">
 							<p class="main-indpost-title">
                                 <!-- TODO: href link to be edited after finished routing to /post/ in index.js -->
-								<a class="link-post" href="/post/{{loggeduser.username}}/{{this.title}}"> {{this.title}} </a>
+								<a class="link-post" href="/post/{{../loggeduser.username}}-{{this.title}}"> {{this.title}} </a>
 							</p>
                             <!-- TODO: href link to be edited after finished routing to /post/ in index.js -->
-							<p class="main-indpost-postedby"> Posted by <a class="link-post" href="/post/{{loggeduser.username}}/{{this.title}}"> BLANK </a> </p>
 							<p class="main-indpost-description"> 
 								{{this.description}}
 							</p>
