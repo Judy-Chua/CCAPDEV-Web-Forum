@@ -11,28 +11,28 @@
 	<div class = "main-container">
 		<div class = "menu-bar">
             <ul class = "menu-actions">
-                <a href = "/mainpage/{{user.username}}"><li class = "forum-logo"></li></a>
+                <a href = "/mainpage/{{loggeduser.username}}"><li class = "forum-logo"></li></a>
             </ul>
 
             <ul class = "menu-actions">
-                <li><a href="/mainpage/{{user.username}}" class="home-button">Home</a></li>
+                <li><a href="/mainpage/{{loggeduser.username}}" class="home-button">Home</a></li>
                 <li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
                 <li class = "search-button"><a href = "searchresult.html"><button type="button" id="query-button" name="qb"></button></a></li>
             </ul>
             <ul class = "menu-actions">
                 <ul class = "menu-actions">
-                    <li><a href = "/signup-page/{{user.username}}"><button type="button" class="register-button">Register</button></a></li>
-                    <li><a href = "/login-page/{{user.username}}"><button class="login-button">Login</button></a></li>
+                    <li><a href = "/signup-page/{{loggeduser.username}}"><button type="button" class="register-button">Register</button></a></li>
+                    <li><a href = "/login-page/{{loggeduser.username}}"><button class="login-button">Login</button></a></li>
                 </ul>
-                <li> <span class = "user-name">{{user.username}}</span></li>
-                <li><a href = "/user-profile/{{user.username}}-posts"><img class = "user-icon" src="{{user.profilePicture}}"/></a></li>
+                <li> <span class = "user-name">{{loggeduser.username}}</span></li>
+                <li><a href = "/user-profile/{{loggeduser.username}}-posts"><img class = "user-icon" src="{{loggeduser.profilePicture}}"/></a></li>
             </ul>
         </div>
 
         <div class = "signup-container">
             <div class = "signup-header">
                 <div class = "redirect-sign-up">
-                    <a href = "/login-page/{{user.username}}" class = "login-here">Already registered? Log in here.</a>
+                    <a href = "/login-page/{{loggeduser.username}}" class = "login-here">Already registered? Log in here.</a>
                 </div>
                 <div class = "welcome-msg">
                     <span class = "welcome1">Welcome to ArchersGuild!</span><br>
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <div class = "signup-footer">   
-                <a href = "/mainpage/{{user.username}}/posts"><button type="button" class="signup-main-button" id = "confirm-signup-btn">Sign Up</button></a>
+                <a href = "/mainpage/{{loggeduser.username}}/posts"><button type="button" class="signup-main-button" id = "confirm-signup-btn">Sign Up</button></a>
             </div>  
         </div>
 	</div>
