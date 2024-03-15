@@ -23,11 +23,8 @@
                     </li>
                     <li class = "search-button"><button type="submit" id="query-button" name="qb"></button></form></li>
 			    </ul>
+                
 				<ul class = "menu-actions">
-					<ul class = "menu-actions">
-						<li><a href = "/signup-page/{{loggeduser.username}}"><button type="button" class="register-button">Register</button></a></li>
-						<li><a href = "/login-page/{{loggeduser.username}}"><button class="login-button">Login</button></a></li>
-					</ul>
 					<li> <span class = "user-name">{{loggeduser.username}}</span></li>
                 	<li><a href = "/user-profile/{{loggeduser.username}}-posts"><img class = "user-icon" src="{{loggeduser.profilePicture}}"/></a></li>
 				</ul>
@@ -62,8 +59,10 @@
                         <span id="image-message"></span>
                     </ul>
                     <ul class= "edit-actions">
-                        <li><button type="button" class = "edit-cancel">Cancel</button></li>
-                        <li><button type="button" class = "publish-post" name="{{postId}}">Post</button></li>
+                        <li><button type="button" class = "edit-cancel">Cancel</button>
+                            <input type="hidden" id="cancel-username" value="{{loggeduser.username}}"> </li>
+                        <li><button type="button" class = "publish-post" name="{{postId}}">Post</button>
+                            <input type="hidden" id="publish-username" value="{{loggeduser.username}}"> </li>
                     </ul>
                 </div>
             </div>

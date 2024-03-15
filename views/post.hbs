@@ -24,10 +24,6 @@
                     <li class = "search-button"><button type="submit" id="query-button" name="qb"></button></form></li>
 			    </ul>
 				<ul class = "menu-actions">
-					<ul class = "menu-actions">
-						<li><a href = "/signup-page/{{loggeduser.username}}"><button type="button" class="register-button">Register</button></a></li>
-						<li><a href = "/login-page/{{loggeduser.username}}"><button class="login-button">Login</button></a></li>
-					</ul>
 					<li> <span class = "user-name">{{loggeduser.username}}</span></li>
                 	<li><a href = "/user-profile/{{loggeduser.username}}-posts"><img class = "user-icon" src="{{loggeduser.profilePicture}}"/></a></li>
 				</ul>
@@ -62,19 +58,19 @@
                         <li><div class = "comment-title">Comments:</div></li>
                     </ul>
                     <ul class = "comment-title-container-ul">
-                        <li><a href="/edit/{{post_info.title}}"><div class = "post-edit"></div></a></li>
+                        <li><a href="/edit/{{loggeduser.username}}-{{post_info.title}}"><div class = "post-edit"></div></a></li>
                         <li><div class = "post-delete"></div></li>
                     </ul>
                 </div>
                 <div class = "comment-actions">
                     <ul class = "comment-user">
-                        <li><img class="user-picture" src="{{user.profilePicture}}" /></li>
+                        <li><img class="user-picture" src="{{loggeduser.profilePicture}}" /></li>
                     </ul>
                     <ul class = "comment-user">
                         <li><textarea class="comment-area" placeholder="What are your thoughts?"></textarea>
                             <div class="comment-submit">
                                 <input type="hidden" id="commentId" value="{{nextCommentId}}">
-                                <input type="hidden" id="userId" value="{{user.userId}}">
+                                <input type="hidden" id="userId" value="{{loggeduser.userId}}">
                                 <input type="hidden" id="postId" value="{{post_info.postId}}">
                             </div></li>
                     </ul>
