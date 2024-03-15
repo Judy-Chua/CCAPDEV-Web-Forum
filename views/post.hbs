@@ -68,11 +68,15 @@
                 </div>
                 <div class = "comment-actions">
                     <ul class = "comment-user">
-                        <li><img class="user-picture" src="{{loggeduser.profilePicture}}" /></li>
+                        <li><img class="user-picture" src="{{user.profilePicture}}" /></li>
                     </ul>
                     <ul class = "comment-user">
                         <li><textarea class="comment-area" placeholder="What are your thoughts?"></textarea>
-                            <div class="comment-submit"></div></li>
+                            <div class="comment-submit">
+                                <input type="hidden" id="commentId" value="{{nextCommentId}}">
+                                <input type="hidden" id="userId" value="{{user.userId}}">
+                                <input type="hidden" id="postId" value="{{post_info.postId}}">
+                            </div></li>
                     </ul>
                     <div class = "comment-options-container">
                     <ul class = "comment-user">
@@ -89,20 +93,20 @@
                     {{#if post_info.allComments.length}}
                         {{#each post_info.allComments}}
                             <div class="new-comment">
-                                <div class = 'picture-person'><img class="picture-person" src="{{getUserProfPic this.userId}}" /></div>
+                                <div class = 'picture-person'><img class="picture-person" src="{{picture}}" /></div>
                                 <div class = 'comment-person'> 
                                     <div class = 'username-comment'>
-                                        <div class = 'username-person'>{{getUsername this.userId}}</div>
+                                        <div class = 'username-person'>{{username}}</div>
                                         <div class = 'username-dash'>|</div>
-                                        <div class = 'username-date'>{{this.date}}</div>
+                                        <div class = 'username-date'>{{date}}</div>
                                     </div>
                                     <div class = 'content-comment'>
-                                        <div class = 'comment-comment'>{{this.theComment}}</div>
+                                        <div class = 'comment-comment'>{{content}}</div>
                                     </div>
                                     <div class = 'actions-comment-container'>
                                     <ul class = 'actions-comment'>
                                         <li><div class = 'comment-upvote'></div></li>
-                                        <li><div class = 'comment-votenum'>{{this.getCommentVotes}}</div></li>
+                                        <li><div class = 'comment-votenum'>{{votes}}</div></li>
                                         <li><div class = 'comment-downvote'></div></li>
                                         <li><div class = 'comment-reply'>Reply</div></li>
                                     </ul>
@@ -110,7 +114,7 @@
                                         <li><div class = 'comment-edit-date'></div>
                                         <li><div class = 'comment-submit-edit'></div>
                                         <li><div class = 'comment-edit'></div></li>
-                                        <li><div class = 'comment-delete'></div></li>
+                                        <li><div class = 'comment-delete' name="{{commentId}}"></div></li>
                                         <li><div class = 'comment-report'></div></li>
                                     </ul>
                                     </div>
