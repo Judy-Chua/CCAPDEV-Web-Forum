@@ -15,12 +15,15 @@
                 <a href = "/mainpage/{{loggeduser.username}}"><li class = "forum-logo"></li></a>
             </ul>
 
-            <ul class = "menu-actions">
-                <li><a href="/mainpage/{{loggeduser.username}}" class="home-button">Home</a></li>
-                <li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
-                <!-- TODO: href link to be edited after finished routing to searchresult in index.js -->
-                <li class = "search-button"><a href = "/searchresult/{{loggeduser.username}}"><button type="button" id="query-button" name="qb"></button></a></li>
-            </ul>
+            <ul class="menu-actions">
+					<li><a href="/mainpage/{{loggeduser.username}}" class="home-button">Home</a></li>
+					<li class = "search-bar">
+						<form action="/searchresults/{{loggeduser.username}}" method="GET">
+							<input type="text" class="search-bar" id="searchquery" name="searchquery" placeholder="Search...">
+					</li>
+					<li class = "search-button"><button type="submit" id="query-button" name="qb"></button></form></li>
+			</ul>
+            
             <ul class = "menu-actions">
                 <ul class = "menu-actions">
                     <li><a href = "/signup-page/{{loggeduser.username}}"><button type="button" class="register-button">Register</button></a></li>
