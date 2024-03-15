@@ -482,32 +482,6 @@ app.get('/usersettings/:username', async(req, res) => {
     res.render('usersettings',{loggeduser});
 });
 
-/*
-//for post image uploading in edit.hbs (not yet tested)
-app.post('/uploadPostImage', upload.single('file-image'), (req, res) => {
-    if (!req.file) {
-        return res.status(400).send('No file uploaded.'); //404 means file not found
-    }
-
-    var filePath = req.file.path; //filepath of the image
-    var transferPath = './public/images/' + req.file.originalname; //filepath for the images folder
-
-    //read the file first to upload it to images (local) folder
-    fs.readFile(filePath, (errorFile, data) => {
-        if (errorFile) {
-            return res.status(500).send("Error reading file: " + errorFile); //500 means internal error
-        }
-
-        fs.writeFile(transferPath, data, (error_writing) => {
-            if (error_writing) {
-                return res.status(500).send("Error writing file: " + error_writing);
-            } else {
-                return res.status(200).send("File uploaded successfully");
-            }
-        });
-    });
-});
-
 //helper function for post.hbs
 hbs.registerHelper('getUserProfPic', async function(userId) {
     const comment_user = await User.findOne({userId: userId});
@@ -561,7 +535,6 @@ app.get('/post/:title', async(req, res) => {
     }
     res.render('post', { loggeduser, post_info})
 });
-*/
 
 
 var server = app.listen(3000, function () {
