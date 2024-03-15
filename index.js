@@ -634,9 +634,9 @@ app.get('/post/:username-:title', async(req, res) => {
     res.render('post', { loggeduser, post_info, nextCommentId})
 });
 
-app.get('/edit/:title', async(req, res) => {
-    req.connection.setTimeout(60*10*1000);
-    const user = await User.findOne({ username: 'Adri20'}); //change to isLogged: '1'
+app.get('/edit/:username-:title', async(req, res) => {
+    const username = req.params.username;
+    const loggeduser = await User.findOne({ username: username});
     const post_title = req.params.title;
     const specific_post = await Post.findOne({title: post_title});
 
@@ -665,11 +665,12 @@ app.get('/edit/:title', async(req, res) => {
         postId = 0;
     }
 
-    res.render('edit', { user, title, description, tagEmpty, tagFPS, tagMOBA, tagSinglePlayer, tagMultiplayer, postId})
+    res.render('edit', { loggeduser, title, description, tagEmpty, tagFPS, tagMOBA, tagSinglePlayer, tagMultiplayer, postId})
 });
 
-app.get('/create-post', async(req, res) => { 
-    const user = await User.findOne({ username: 'Adri20'}); //change to isLogged: '1'
+app.get('/create-post/:username', async(req, res) => { 
+    const username = req.params.username;
+    const loggeduser = await User.findOne({ username: username});
     var allPost = await Post.find({});
     var post_num = 2000;
     for (var i = 0; i < allPost.length; i++) {
@@ -688,7 +689,7 @@ app.get('/create-post', async(req, res) => {
     tagMultiplayer = false;
     postId = nextPostId;
 
-    res.render('edit', { user, title, description, tagEmpty, tagFPS, tagMOBA, tagSinglePlayer, tagMultiplayer, postId})
+    res.render('edit', { loggeduser, title, description, tagEmpty, tagFPS, tagMOBA, tagSinglePlayer, tagMultiplayer, postId})
 });
 
 app.delete('/comments/:commentId', async (req, res) => {
