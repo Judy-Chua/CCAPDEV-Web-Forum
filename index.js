@@ -482,86 +482,143 @@ app.get('/usersettings/:username', async(req, res) => {
     res.render('usersettings',{loggeduser});
 });
 
-/*
-//for post image uploading in edit.hbs (not yet tested)
-app.post('/uploadPostImage', upload.single('file-image'), (req, res) => {
-    if (!req.file) {
-        return res.status(400).send('No file uploaded.'); //404 means file not found
-    }
-
-    var filePath = req.file.path; //filepath of the image
-    var transferPath = './public/images/' + req.file.originalname; //filepath for the images folder
-
-    //read the file first to upload it to images (local) folder
-    fs.readFile(filePath, (errorFile, data) => {
-        if (errorFile) {
-            return res.status(500).send("Error reading file: " + errorFile); //500 means internal error
-        }
-
-        fs.writeFile(transferPath, data, (error_writing) => {
-            if (error_writing) {
-                return res.status(500).send("Error writing file: " + error_writing);
-            } else {
-                return res.status(200).send("File uploaded successfully");
-            }
-        });
-    });
-});
-
-//helper function for post.hbs
-hbs.registerHelper('getUserProfPic', async function(userId) {
-    const comment_user = await User.findOne({userId: userId});
-    if (comment_user) {
-        return comment_user.profilePicture;
-    } else {
-        return null;
-    }
-});
-
-//helper function for post.hbs
-hbs.registerHelper('getUsername', async function(userId) {
-    const comment_user = await User.findOne({userId: userId});
-    if (comment_user) {
-        return comment_user.username;
-    } else {
-        return null;
-    }
-});
 
 app.get('/post/:title', async(req, res) => {
     const post_title = req.params.title;
     const specific_post = await Post.findOne({title: post_title});
-    const loggeduser = await User.findOne({ username: 'Adri20'}); //change to isLogged: '1'
+
+    if (!post_title || !specific_post) {
+        return res.end();
+    } 
+
+    const user = await User.findOne({ username: 'Adri20'}); //change to isLogged: '1'
     const allComments = await Comment.find({});
-    
+
     var postComments = [];
+    var highestId = 3000;
     if (specific_post) {
         for (var i = 0; i < allComments.length; i++) {
             if (specific_post.comments.includes(allComments[i].commentId)) {
                 postComments.push(allComments[i]);
             }
+            if (allComments[i].commentId > highestId) {
+                highestId = allComments[i].commentId;
+            }
         }
     }
-    const post_user = await User.findOne({userId: specific_post.postUser});
+
+    var newPostComments = [];
+    for (var i = 0; i < postComments.length; i++) {
+        var comVotes = postComments[i].upvotes.length - postComments[i].downvotes.length;
+        const comment_user = await User.findOne({ userId: postComments[i].userId});
+        if (comment_user) {
+            var newComment = {
+                picture: comment_user.profilePicture,
+                username: comment_user.username,
+                date: postComments[i].date,
+                content: postComments[i].theComment,
+                votes: comVotes,
+                commentId: postComments[i].commentId
+            };
+            newPostComments.push(newComment);
+        }
+    }
+
+    var nextCommentId = highestId + 1;
+
+    const post_user = await User.findOne({ userId: specific_post.postUser});
 
     var post_info;
     if (specific_post) {
         const votes = specific_post.upvotes.length - specific_post.downvotes.length;
         post_info = {
+            postId: specific_post.postId,
             title: specific_post.title,
             username: post_user.username,
             description: specific_post.description,
             image: specific_post.image,
             getVotes: votes,
             allTags: specific_post.tag,
-            allComments: postComments
+            allComments: newPostComments
         }
     } else {
         post_info = null;
     }
-    res.render('post', { loggeduser, post_info})
+    
+    res.render('post', { user, post_info, nextCommentId})
 });
-*/
+
+app.get('/edit/:title', async(req, res) => {
+    req.connection.setTimeout(60*10*1000);
+    const user = await User.findOne({ username: 'Adri20'}); //change to isLogged: '1'
+    const post_title = req.params.title;
+    const specific_post = await Post.findOne({title: post_title});
+
+    var title;
+    var description;
+    var tag;
+    var postId;
+    if (specific_post) {
+        title = specific_post.title;
+        description = specific_post.description;
+        tagFPS = specific_post.tag.includes('FPS');
+        tagMOBA = specific_post.tag.includes('MOBA');
+        tagSinglePlayer = specific_post.tag.includes('Single Player');
+        tagMultiplayer = specific_post.tag.includes('Multiplayer');
+        tagEmpty = false;
+        postId = specific_post.postId;
+    } else {
+        title = "";
+        description = "";
+        tag = [];
+        tagEmpty = true;
+        tagFPS = false;
+        tagMOBA = false;
+        tagSinglePlayer = false;
+        tagMultiplayer = false;
+        postId = 0;
+    }
+
+    res.render('edit', { user, title, description, tagEmpty, tagFPS, tagMOBA, tagSinglePlayer, tagMultiplayer, postId})
+});
+
+app.delete('/comments/:commentId', async (req, res) => {
+    const commentId = req.params.commentId;
+    try {
+        await Comment.deleteOne({ commentId }); //delete that comment from Comment database
+        await Post.updateMany({comments: commentId}, {$pull: {comments: commentId}}); //update Post database and remove commentId
+ 
+        res.status(200).json({ message: 'Comment deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting comment:', error);
+        res.status(500).json({ error: 'An internal server error occurred' });
+    }
+});
+
+app.post('/comments/:postId', async (req, res) => {
+    const postId = req.params.postId;
+    try {
+        var { commentId, userId, theComment, upvotes, downvotes, date, popVal } = req.body;
+
+        var newComment = new Comment({ 
+            commentId: commentId,
+            userId: userId,
+            theComment: theComment,
+            upvotes: upvotes,
+            downvotes: downvotes,
+            date: date,
+            popVal: popVal
+        });
+
+        await newComment.save();
+                                                                    //just in case updated Post is needed
+        await Post.findOneAndUpdate({postId: postId}, {$push: {comments: commentId}}, {new: true});
+        res.status(200).json({ message: 'Comment added successfully' });
+    } catch (error) {
+        console.error('Error deleting comment:', error);
+        res.status(500).json({ error: 'An internal server error occurred' });
+    }
+});
 
 
 var server = app.listen(3000, function () {
