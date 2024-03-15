@@ -46,12 +46,11 @@
                         <div class = "downvote"></div>
                     </div>
                     
-                    <div class = "tags">
-                        {{#each post_info.allTags}}
-                        <button type="button">{{this.tag}}</button>
-                         {{/each}}
-                    </div>
-                   
+                    {{#each post_info.allTags}}
+                        <div class = "tags">
+                            <button type="button">{{this}}</button>
+                        </div>
+                    {{/each}}
                 </div>
             </div>
             <div class = "comment-container">
@@ -60,13 +59,13 @@
                         <li><div class = "comment-title">Comments:</div></li>
                     </ul>
                     <ul class = "comment-title-container-ul">
-                        <li><div class = "post-edit"></div></li>
+                        <li><a href="/edit/{{post_info.title}}"><div class = "post-edit"></div></a></li>
                         <li><div class = "post-delete"></div></li>
                     </ul>
                 </div>
                 <div class = "comment-actions">
                     <ul class = "comment-user">
-                        <li><img class="user-picture" src="{{user.profilePicture}}" /></li>
+                        <li><img class="user-picture" src="{{loggeduser.profilePicture}}" /></li>
                     </ul>
                     <ul class = "comment-user">
                         <li><textarea class="comment-area" placeholder="What are your thoughts?"></textarea>
