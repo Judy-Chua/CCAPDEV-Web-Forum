@@ -322,6 +322,50 @@ app.get('/searchresults/:username', async(req, res) => {
     console.log('POSTS', searchedPosts)
     res.render('searchresult',{loggeduser, searchedPosts, searchQuery});
 });
+
+app.get('/tagMoba/:username', async(req, res) => {
+
+    const uname = req.params.username;
+    const loggeduser = await User.findOne({username: uname});
+    const searchQuery = 'MOBA'
+    const searchedPosts = await Post.find(
+       {tag: searchQuery},
+    );
+    res.render('searchresult',{loggeduser, searchedPosts, searchQuery});
+});
+
+app.get('/tagFPS/:username', async(req, res) => {
+
+    const uname = req.params.username;
+    const loggeduser = await User.findOne({username: uname});
+    const searchQuery = 'FPS'
+    const searchedPosts = await Post.find(
+       {tag: searchQuery},
+    );
+    res.render('searchresult',{loggeduser, searchedPosts, searchQuery});
+});
+
+app.get('/tagSinglePlayer/:username', async(req, res) => {
+
+    const uname = req.params.username;
+    const loggeduser = await User.findOne({username: uname});
+    const searchQuery = 'Singleplayer'
+    const searchedPosts = await Post.find(
+       {tag: searchQuery},
+    );
+    res.render('searchresult',{loggeduser, searchedPosts, searchQuery});
+});
+
+app.get('/tagMultiPlayer/:username', async(req, res) => {
+
+    const uname = req.params.username;
+    const loggeduser = await User.findOne({username: uname});
+    const searchQuery = 'Multiplayer'
+    const searchedPosts = await Post.find(
+       {tag: searchQuery},
+    );
+    res.render('searchresult',{loggeduser, searchedPosts, searchQuery});
+});
 /*
     const uname = req.params.username;
     const loggeduser = await User.findOne({username: uname});
