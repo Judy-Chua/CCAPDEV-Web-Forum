@@ -582,6 +582,29 @@ app.get('/edit/:title', async(req, res) => {
     res.render('edit', { user, title, description, tagEmpty, tagFPS, tagMOBA, tagSinglePlayer, tagMultiplayer, postId})
 });
 
+app.get('/create-post', async(req, res) => { 
+    const user = await User.findOne({ username: 'Adri20'}); //change to isLogged: '1'
+    var allPost = await Post.find({});
+    var post_num = 2000;
+    for (var i = 0; i < allPost.length; i++) {
+        if (allPost[i].postId > post_num) {
+            post_num = allPost[i].postId;
+        }
+    }
+    var nextPostId = post_num + 1;
+
+    title = "";
+    description = "";
+    tagEmpty = true;
+    tagFPS = false; 
+    tagMOBA = false; 
+    tagSinglePlayer = false;
+    tagMultiplayer = false;
+    postId = nextPostId;
+
+    res.render('edit', { user, title, description, tagEmpty, tagFPS, tagMOBA, tagSinglePlayer, tagMultiplayer, postId})
+});
+
 app.delete('/comments/:commentId', async (req, res) => {
     const commentId = req.params.commentId;
     try {
