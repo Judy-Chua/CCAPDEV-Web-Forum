@@ -84,8 +84,8 @@ User.create({
 
 Post.create({
     postId: 20000,
-    postUser: 10002,
-    title: 'Has anyone notice this dog!',
+    postUser: 10001,
+    title: 'Has anyone noticed this dog!',
     description: 'I was playing skyrim yesterday and saw this dog. I dont know his name but I call them Booster.',
     comments:[30000],
     image: '/images/skyrimdog.png',
@@ -118,7 +118,7 @@ Post.create({
 
 Post.create({
     postId: 20002,
-    postUser: 10001,
+    postUser: 10002,
     title: 'Teamfight Tactics New Patch Notes!',
     description: 'Teamfight Tactics Patch Notes! Will there be a new rotation this time around? ',
     comments:[],
