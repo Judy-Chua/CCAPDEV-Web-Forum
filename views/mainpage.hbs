@@ -3,7 +3,7 @@
         <link rel="stylesheet" type = "text/css" href="../css/mainpage.css">
 		<link rel = "stylesheet" type = "text/css" href = "../css/index.css">
 		<script src = "../js/mainpage.js"></script>
-		<script src = "../user-disp.js"></script>
+		<script src = "../loggeduser-disp.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title> Home</title>
     </head>
@@ -12,17 +12,22 @@
         <div class = "main-container">
 			<div class = "menu-bar">
 				<ul class = "menu-actions">
-					<a href = "/mainpage/{{user.username}}"><li class = "forum-logo"></li></a>
+					<a href = "/mainpage/{{loggeduser.username}}"><li class = "forum-logo"></li></a>
 				</ul>
-	
-				<ul class = "menu-actions">
-					<li><a href="/mainpage/{{user.username}}" class="home-button">Home</a></li>
-					<li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
-					<li class = "search-button"><button type="button" id="query-button" name="qb" onclick="search('{{loggeduser.username}}')"></button></li>
+
+				<ul class="menu-actions">
+					<li><a href="/mainpage/{{loggeduser.username}}" class="home-button">Home</a></li>
+					<li>
+						<form action="/searchresults/{{loggeduser.username}}" method="GET">
+							<input type="text" class="search-bar" id="searchquery" name="searchquery" placeholder="Search...">
+							<button type="submit" class = "search-button" id="query-button" name="qb" >Search</button>
+						</form>
+					</li>
 				</ul>
+
 				<ul class = "menu-actions">
-					<li> <span class = "user-name">{{user.username}}</span></li>
-                	<li><a href = "/user-profile/{{user.username}}-posts"><img class = "user-icon" src="{{user.profilePicture}}"/></a></li>
+					<li> <span class = "loggeduser-name">{{loggeduser.username}}</span></li>
+                	<li><a href = "/loggeduser-profile/{{loggeduser.username}}-posts"><img class = "user-icon" src="{{loggeduser.profilePicture}}"/></a></li>
 				</ul>
 			</div>
 		</div>
@@ -33,10 +38,10 @@
 					<label class="main-sortby"> Sort by:</label>
 					
 					<select class="main-dropdown" id="main-dropdown" onchange="urlHandler(this.value,'{{setting}}')">
-						<option class="main-option" value="/mainpage/{{user.username}}"></option> 
-						<option class="main-option" value="/popularResults/{{user.username}}">Popular</option>
-						<option class="main-option" value="/trendingResults/{{user.username}}">Trending</option>
-						<option class="main-option" value="/controversialResults/{{user.username}}">Controversial</option>
+						<option class="main-option" value="/mainpage/{{loggeduser.username}}"></option> 
+						<option class="main-option" value="/popularResults/{{loggeduser.username}}">Popular</option>
+						<option class="main-option" value="/trendingResults/{{loggeduser.username}}">Trending</option>
+						<option class="main-option" value="/controversialResults/{{loggeduser.username}}">Controversial</option>
 					</select>
 					<a class="link-post" href="edit-post.html"> 
 						<button class="main-createpost-button" href="edit-post.html">  Create New<br> Post </button>
@@ -48,9 +53,9 @@
 					{{#each allPosts}}
 					<div class="main-postpage-idvpost">
 						<div class="main-postpage-vote">
-							<div class = "upvote" id = "upvote3#" onclick="upVote({{this.postId}}, '{{../user.username}}')"></div>
+							<div class = "upvote" id = "upvote3#" onclick="upVote({{this.postId}}, '{{../loggeduser.username}}')"></div>
 							<div class = "vote-number" id = "vote-number{{this.postId}}"> {{this.votes}} </div>
-							<div class = "downvote" id = "downvote3#" onclick="downVote({{this.postId}}, '{{../user.username}}')"></div>
+							<div class = "downvote" id = "downvote3#" onclick="downVote({{this.postId}}, '{{../loggeduser.username}}')"></div>
 						</div>
 						<div class="main-postpage-image">
 							<a class="link-post" href="/post/{{this.title}}"> <img class="main-indpost-image" src="{{this.image}}"></a>

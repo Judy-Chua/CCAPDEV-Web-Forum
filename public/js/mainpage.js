@@ -230,37 +230,32 @@ function downVote(postId, username){
       }, 500);
 }
 
+/*
 function search(username){
     const searchquery = document.getElementById('query').value;
-    
-    /*
-    var requestBody = {
-        thequery: searchquery
-      };
-    var requestBodyJson = JSON.stringify(requestBody);
-    */
 
     if (searchquery != '')
     {
-        fetch(`/searchresult/${username}/results?theQuery=${encodeURIComponent(searchquery)}`, {method: 'GET'}
-        ).then(response => {
-            if (response.ok) {
-                return;
+        fetch(`/searchresult/${username}/results?query=${searchquery}`, {
+            method: 'GET', 
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response =>{
+            if(response.ok) {
+                return response.text();
             }
             throw new Error('Request failed.');
         })
-        .then(data => {
-            
-        })
-        .catch(error => {
-            console.error(error);
+        .catch(function(error) {
+            console.log(error);
         });
-
-        
     }
     else{
         alert('That is empty.')
     }
     
 }
+*/
 
