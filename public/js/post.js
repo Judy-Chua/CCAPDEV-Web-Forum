@@ -1,4 +1,8 @@
-$(document).ready(function() {    
+
+$(document).ready(function() {  
+    var coloredUp = false;
+    var coloredDown = false;
+    
     $(".upvote").click(function() {
         var numId = $(this).siblings('.vote-number');
         var down = $(this).siblings('.downvote');
@@ -17,48 +21,66 @@ $(document).ready(function() {
             num = 0;
 
         console.log(num);
+
+        /*
+        var currUser = "{{loggeduser.username}}"; //access handlebar
+        var loggedUser = 0;
+        User.findOne({username: currUser}, (error, user) => {
+            if (error) {
+                console.log("Error finding this user: " + error);
+                return;
+            }
+            if (user) {
+                loggedUser = user.userId;
+            } else {
+                console.log("User not found");
+            }
+        });
+
+        */
         
         var up = "url('../images/up.png')";
         var down = "url('../images/down.png')";
         var colorUp = "url('../images/color-up.png')";
         var colorDown = "url('../images/color-down.png')";
 
-        var currentUp = $(upvote).css("background-image"); //get css image
-        var currUpvote = "url(\'../" + currentUp.substring(currentUp.indexOf("images/")); //get the only from images/...
-        var currUp = currUpvote.replace("\"", "'"); //change " to '
-
-        var currentDown = $(downvote).css("background-image");
-        var currDownvote = "url(\'../" + currentDown.substring(currentDown.indexOf("images/"));
-        var currDown = currDownvote.replace("\"", "'");
-        
         if (val == 1) {
-            //since it is hover in upvote, opposite effect (colorUp means not yet upvoted)
             $(downvote).css("background-image", down); //stay with no color
-            if (currDown === colorDown && currUp === colorUp) { //initial vote is downvote changing to upvote
-                //downvote is with color and the hovered upvote is with color
+            if (coloredDown && !coloredUp) { //initial vote is downvote changing to upvote
                 num = num + 2; //plus two since +1 for upvote and +1 from starting in downvote
-                $(upvote).css("background-image", up);
-            } else if (currUp === up) { //user changed its mind, wanting to not vote anymore
+                //updateVotes(1, -1, loggedUser);
                 $(upvote).css("background-image", colorUp);
+                coloredUp = true;
+                coloredDown = false;
+            } else if (coloredUp) { //user changed its mind, wanting to not vote anymore
                 num = num - 1; //remove the upvote
-            } else if (currUp === colorUp && currDown === down) { //no initial vote
-                    //hover is with color and the downvote is not clicked
-                num = num + 1;
                 $(upvote).css("background-image", up);
+                //updateVotes(-1, 0, loggedUser);
+                coloredUp = false;
+            } else if (!coloredUp && !coloredDown) { //no initial vote
+                num = num + 1;
+                //updateVotes(1, 0, loggedUser);
+                $(upvote).css("background-image", colorUp);
+                coloredUp = true;
             }
         } else {
             $(upvote).css("background-image", up); // stay with no color
-            if (currDown === colorDown && currUp === colorUp) { //initial vote is upvote changing to downvote
-                //hovered downvote is with color and the upvote is with color
+            if (!coloredDown && coloredUp) { //initial vote is upvote changing to downvote
                 num = num - 2;
-                $(downvote).css("background-image", down);
-            } else if (currDown === down) { //user changed its mind, wanting to not vote anymore
-                num = num + 1; //remove the upvote
+                //updateVotes(-1, 1, loggedUser);
                 $(downvote).css("background-image", colorDown);
-            } else if (currDown === colorDown && currUp === up) { //no initial vote
-                    //hover is with color and the downvote is not clicked
-                num = num - 1;
+                coloredUp = false;
+                coloredDown = true;
+            } else if (coloredDown) { //user changed its mind, wanting to not vote anymore
+                num = num + 1; //remove the downvote
+                //updateVotes(0, -1, loggedUser);
                 $(downvote).css("background-image", down);
+                coloredDown = false;
+            } else if (!coloredDown && !coloredUp) { //no initial vote
+                num = num - 1;
+                //updateVotes(0, 1, loggedUser);
+                $(downvote).css("background-image", colorDown);
+                coloredDown = true;
             }
         }
     
@@ -74,242 +96,213 @@ $(document).ready(function() {
         voteNumId.text(num);
     }
 
-    $(".upvote").hover(function() { //jquery hover funtion
-        var noColor = "url('../images/up.png')";
-        var current = $(this).css("background-image"); // "this" refers to the image being hovered despite class
-        var currImg = "url(\'../" + current.substring(current.indexOf("images/")); //current returns the whole url (from users/etc)
-        var currImage = currImg.replace("\"", "'"); //change the last " to '
-        $(this).css("background-image", currImage === noColor ? "url('../images/color-up.png')" : noColor);
+    /*
+    function updateVotes(up, down, loggedUser) {
+        if (!loggedUser || loggedUser == 0) {
+            return;
+        }
+
+        var currPostTitle = "{{post_info.title}}";
+        Post.findOne({title: currPostTitle}, (error, post) => {
+            if (error) {
+                console.log("Error finding this user: " + error);
+                return;
+            }
+            if (post) {
+                if (up == 1) { //add upvote 
+                    post.upvotes.push(loggedUser);
+                } else if (up == -1) { //remove upvote
+                    post.upvotes.pull(loggedUser);
+                }
+                if (down == 1) { //add downvote
+                    post.downvotes.push(loggedUser);
+                } else if (down == -1) { //remove downvote
+                    post.downvotes.pull(loggedUser);
+                }
+                    
+                post.save(function(error_save, update) {
+                    if (error_save) {
+                        console.log("Error saving: " + error_save);
+                    } else {
+                        console.log("Successful update! " + update);
+                    }
+                });
+            } else {
+                console.log("Post not found");
+            }
+        });
+    }
+    */
+
+    $(".upvote").mouseenter(function() { //jquery hover funtion
+        if (!coloredUp)
+            $(this).css("background-image", "url('../images/color-up.png')");
     });
 
-    $(".downvote").hover(function() { //jquery hover funtion
-        var noColor = "url('../images/down.png')";
-        var current = $(this).css("background-image");
-        var currImg = "url(\'../" + current.substring(current.indexOf("images/"));
-        var currImage = currImg.replace("\"", "'");
-        $(this).css("background-image", currImage === noColor ? "url('../images/color-down.png')" : noColor);  
+    $(".upvote").mouseleave(function() { //jquery hover funtion
+        if (!coloredUp) {
+            $(this).css("background-image", "url('../images/up.png')"); 
+        }
+    });
+
+    $(".downvote").mouseenter(function() { //jquery hover funtion
+        if (!coloredDown)
+            $(this).css("background-image", "url('../images/color-down.png')");
+    });
+
+    $(".downvote").mouseleave(function() { //jquery hover funtion
+        if (!coloredDown) {
+            $(this).css("background-image", "url('../images/down.png')"); 
+        }
     });
 
     $(".comment-submit").click(function(){
-        var getFileNum = $(this).attr("id"); //get id of the div
-        var fileNum = getFileNum.substring("comment-submit".length);
-        submitComment(fileNum);
+        var commentTextArea = $(this).siblings('.comment-area');
+        var comment = commentTextArea.val();
+        var currUser = "{{loggeduser.username}}"; //access handlebar
+        var commentDate = formatDate(new Date());
+
+        console.log("Comment by " + currUser + "(" + commentDate + "): " + comment);
+        /*
+         
+        User.findOne({username: currUser}, (error, user) => {
+            if (error) {
+                console.log("Error finding this user: " + user);
+                return;
+            }
+            if (user) {
+                var loggedUser = user.userId;
+
+                var latestId = 0;
+                var newCommentId = 0;
+                Comment.find({}, 'commentId', { sort: {'commentId':-1}}, function(error, comArr) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        if(comArr.length > 0) {
+                            latestId = comArr[0].commentId; //it is in descending order
+                        } else {
+                            latestId = 29999;
+                        }
+                        newCommentId = latestId + 1;
+
+                        const new_comment = new Comment({
+                            commentId: newCommentId,
+                            userId: loggedUser,
+                            theComment: comment,
+                            upvotes: [],
+                            downvotes: [],
+                            date: commentDate,
+                            popVal: 0
+                        });
+
+                        new_comment.save(function(error_post, result) {
+                            if (error_post) {
+                                console.log(error_post);
+                            } else {
+                                console.log(result);
+                            }
+                        });
+                    }
+
+            } else {
+                console.log("User not found");
+            }
+        */
+
+        setTextResponse("Comment posted!");
     });
 
+    $(".comment-delete").click(function() {
+        //for now: go back to mainpage
+        location.href = "/mainpage/Adri20";
+        //delete the comment data from database
+    });
 
-    function submitComment(fileNum) {
-        var comment = document.getElementById('comment-area'+fileNum).value;
-        var add_comment = document.getElementById('comment'+fileNum);
-        var div_comment = document.createElement('div');
+    $(".comment-edit").click(function() {
+        var content = $(".comment-comment");
+        var edit = $(".comment-edit-area");
+        if (!edit.length) {
+            edit = $("<textarea></textarea>"); //create textarea
+            edit.val(content.text());
+            content.after(edit);
+        }
+
+        content.hide();
+        edit.show();
+
+        $(".comment-submit-edit").show();
+        $(".comment-edit").hide();
+    });
+
+    $(".comment-submit-edit").click(function() {
+        $(".comment-comment").html($(".comment-edit-area").val());
+        $(".comment-comment").show();
+        $(".comment-edit-area").edit();
+
         var date = new Date();
-        var username = "Username";
-    
-        if (!comment) //no comment, post nothing
-            return;
-    
-        div_comment.className = 'new-comment';
-        var new_comment_id  = "comment" + numComment+fileNum;
-        div_comment.setAttribute('id', new_comment_id);
-        div_comment.innerHTML = 
-        "<div class = 'picture-person'> </div>" +
-        "<div class = 'comment-person'>" + 
-            "<div class = 'username-comment'>" +
-                "<div class = 'username-person'>" + username + "</div>" +
-                "<div class = 'username-dash'>|</div>" +
-                "<div class = 'username-date'>" + date.toLocaleDateString() + " " + date.toLocaleTimeString() + "</div>" +
-            "</div>" +
-            
-            "<div class = 'content-comment'>" +
-                "<div class = 'comment-comment' id='cc" + new_comment_id + "'>" + comment + "</div>" +
-            "</div>" +
-            "<div class = 'actions-comment-container'>" +
-            "<ul class = 'actions-comment'>" +
-                "<li><div class = 'comment-upvote' id='upvo-"+new_comment_id+"' onclick='voteComment(\""+new_comment_id+"\", 1)'></div></li>" +
-                "<li><div class = 'comment-votenum' id='numb-"+new_comment_id+"'>0</div></li>" +
-                "<li><div class = 'comment-downvote' id='down-"+new_comment_id+"' onclick='voteComment(\""+new_comment_id+"\", 0)'></div></li>" +
-                "<li><div class = 'comment-reply'>Reply</div></li>" +
-            "</ul>" +
-            "<ul class = 'actions-comment'>" +
-                "<li><div class = 'comment-edit-date' id='date" + new_comment_id + "'></div>" +
-                "<li><div class = 'comment-submit-edit' id='s" + new_comment_id + "' onclick='publishComment(\"" + new_comment_id + "\")'></div>" +
-                "<li><div class = 'comment-edit' id = 'e" + new_comment_id + "' onclick='editComment(\"" 
-                        + new_comment_id + "\")'></div></li>" +
-                "<li><div class = 'comment-delete' id = 'del" + new_comment_id + "'></div></li>" +
-                "<li><div class = 'comment-report'></div></li>" +
-            "</ul>" +
-            "</div>" +
-        "</div>";
-    
-        add_comment.appendChild(div_comment); //add this comment container to the whole comment container
-        numComment = numComment + 1;
-    
-        var checkDiv = document.getElementById('no-comment'+fileNum) != null;
-        if (checkDiv)
-            add_comment.removeChild(document.getElementById('no-comment'+fileNum));
-        
-        document.getElementById('comment-area'+fileNum).value = "";
-        setTextResponse("Comment posted!", fileNum);
-    }
 
-    $(".comment-delete").click(function(){
-        var getFileNum = $(this).attr("id"); //get id of the div
-        var comment_id = getFileNum.substring("del".length);
-        deleteComment(comment_id);
+        $(".comment-edit-date").text("last edited last " + formatDate(date));
+        $(".comment-submit-edit").hide();
+        $(".comment-edit").show();
+        $(".comment-edit-date").show();
+
+        setTextResponse("Comment edited!");
     });
     
-    function deleteComment(comment_id) {
-        var find_new_comment_container = document.getElementById(comment_id); //find the main container of this comment
-        find_new_comment_container.parentNode.removeChild(find_new_comment_container); //remove this container through its parent
-    
-        var fileNum = comment_id.charAt(comment_id.length-1);
-        setTextResponse("Comment deleted!", fileNum);
-    }
-    
-    function editComment(comment_id) {
-        var comment_content = document.getElementById("cc" + comment_id);
-        var comment_edit = document.getElementById("ce" + comment_id);
-    
-        if (!comment_edit) {
-            comment_edit = document.createElement('textarea');
-            comment_edit.setAttribute("id", "ce"+comment_id);
-            comment_edit.value = comment_content.innerHTML;
-            comment_content.parentNode.appendChild(comment_edit);
-        }
-    
-        comment_content.style.display = "none";
-        comment_edit.style.display = "block";
-    
-        document.getElementById("s" + comment_id).style.display = "block";
-        document.getElementById("e" + comment_id).style.display = "none";
-    }
-    
-    function publishComment(comment_id) {
-        var comment_edit = document.getElementById("ce" + comment_id);
-        var comment_content = document.getElementById('cc' + comment_id);
-        comment_content.innerHTML = comment_edit.value;
-    
-        comment_content.style.display = "block";
-        comment_edit.style.display = "none";
-    
-        var date = new Date();
-    
-        document.getElementById("date" + comment_id).innerHTML = "last edited last " + 
-                        date.toLocaleDateString() + " " + date.toLocaleTimeString();
-    
-        document.getElementById("s" + comment_id).style.display = "none";
-        document.getElementById("e" + comment_id).style.display = "block";
-        document.getElementById("date" + comment_id).style.display = "block";
-    
-        var fileNum = comment_id.charAt(comment_id.length-1);
-        setTextResponse("Comment edited!", fileNum);
-    }
-    
-    function voteComment(comment_id, val) {
-        var upElem = document.getElementById("upvo-"+comment_id);
-        var downElem = document.getElementById("down-"+comment_id);
-    
-        var upElemStyle = window.getComputedStyle(upElem);
-        var upElemBG = upElemStyle.getPropertyValue('background-image');
-        var upElemImage = "url(\"" + upElemBG.substring(upElemBG.indexOf("images/"));
-        
-        var downElemStyle = window.getComputedStyle(downElem);
-        var downElemBG = downElemStyle.getPropertyValue('background-image');
-        var downElemImage = "url(\"" + downElemBG.substring(downElemBG.indexOf("images/"));
-    
-        var num = parseInt(document.getElementById("numb-"+comment_id).textContent);
-        if (num == null)
-            num = 0;
-    
-        console.log(upElemImage);
-        console.log(downElemImage);
-    
-    
-        if (val == 1) {
-            
-            if (upElemImage == "url(\"images/reply-up.png\")" 
-            && downElemImage == "url(\"images/reply-down.png\")") {
-                num = num + 1;
-                upElem.style.backgroundImage = "url(\"images/reply-color-up.png\")";
-            }
-            else if (upElemImage == "url(\"images/reply-color-up.png\")" 
-            && downElemImage == "url(\"images/reply-down.png\")") {
-                num = num - 1;
-                upElem.style.backgroundImage = "url(\"images/reply-up.png\")";
-            }
-            else if (upElemImage == "url(\"images/reply-up.png\")" 
-            && downElemImage == "url(\"images/reply-color-down.png\")") {
-                num = num + 2;
-                upElem.style.backgroundImage = "url(\"images/reply-color-up.png\")";
-                downElem.style.backgroundImage = "url(\"images/reply-down.png\")";
-            }
-        } else {
-            if (upElemImage == "url(\"images/reply-up.png\")" 
-            && downElemImage == "url(\"images/reply-down.png\")") {
-                num = num - 1;
-                downElem.style.backgroundImage = "url(\"images/reply-color-down.png\")";
-            }
-            else if (upElemImage == "url(\"images/reply-up.png\")" 
-            && downElemImage == "url(\"images/reply-color-down.png\")") {
-                num = num + 1;
-                downElem.style.backgroundImage = "url(\"images/reply-down.png\")";
-            }
-            else if (upElemImage == "url(\"images/reply-color-up.png\")" 
-            && downElemImage == "url(\"images/reply-down.png\")") {
-                num = num - 2;
-                upElem.style.backgroundImage = "url(\"images/reply-up.png\")";
-                downElem.style.backgroundImage = "url(\"images/reply-color-down.png\")";
-            }
-        }
-    
-        console.log(val, num);
-        document.getElementById("numb-"+comment_id).innerHTML = num;
-    }
-    
-    function setTextResponse(response, fileNum) { //animate the fade of action done
-        var text_response = document.getElementById('text-response'+fileNum);
-    
-        text_response.innerHTML = response;
-        text_response.style.opacity = '1';
+    function setTextResponse(response) { //animate the fade of action done
+        $(".text-response").html(response);
+        $(".text-response").css("opacity", 1);
     
         setTimeout(function() {
-            text_response.style.opacity = '0.9';
+            $(".text-response").css("opacity", 0.9);
         }, 3000);
     
         setTimeout(function() {
-            text_response.style.opacity = '0.8';
+            $(".text-response").css("opacity", 0.8);
         }, 3050);
     
         setTimeout(function() {
-            text_response.style.opacity = '0.7';
+            $(".text-response").css("opacity", 0.7);
         }, 3100);
     
         setTimeout(function() {
-            text_response.style.opacity = '0.6';
+            $(".text-response").css("opacity", 0.6);
         }, 3150);
     
         setTimeout(function() {
-            text_response.style.opacity = '0.5';
+            $(".text-response").css("opacity", 0.5);
         }, 3200);
     
         setTimeout(function() {
-            text_response.style.opacity = '0.4';
+            $(".text-response").css("opacity", 0.4);
         }, 3250);
     
         setTimeout(function() {
-            text_response.style.opacity = '0.3';
+            $(".text-response").css("opacity", 0.3);
         }, 3300);
     
         setTimeout(function() {
-            text_response.style.opacity = '0.2';
+            $(".text-response").css("opacity", 0.2);
         }, 3350);
     
         setTimeout(function() {
-            text_response.style.opacity = '0.1';
+            $(".text-response").css("opacity", 0.1);
         }, 3400);
     
         setTimeout(function() {
-            text_response.style.opacity = '0';
+            $(".text-response").css("opacity", 0);
         }, 3450);
        
+    }
+
+    function formatDate(date) {
+        var year = date.getFullYear();
+        var month = (date.getMonth() + 1).toString().padStart(2, '0');
+        var day = date.getDate().toString().padStart(2, '0');
+        var hour = date.getHours().toString().padStart(2, '0');
+        var min = date.getMinutes().toString().padStart(2, '0');
+
+        return month + '/' + day + '/' + year + ' ' + hour + ':' + min;
     }
 });
