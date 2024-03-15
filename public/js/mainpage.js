@@ -186,7 +186,7 @@ function upVote(postId, username){
         console.log(error);
       });
 
-    setInterval(function() {
+    var timer = setInterval(function() {
         fetch('/countVote/'+ postId, {method: 'GET'})
           .then(function(response) {
             if(response.ok) return response.json();
@@ -199,6 +199,10 @@ function upVote(postId, username){
             console.log(error);
           });
       }, 1000);
+
+    setTimeout(function() {
+        clearInterval(timer);
+    }, 3000);
 }
 
 function downVote(postId, username){
@@ -215,7 +219,7 @@ function downVote(postId, username){
         console.log(error);
       });
 
-    setInterval(function() {
+      var timer = setInterval(function() {
         fetch('/countVote/'+ postId, {method: 'GET'})
           .then(function(response) {
             if(response.ok) return response.json();
@@ -227,7 +231,11 @@ function downVote(postId, username){
           .catch(function(error) {
             console.log(error);
           });
-      }, 500);
+      }, 1000);
+
+      setTimeout(function() {
+        clearInterval(timer);
+    }, 3000);
 }
 
 /*
