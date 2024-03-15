@@ -17,8 +17,8 @@ $(document).ready(function() {
     $('.edit-cancel').click(function() {
         revertValues();
         console.log("click cancel");
-        location.href = "/mainpage/Adri20"; //original website
-        console.log("click cancel2");
+        var username = $("#cancel-username").val();
+        location.href = "/mainpage/"+username; //original website
     });
 
     $(".publish-post").click(function() {
@@ -47,7 +47,8 @@ $(document).ready(function() {
                 }
             }); */
 
-            location.href = "/mainpage/Adri20"; //go back to original website
+            var username = $("#cancel-username").val();
+            location.href = "/mainpage/"+username; //go back to original website
             revertValues();
         }
     });
