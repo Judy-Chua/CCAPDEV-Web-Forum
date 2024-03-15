@@ -370,9 +370,6 @@ app.get('/user-profile/:username-upvotes', async(req, res) => {
 
     const userid = user_obj.userId;
 
-    //const user_comms = await Comment.find({ upvotes: userIdtofind });
-    // console.log(user_comms.theComment);
-
     const user_posts = await Post.find({ upvotes: userid});
     console.log(user_posts);
 
