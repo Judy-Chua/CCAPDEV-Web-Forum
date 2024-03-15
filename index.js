@@ -434,7 +434,7 @@ app.get('/user-profile/:username-comments', async(req, res) => {
     console.log(user_posts);
 
     const loggeduser = await User.findOne({ username : uname});
-    console.log(user);
+    console.log(loggeduser);
 
     res.render('user-profile',{user_posts, loggeduser})
 });
@@ -453,7 +453,7 @@ app.get('/user-profile/:username-upvotes', async(req, res) => {
     console.log(user_posts);
 
     const loggeduser = await User.findOne({ username : uname});
-    // console.log(user);
+    // console.log(loggeduser);
 
     res.render('user-profile',{user_posts, loggeduser})
 });
@@ -468,7 +468,7 @@ app.get('/user-profile/:username-downvotes', async(req, res) => {
     console.log(user_posts);
 
     const loggeduser = await User.findOne({ username : uname});
-    // console.log(user);
+    // console.log(loggeduser);
 
     res.render('user-profile',{user_posts, loggeduser})
 });

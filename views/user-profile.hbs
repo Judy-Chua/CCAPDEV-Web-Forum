@@ -12,32 +12,32 @@
 	<div class = "main-container">
 		<div class = "menu-bar">
             <ul class = "menu-actions">
-                <a href = "/mainpage/{{user.username}}"><li class = "forum-logo"></li></a>
+                <a href = "/mainpage/{{loggeduser.username}}"><li class = "forum-logo"></li></a>
             </ul>
 
             <ul class = "menu-actions">
-                <li><a href="/mainpage/{{user.username}}" class="home-button">Home</a></li>
+                <li><a href="/mainpage/{{loggeduser.username}}" class="home-button">Home</a></li>
                 <li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
                 <!-- TODO: href link to be edited after finished routing to searchresult in index.js -->
-                <li class = "search-button"><a href = "/searchresult/{{user.username}}"><button type="button" id="query-button" name="qb"></button></a></li>
+                <li class = "search-button"><a href = "/searchresult/{{loggeduser.username}}"><button type="button" id="query-button" name="qb"></button></a></li>
             </ul>
             <ul class = "menu-actions">
                 <ul class = "menu-actions">
-                    <li><a href = "/signup-page/{{user.username}}"><button type="button" class="register-button">Register</button></a></li>
-                    <li><a href = "/login-page/{{user.username}}"><button class="login-button">Login</button></a></li>
+                    <li><a href = "/signup-page/{{loggeduser.username}}"><button type="button" class="register-button">Register</button></a></li>
+                    <li><a href = "/login-page/{{loggeduser.username}}"><button class="login-button">Login</button></a></li>
                 </ul>
-                <li> <span class = "user-name">{{user.username}}</span></li>
-                <li><a href = "/user-profile/{{user.username}}-posts"><img class = "user-icon" src="{{user.profilePicture}}"/></a></li>
+                <li> <span class = "user-name">{{loggeduser.username}}</span></li>
+                <li><a href = "/user-profile/{{loggeduser.username}}-posts"><img class = "user-icon" src="{{loggeduser.profilePicture}}"/></a></li>
             </ul>
         </div>
 
         <div class = "profile-container">
             <div class = "main-profile">
                 <div class = "main-profile-header">
-                    <a href = "/user-profile/{{user.username}}-posts"><div class = "header-tab">Posts</div></a>
-                    <a href = "/user-profile/{{user.username}}-comments"><div class = "header-tab">Comments</div></a>
-                    <a href = "/user-profile/{{user.username}}-upvotes"><div class = "header-tab">Upvotes</div></a>
-                    <a href = "/user-profile/{{user.username}}-downvotes"><div class = "header-tab">Downvotes</div></a>
+                    <a href = "/user-profile/{{loggeduser.username}}-posts"><div class = "header-tab">Posts</div></a>
+                    <a href = "/user-profile/{{loggeduser.username}}-comments"><div class = "header-tab">Comments</div></a>
+                    <a href = "/user-profile/{{loggeduser.username}}-upvotes"><div class = "header-tab">Upvotes</div></a>
+                    <a href = "/user-profile/{{loggeduser.username}}-downvotes"><div class = "header-tab">Downvotes</div></a>
                 </div>
                 <div class="main-profile-content">
                     {{#each user_posts}}
@@ -49,15 +49,15 @@
 						</div>
 						<div class="main-postpage-image">
                             <!-- TODO: href link to be edited after finished routing to /post/ in index.js -->
-							<a class="link-post" href="/post/{{user.username}}/{{this.title}}"> <img class="main-indpost-image" src="{{this.image}}"></a>
+							<a class="link-post" href="/post/{{loggeduser.username}}/{{this.title}}"> <img class="main-indpost-image" src="{{this.image}}"></a>
 						</div>
 						<div class="main-postpage-description">
 							<p class="main-indpost-title">
                                 <!-- TODO: href link to be edited after finished routing to /post/ in index.js -->
-								<a class="link-post" href="/post/{{user.username}}/{{this.title}}"> {{this.title}} </a>
+								<a class="link-post" href="/post/{{loggeduser.username}}/{{this.title}}"> {{this.title}} </a>
 							</p>
                             <!-- TODO: href link to be edited after finished routing to /post/ in index.js -->
-							<p class="main-indpost-postedby"> Posted by <a class="link-post" href="/post/{{user.username}}/{{this.title}}"> BLANK </a> </p>
+							<p class="main-indpost-postedby"> Posted by <a class="link-post" href="/post/{{loggeduser.username}}/{{this.title}}"> BLANK </a> </p>
 							<p class="main-indpost-description"> 
 								{{this.description}}
 							</p>
@@ -71,25 +71,25 @@
                 <div class = "user-display-1">
                     <div class = "user-display-1-left">
                         <div class = "settings-ul">
-                            <a href = "/usersettings/{{user.username}}"><img class = "settings-ul-icon" src="../images/settings-icon.png"/></a> 
+                            <a href = "/usersettings/{{loggeduser.username}}"><img class = "settings-ul-icon" src="../images/settings-icon.png"/></a> 
                         </div>
                         <div class = "profile-icon">
-                            <img class = "user-profile-icon" src="{{user.profilePicture}}"/>
+                            <img class = "user-profile-icon" src="{{loggeduser.profilePicture}}"/>
                         </div>
                     </div>
                     <div class = "user-display-1-right">
                         <div class = "user-displayname">
-                        <span class = "user-disp-name">{{user.name}}</span><br>
-                        <span class = "user-disp-username">{{user.username}}</span>
+                        <span class = "user-disp-name">{{loggeduser.name}}</span><br>
+                        <span class = "user-disp-username">{{loggeduser.username}}</span>
                         </div>
                     </div>
                 </div>
                 <div class = "user-display-2">
                     <div class="user-desc">
-                        {{user.description}}
+                        {{loggeduser.description}}
                     </div>
                     <div class="user-settings">
-                        <a href = "/usersettings/{{user.username}}"><button type = "button" class="user-settings-button">User Settings</button>
+                        <a href = "/usersettings/{{loggeduser.username}}"><button type = "button" class="user-settings-button">User Settings</button>
                         </a></div>
                 </div>
             </div>
