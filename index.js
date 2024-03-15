@@ -477,6 +477,37 @@ app.get('/post/:title', async(req, res) => {
     }
     res.render('post', { user, post_info})
 });
+
+app.get('/edit/:title', async(req, res) => {
+    const loggeduser = await User.findOne({ username: 'Adri20'}); //change to isLogged: '1'
+    const post_title = req.params.title;
+    const specific_post = await Post.findOne({title: post_title});
+
+    var title;
+    var description;
+    var tag;
+    if (specific_post) {
+        title = specific_post.title;
+        description = specific_post.description;
+        tagFPS = specific_post.tag.includes('FPS');
+        tagMOBA = specific_post.tag.includes('MOBA');
+        tagSinglePlayer = specific_post.tag.includes('Single Player');
+        tagMultiplayer = specific_post.tag.includes('Multiplayer');
+        tagEmpty = false;
+    } else {
+        title = "";
+        description = "";
+        tag = [];
+        tagEmpty = true;
+        tagFPS = false;
+        tagMOBA = false;
+        tagSinglePlayer = false;
+        tagMultiplayer = false;
+    }
+
+
+    res.render('edit', { loggeduser, title, description, tagEmpty, tagFPS, tagMOBA, tagSinglePlayer, tagMultiplayer})
+});
 */
 
 
