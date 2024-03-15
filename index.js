@@ -397,6 +397,15 @@ app.get('/user-profile/:username-downvotes', async(req, res) => {
     res.render('user-profile',{user_posts, user})
 });
 
+
+app.get('/usersettings/:username', async(req, res) => {
+    const uname = req.params.username;
+    const user = await User.findOne({username: uname});
+    // console.log(user.username);
+    // console.log(user.userId);
+    res.render('usersettings',{user});
+});
+
 /*
 
 //for post image uploading in edit.hbs (not yet tested)
