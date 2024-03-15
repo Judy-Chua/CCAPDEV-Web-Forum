@@ -15,8 +15,15 @@ const fs = require('fs'); //file system for uploading images
 const multer = require('multer'); //for file upload
 const upload = multer({ dest: './public/images/'}); //upload to this destination
 
+var bodyParser = require('body-parser')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(express.json()) // use json
+
+var jsonParser = bodyParser.json()
+// var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 app.use(express.urlencoded( {extended: true})); // files consist of more than strings
 app.use(express.static('public')) // we'll add a static directory named "public"
 
@@ -289,6 +296,43 @@ app.get('/downVote/:post/vote/:username', async(req, res) => {
               );
         }
     }
+});
+
+app.get('/user-settings/:username', async(req, res) => {
+    const uname = req.params.username;
+
+    const loggeduser = await User.findOne({username: uname});
+
+    res.render('user-settings',{loggeduser});
+});
+
+app.get('/searchresult/:username/results', async(req, res) => {
+
+    const uname = req.params.username;
+    const searchQuery = req.query.theQuery;
+    const loggeduser = await User.findOne({username: uname});
+
+    console.log(searchQuery)
+    /*
+    const searchedUsers = await User.find(
+        {$or: [
+            {"username":new RegExp(searchquery, "i")},
+            {"name":new RegExp(searchquery, "i")}
+        ]
+    });
+
+    const searchedComments = await Comment.find({"theComment" : new RegExp(searchquery, "i")});
+    */
+
+    const searchedPosts = await Post.find(
+        {$or: [
+            {"title":new RegExp(searchQuery, "i")},
+            {"description":new RegExp(searchQuery, "i")}
+        ]
+    });
+    
+    console.log('POSTS', searchedPosts)
+    res.render('searchresult',{loggeduser, searchedPosts, searchQuery});
 });
 /*
     const uname = req.params.username;

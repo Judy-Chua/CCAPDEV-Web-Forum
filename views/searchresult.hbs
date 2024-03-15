@@ -1,11 +1,8 @@
 <html>
     <head>
-        <link rel="stylesheet" type = "text/css" href="../css/mainpage.css">
+        <link rel="stylesheet" href="../css/mainpage.css">
 		<link rel = "stylesheet" type = "text/css" href = "../css/index.css">
-		<script src = "../js/mainpage.js"></script>
-		<script src = "../user-disp.js"></script>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title> Home</title>
+		<script src = "../css/mainpage.js"></script>
     </head>
 
     <body>
@@ -18,34 +15,31 @@
 				<ul class = "menu-actions">
 					<li><a href="/mainpage/{{loggeduser.username}}" class="home-button">Home</a></li>
 					<li class = "search-bar"><input type="search" id="query" name="q" placeholder="Search..."></li>
-					<li class = "search-button"><button type="button" id="query-button" name="qb" onclick="search('{{loggeduser.username}}')"></button></li>
+					<li class = "search-button"><a href = "searchresult.html"><button type="button" id="query-button" name="qb"></button></a></li>
 				</ul>
 				<ul class = "menu-actions">
-					<li> <span class = "user-name">{{loggeduser.username}}</span></li>
-                	<li><a href = "/user-profile/{{loggeduser.username}}-posts"><img class = "user-icon" src="{{loggeduser.profilePicture}}"/></a></li>
+                    <li> <span class = "user-name">{{loggeduser.username}}</span></li>
+					<li><a href = "/user-profile/{{loggeduser.username}}-posts"><img class = "user-icon" src="{{loggeduser.profilePicture}}"/></a></li>
 				</ul>
 			</div>
 		</div>
         <div class="main-div">
             <div class="main-postpage pagecolor"> 
                 <div class="main-postpage-top">
-					<button class="main-postpage-sortbutton"> <img class="main-sortarrows"   src="/images/sortarrows.png">  </button>
+					<button class="main-postpage-sortbutton"> <img class="main-sortarrows"   src="images/sortarrows.png">  </button>
 					<label class="main-sortby"> Sort by:</label>
-					
-					<select class="main-dropdown" id="main-dropdown" onchange="urlHandler(this.value,'{{setting}}')">
-						<option class="main-option" value="/mainpage/{{loggeduser.username}}"></option> 
-						<option class="main-option" value="/popularResults/{{loggeduser.username}}">Popular</option>
-						<option class="main-option" value="/trendingResults/{{loggeduser.username}}">Trending</option>
-						<option class="main-option" value="/controversialResults/{{loggeduser.username}}">Controversial</option>
+					<select class="main-dropdown" onchange="urlHandler(this.value)">
+						<option class="main-option"></option>
+						<option class="main-option" value="popularresult.html">Popular</option>
+						<option class="main-option" value="trendingresult.html">Trending</option>
+						<option class="main-option" value="controversialresult.html">Controversial</option>
 					</select>
-					<a class="link-post" href="edit-post.html"> 
-						<button class="main-createpost-button" href="edit-post.html">  Create New<br> Post </button>
-					</a>
+					<button class="main-createpost-button"> Create <br> post </button>
 				</div>
 				<div class="main-postpage-posts">
-					<p class="main-poststitle"> POSTS </p>
-					 
-					{{#each allPosts}}
+					<p class="main-poststitle"> Search Results for <span style="font-style:italic;"> {{searchquery}}</span>: </p>
+					
+					{{#each searchedPosts}}
 					<div class="main-postpage-idvpost">
 						<div class="main-postpage-vote">
 							<div class = "upvote" id = "upvote3#" onclick="upVote({{this.postId}}, '{{../loggeduser.username}}')"></div>
@@ -70,13 +64,14 @@
 					</div>
 					{{/each}}
 
+					</div>
 				</div>
             </div>
 
 			<div class="main-rightpage">
 				<div class="main-announcements pagecolor">
 					<p class="main-announcements-title"> Announcements from the developers</p>
-					<p class="main-announcement-message">
+					<p>
 						Thank you for participating for the ArchersGuild 
 						alpha testing. 
 					</p>
@@ -103,7 +98,7 @@
 					<div class="main-recentviewpost">
 						<div class="main-recentviewpost-description">
 							<p class="main-recentviewpost-title">
-								<a class="link-post" href="TFT-Latest-Patch-Notes.html">TFT Latest Patch Notes</a>
+								TFT Latest Patch Notes
 							</p>
 							<p class="main-recentviewpost-description"> 
 								Has anyone read the lastest tft patch notes? I haven't played the game for a while and ...
