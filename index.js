@@ -405,212 +405,84 @@ app.get('/tagMultiPlayer/:username', async(req, res) => {
         }
     }
     
-
+*/
 
 
 
 // User Profile Routes
 
-app.get('/user-profile/:username/posts', async(req, res) => {
+// posts
+app.get('/user-profile/:username-posts', async(req, res) => {
     const uname = req.params.username;
-    const user = await User.findOne({username : uname})
-    const user_posts = await Post.find({postUser : user.userId}); // Adri20's userId
+    const loggeduser = await User.findOne({username : uname})
+    const user_posts = await Post.find({postUser : loggeduser.userId});
     console.log(user_posts);
 
-    res.render('user-profile',{user_posts, user})
+    res.render('user-profile',{user_posts, loggeduser})
+});
+
+app.get('/user-profile/:username-comments', async(req, res) => {
+    const uname = req.params.username;
+    const user_obj = await User.findOne({ username : uname});
+
+    const userid = user_obj.userId;
+
+    const user_comms = await Comment.find({userId : userid});
+    console.log(user_comms.theComment);
+
+    const user_posts = await Post.find({comments: userid});
+    console.log(user_posts);
+
+    const loggeduser = await User.findOne({ username : uname});
+    console.log(user);
+
+    res.render('user-profile',{user_posts, loggeduser})
 });
 
 
+app.get('/user-profile/:username-upvotes', async(req, res) => {
+    const uname = req.params.username;
+    const user_obj = await User.findOne({ username : uname});
+
+    const userid = user_obj.userId;
+
+    //const user_comms = await Comment.find({ upvotes: userIdtofind });
+    // console.log(user_comms.theComment);
+
+    const user_posts = await Post.find({ upvotes: userid});
+    console.log(user_posts);
+
+    const loggeduser = await User.findOne({ username : uname});
+    // console.log(user);
+
+    res.render('user-profile',{user_posts, loggeduser})
+});
+
+app.get('/user-profile/:username-downvotes', async(req, res) => {
+    const uname = req.params.username;
+    const user_obj = await User.findOne({ username : uname});
+
+    const userid = user_obj.userId;
+
+    const user_posts = await Post.find({ downvotes: userid});
+    console.log(user_posts);
+
+    const loggeduser = await User.findOne({ username : uname});
+    // console.log(user);
+
+    res.render('user-profile',{user_posts, loggeduser})
+});
+
+
+app.get('/usersettings/:username', async(req, res) => {
+    const uname = req.params.username;
+    const loggeduser = await User.findOne({username: uname});
+    // console.log(user.username);
+    // console.log(user.userId);
+    res.render('usersettings',{loggeduser});
+});
 
 /*
-// posts
-app.get('/user-profile/0-posts', async(req, res) => {
-    const user_posts = await Post.find({postUser : "10004"}); // dummy's userId
-    console.log(user_posts);
-
-    const loggeduser = await User.findOne({ username : "0"});
-    console.log(loggeduser);
-
-    res.render('user-profile',{user_posts, loggeduser})
-});
-
-app.get('/user-profile/Adri20-posts', async(req, res) => {
-    const user_posts = await Post.find({postUser : "10000"}); // Adri20's userId
-    console.log(user_posts);
-
-    const loggeduser = await User.findOne({ username : "Adri20"});
-    console.log(loggeduser);
-
-    res.render('user-profile',{user_posts, loggeduser})
-});
-
-app.get('/user-profile/Clarisse35-posts', async(req, res) => {
-    const user_posts = await Post.find({postUser : "10001"}); // Clarisse35's userId
-    console.log(user_posts);
-
-    const loggeduser = await User.findOne({ username : "Clarisse35"});
-    console.log(loggeduser);
-
-    res.render('user-profile',{user_posts, loggeduser})
-});
-
-app.get('/user-profile/Judy89-posts', async(req, res) => {
-    const user_posts = await Post.find({postUser : "10002"}); // Judy89's userId
-    console.log(user_posts);
-
-    const loggeduser = await User.findOne({ username : "Judy89"});
-    console.log(loggeduser);
-
-    res.render('user-profile',{user_posts, loggeduser})
-});
-
-// comments
-app.get('/user-profile/Adri20-comments', async(req, res) => {
-    const userIdtofind = 10000;
-    const user_comms = await Comment.find({userId : userIdtofind}); // Adri20's userId
-    console.log(user_comms.theComment);
-
-    const user_posts = await Post.find({comments: userIdtofind});
-    console.log(user_posts);
-
-    const loggeduser = await User.findOne({ userId : userIdtofind});
-    console.log(loggeduser);
-
-    res.render('user-profile',{user_posts, loggeduser})
-});
-
-app.get('/user-profile/Clarisse35-comments', async(req, res) => {
-    const userIdtofind = 10001;
-    const user_comms = await Comment.find({userId : userIdtofind}); // Adri20's userId
-    console.log(user_comms.theComment);
-
-    const user_posts = await Post.find({comments: userIdtofind});
-    console.log(user_posts);
-
-    const loggeduser = await User.findOne({ userId : userIdtofind});
-    console.log(loggeduser);
-
-    res.render('user-profile',{user_posts, loggeduser})
-});
-
-app.get('/user-profile/Judy89-comments', async(req, res) => {
-    const userIdtofind = 10002;
-    const user_comms = await Comment.find({userId : userIdtofind}); // Adri20's userId
-    console.log(user_comms.theComment);
-
-    const user_posts = await Post.find({comments: userIdtofind});
-    console.log(user_posts);
-
-    const loggeduser = await User.findOne({ userId : userIdtofind});
-    console.log(loggeduser);
-
-    res.render('user-profile',{user_posts, loggeduser})
-});
-
-
-// upvotes
-
-app.get('/user-profile/Adri20-upvotes', async(req, res) => {
-    const userIdtofind = 10000;
-    // TODO: add in upvotes from comments to user_posts
-
-    //const user_comms = await Comment.find({ upvotes: userIdtofind });
-    // console.log(user_comms.theComment);
-
-    const user_posts = await Post.find({ upvotes: userIdtofind});
-    console.log(user_posts);
-
-    const loggeduser = await User.findOne({ userId : userIdtofind});
-    // console.log(loggeduser);
-
-    res.render('user-profile',{user_posts, loggeduser})
-});
-
-
-app.get('/user-profile/Clarisse35-upvotes', async(req, res) => {
-    const userIdtofind = 10001;
-    // TODO: add in upvotes from comments to user_posts
-
-    //const user_comms = await Comment.find({ upvotes: userIdtofind });
-    // console.log(user_comms.theComment);
-
-    const user_posts = await Post.find({ upvotes: userIdtofind});
-    console.log(user_posts);
-
-    const loggeduser = await User.findOne({ userId : userIdtofind});
-    // console.log(loggeduser);
-
-    res.render('user-profile',{user_posts, loggeduser})
-});
-
-app.get('/user-profile/Judy89-upvotes', async(req, res) => {
-    const userIdtofind = 10002;
-    // TODO: add in upvotes from comments to user_posts
-
-    //const user_comms = await Comment.find({ upvotes: userIdtofind });
-    // console.log(user_comms.theComment);
-
-    const user_posts = await Post.find({ upvotes: userIdtofind});
-    console.log(user_posts);
-
-    const loggeduser = await User.findOne({ userId : userIdtofind});
-    // console.log(loggeduser);
-
-    res.render('user-profile',{user_posts, loggeduser})
-});
-
-
-// downvotes
-
-app.get('/user-profile/Adri20-downvotes', async(req, res) => {
-    const userIdtofind = 10000;
-    // TODO: add in upvotes from comments to user_posts
-
-    //const user_comms = await Comment.find({ upvotes: userIdtofind });
-    // console.log(user_comms.theComment);
-
-    const user_posts = await Post.find({ downvotes: userIdtofind});
-    console.log(user_posts);
-
-    const loggeduser = await User.findOne({ userId : userIdtofind});
-    // console.log(loggeduser);
-
-    res.render('user-profile',{user_posts, loggeduser})
-});
-
-
-app.get('/user-profile/Clarisse35-downvotes', async(req, res) => {
-    const userIdtofind = 10001;
-    // TODO: add in upvotes from comments to user_posts
-
-    //const user_comms = await Comment.find({ upvotes: userIdtofind });
-    // console.log(user_comms.theComment);
-
-    const user_posts = await Post.find({ downvotes: userIdtofind});
-    console.log(user_posts);
-
-    const loggeduser = await User.findOne({ userId : userIdtofind});
-    // console.log(loggeduser);
-
-    res.render('user-profile',{user_posts, loggeduser})
-});
-
-app.get('/user-profile/Judy89-downvotes', async(req, res) => {
-    const userIdtofind = 10002;
-    // TODO: add in upvotes from comments to user_posts
-
-    //const user_comms = await Comment.find({ upvotes: userIdtofind });
-    // console.log(user_comms.theComment);
-
-    const user_posts = await Post.find({ downvotes: userIdtofind});
-    console.log(user_posts);
-
-    const loggeduser = await User.findOne({ userId : userIdtofind});
-    // console.log(loggeduser);
-
-    res.render('user-profile',{user_posts, loggeduser})
-});
-
 //for post image uploading in edit.hbs (not yet tested)
 app.post('/uploadPostImage', upload.single('file-image'), (req, res) => {
     if (!req.file) {
