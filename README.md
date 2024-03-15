@@ -8,6 +8,7 @@ ARCHERSGUILD Web Forum Instructions
   - npm install hbs
   - npm install mongoose
   - npm install multer
+  - npm install body-parser
 4. Initialize data: Before your first run, remove the starting multiline comment symbol (/*) on line 35 and the ending symbol (*/) on line 165 of index.js.
 
 !! IMPORTANT 
