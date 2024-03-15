@@ -1,10 +1,4 @@
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/archerGuildDB')
-const Post = require('../database/models/Post');
-const User = require('../database/models/User');
-
-$(document).ready(function() {
-    
+$(document).ready(function() {  
     $("#image-of-post").click(function() {
         $("#file-image").click();
     });
@@ -20,12 +14,11 @@ $(document).ready(function() {
         }
     });
 
-    $('#edit-cancel').click(function() {
+    $('.edit-cancel').click(function() {
         revertValues();
-        //add delay of 1 second
-        setTimeout(function() {
-            location.href = "index.html"; //original website
-        }, 1000);
+        console.log("click cancel");
+        location.href = "/mainpage/Adri20"; //original website
+        console.log("click cancel2");
     });
 
     $(".publish-post").click(function() {
@@ -38,6 +31,7 @@ $(document).ready(function() {
         var checkTag = checkEmpty(postTag, "#tag-of-post");
 
         if (checkTitle && checkDesc && checkTag) {
+            /*
             var currUser = "{{loggeduser.username}}"; //access handlebar
             User.findOne({username: currUser}, (error, user) => {
                 if (error) {
@@ -50,10 +44,14 @@ $(document).ready(function() {
                 } else {
                     console.log("User not found");
                 }
-            });
+            }); */
+
+            location.href = "/mainpage/Adri20"; //go back to original website
+            revertValues();
         }
     });
 
+    /*
     function addNewPost(loggedUser, postTitle, postDesc, postTag) {
         var postDate = formatDate(new Date());
 
@@ -112,6 +110,7 @@ $(document).ready(function() {
             }
         });
     }
+    */
         
     function checkEmpty(value, id) {
         if (!value) { //check if title is empty or not
@@ -136,6 +135,7 @@ $(document).ready(function() {
         $("#desc-of-post").css('color', 'black');
         $("#tag-of-post").css('background-color', 'white');
         $("#tag-of-post").css('color', 'black');
+
     }
 
     function formatDate(date) {
