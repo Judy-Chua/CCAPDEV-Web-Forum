@@ -31,6 +31,7 @@ $(document).ready(function() {
         var checkTag = checkEmpty(postTag, "#tag-of-post");
 
         if (checkTitle && checkDesc && checkTag) {
+            var postId = $(this).attr('name');
             /*
             var currUser = "{{loggeduser.username}}"; //access handlebar
             User.findOne({username: currUser}, (error, user) => {
