@@ -67,7 +67,7 @@
                 <div class = "user-display-1">
                     <div class = "user-display-1-left">
                         <div class = "settings-ul">
-                            <a href = "usersettings.html"><img class = "settings-ul-icon" src="../images/settings-icon.png"/></a> 
+                            <a href = "/usersettings/{{user.username}}"><img class = "settings-ul-icon" src="../images/settings-icon.png"/></a> 
                         </div>
                         <div class = "profile-icon">
                             <img class = "user-profile-icon" src="{{user.profilePicture}}"/>
@@ -85,7 +85,7 @@
                         {{user.description}}
                     </div>
                     <div class="user-settings">
-                        <a href = "usersettings.html"><button type = "button" class="user-settings-button">User Settings</button>
+                        <a href = "/usersettings/{{user.username}}"><button type = "button" class="user-settings-button">User Settings</button>
                         </a></div>
                 </div>
             </div>
