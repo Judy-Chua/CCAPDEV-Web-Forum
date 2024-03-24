@@ -206,7 +206,7 @@ app.get('/', function (req, res) {
     // res.sendFile(__dirname + '\\' + 'index.html');
 
     // command for macos
-    res.sendFile(__dirname + '//' + 'app.html');
+    res.sendFile(__dirname + '//' + 'index.html');
 });
 
 /*
