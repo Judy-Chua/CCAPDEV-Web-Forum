@@ -10,6 +10,10 @@ const Comment = require("./database/models/Comment")
 const User = require("./database/models/User")
 const path = require('path') 
 
+const session = require('express-session')
+const flash = require('connect-flash')
+const MongoStore = require('connect-mongo')(session);
+
 //for file upload
 const fs = require('fs'); //file system for uploading images
 const multer = require('multer'); //for file upload
@@ -29,6 +33,27 @@ app.use(express.static('public')) // we'll add a static directory named "public"
 
 var hbs = require('hbs')
 app.set('view engine','hbs');
+
+
+// Sessions
+app.use(session({
+    secret: 'somegibberishsecret',
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false, maxAge: 1000 * 60 * 60 * 24 * 7 }
+}))
+
+// Flash
+app.use(flash());
+
+// Global message vars
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    next();
+});
+
 
 const date = new Date();
 

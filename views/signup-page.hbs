@@ -42,6 +42,20 @@
                     <span class = "welcome2">Please sign up to continue.</span>
                 </div>
             </div>
+                
+            <!-- SUCCESS OR ERROR MESSAGES -->
+            {{#if error_msg}}
+            <div class = "error_msg">
+                <h6>{{error_msg}}</h6>
+            </div>
+            {{/if}}
+
+            {{#if success_msg}}
+            <div class = "success_msg">
+                <h6>{{success_msg}}</h6>
+            </div>
+            {{/if}}
+            
             <div class = "req-forms">
                 <div class = "ask-username">
                     <img class = "signup-user-icon" src="/images/user-icon.png"/>
