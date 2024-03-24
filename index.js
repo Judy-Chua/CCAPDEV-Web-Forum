@@ -1,48 +1,30 @@
-const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/archerGuildDB')
-
-const express = require('express')
-const app = new express()
-module.exports = mongoose;
-
-const Post = require("./database/models/Post")
-const Comment = require("./database/models/Comment")
-const User = require("./database/models/User")
-const path = require('path') 
-
-const session = require('express-session')
-const flash = require('connect-flash')
+const express = require('express');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
 
-//for file upload
-const fs = require('fs'); //file system for uploading images
-const multer = require('multer'); //for file upload
-const upload = multer({ dest: './public/images/'}); //upload to this destination
+mongoose.connect('mongodb://localhost/archerGuildDB')
+  .then(() => {
+    console.log('MongoDB connected');
+  })
+  .catch(err => {
+    console.error('MongoDB connection error:', err);
+  });
 
-var bodyParser = require('body-parser')
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
-
-app.use(express.json()) // use json
-
-var jsonParser = bodyParser.json()
-// var urlencodedParser = bodyParser.urlencoded({ extended: false })
+const app = express();
 
 app.use(express.urlencoded( {extended: true})); // files consist of more than strings
 app.use(express.static('public')) // we'll add a static directory named "public"
 
-var hbs = require('hbs')
-app.set('view engine','hbs');
-
-
-// Sessions
+// Set up session middleware
 app.use(session({
     secret: 'somegibberishsecret',
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false, maxAge: 1000 * 60 * 60 * 24 * 7 }
-}))
+}));
 
 // Flash
 app.use(flash());
@@ -54,6 +36,30 @@ app.use((req, res, next) => {
     next();
 });
 
+module.exports = app;
+
+
+const Post = require("./database/models/Post")
+const Comment = require("./database/models/Comment")
+const User = require("./database/models/User")
+const path = require('path') 
+
+//for file upload
+const fs = require('fs'); //file system for uploading images
+const multer = require('multer'); //for file upload
+const upload = multer({ dest: './public/images/'}); //upload to this destination
+
+var hbs = require('hbs')
+app.set('view engine','hbs');
+
+var bodyParser = require('body-parser')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+
+app.use(express.json()) // use json
+
+var jsonParser = bodyParser.json()
+// var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const date = new Date();
 
