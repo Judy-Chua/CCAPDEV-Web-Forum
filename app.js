@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
+const bcrypt = require('bcrypt');
 
 mongoose.connect('mongodb://localhost/archerGuildDB')
   .then(() => {
@@ -205,7 +206,7 @@ app.get('/', function (req, res) {
     // res.sendFile(__dirname + '\\' + 'index.html');
 
     // command for macos
-    res.sendFile(__dirname + '//' + 'index.html');
+    res.sendFile(__dirname + '//' + 'app.html');
 });
 
 /*
