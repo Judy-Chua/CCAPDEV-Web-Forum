@@ -1,4 +1,4 @@
-const userModel = require('../models/User');
+const userModel = require('../database/models/User');
 const { validationResult } = require('express-validator');
 
 exports.signupUser = (req, res) => {
@@ -6,7 +6,7 @@ exports.signupUser = (req, res) => {
     const errors = validationResult(req);
 
     if (errors.isEmpty()) {
-        const {name, email, pwd1 } = req.body;
+        const {username, email, pwd1} = req.body;
         
         // Next items go here...
         // This line can be deleted in the next step
@@ -18,7 +18,6 @@ exports.signupUser = (req, res) => {
         req.flash('error_msg', messages.join(' '));
         res.redirect('/signup');
     }
-    res.redirect('/login');
 };
 
 exports.loginUser = (req, res) => {

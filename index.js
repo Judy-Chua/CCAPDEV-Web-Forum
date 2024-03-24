@@ -14,6 +14,9 @@ mongoose.connect('mongodb://localhost/archerGuildDB')
 
 const app = express();
 
+// Routes import
+const authRouter = require('./routes/auth');
+
 app.use(express.urlencoded( {extended: true})); // files consist of more than strings
 app.use(express.static('public')) // we'll add a static directory named "public"
 
@@ -57,6 +60,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(express.json()) // use json
+
+app.use('/', authRouter); // Login/registration routes
 
 var jsonParser = bodyParser.json()
 // var urlencodedParser = bodyParser.urlencoded({ extended: false })
@@ -203,11 +208,13 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '//' + 'index.html');
 });
 
+/*
 app.get('/signup-page/:username', async(req, res) => {
     const uname = req.params.username;
     const loggeduser = await User.findOne({ username : uname}); // dummy's userId
     res.render('signup-page', {loggeduser});
 });
+*/
 
 app.get('/login-page/:username', async(req, res) => {
     const uname = req.params.username;
@@ -760,6 +767,36 @@ app.post('/comments/:postId', async (req, res) => {
         res.status(500).json({ error: 'An internal server error occurred' });
     }
 });
+
+
+const router = require('express').Router();
+const userController = require('./controllers/userController.js');
+const { signupValidation } = require('./views/validators.js');
+
+// GET login to display login page
+router.get('/login', (req, res) => {
+    res.render('login-page', {
+        pageTitle: 'Login'
+    });
+});
+
+// GET signup to display signup page
+router.get('/signup', (req, res) => {
+    res.render('signup-page', {
+        pageTitle: 'Sign Up'
+    });
+});
+
+
+// POST methods for form submissions
+router.post('/signup', signupValidation, userController.signupUser);
+router.post('/login', userController.loginUser);
+
+// logout
+router.get('/logout', userController.logoutUser);
+
+module.exports = router;
+
 
 
 var server = app.listen(3000, function () {
