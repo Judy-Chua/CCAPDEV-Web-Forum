@@ -9,7 +9,7 @@ exports.signupUser = (req, res) => {
     if (errors.isEmpty()) {
       console.log("No errors detected ...");
         const { username, email, pwd1, pwd2 } = req.body;
-        console.log(username);
+        // console.log(username);
         
         userModel.getOne({ username: username }, (err, result) => {
             if (result) {
@@ -55,17 +55,25 @@ exports.signupUser = (req, res) => {
         const messages = errors.array().map((item) => item.msg);
 
         req.flash('error_msg', messages.join(' '));
-        return res.redirect('/signup');
+        res.redirect('/signup');
     }
 };
 
 exports.loginUser = (req, res) => {
+  const errors = validationResult(req);
 
-
-
-
-
+  if (errors.isEmpty()) {
+    console.log("No errors detected ...");
+    const { username, pwd } = req.body;
+  
+    // Next items go here... Same as before, this will be replaced.
     res.redirect('/');
+  } else {
+    const messages = errors.array().map((item) => item.msg);
+  
+    req.flash('error_msg', messages.join(' '));
+    res.redirect('/login');
+  }
 };
 
 exports.logoutUser = (req, res) => {

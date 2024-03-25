@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const userController = require('../controllers/userController');
-const { signupValidation } = require('../views/validators.js');
+const { signupValidation, loginValidation } = require('../views/validators.js');
 
 // GET login to display login page
 router.get('/login', (req, res) => {
@@ -18,7 +18,7 @@ router.get('/signup', (req, res) => {
 
 // POST methods for form submissions
 router.post('/signup', signupValidation, userController.signupUser);
-router.post('/login', userController.loginUser);
+router.post('/login', loginValidation, userController.loginUser);
 
 // logout
 router.get('/logout', userController.logoutUser);

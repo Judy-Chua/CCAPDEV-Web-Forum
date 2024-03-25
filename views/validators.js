@@ -21,4 +21,12 @@ const signupValidation = [
     })
 ];
 
-module.exports = { signupValidation };
+const loginValidation = [
+    // Username should not be empty
+    body('username').not().isEmpty().withMessage("Username is required."),
+    // Password should not be empty and needs to be min 6 chars
+    body('pwd').not().isEmpty().withMessage("Password is required.")
+  ];
+  
+  // update exports
+  module.exports = { signupValidation, loginValidation };
