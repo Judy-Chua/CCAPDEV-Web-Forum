@@ -9,8 +9,11 @@ const UserSchema = new mongoose.Schema({
     description:String,
     upvotes: [],
     downvotes: [],
-    dateCreated: Date,
-})
+    dateCreated: {
+        type: Date,
+        default: Date.now
+    }
+});
 
 const User = mongoose.model('User', UserSchema)
 
@@ -18,22 +21,33 @@ module.exports = {
     User: User,
     create: function(obj, next) {
         const user = new User(obj);
-      
-        user.save(function(err, user) {
-            next(err, user);
-        });
+        
+        user.save()
+            .then(savedUser => {
+                next(null, savedUser);
+            })
+            .catch(err => {
+                console.error('Error in user save:', err);
+                next(err, null);
+            });
     },
     getById: function(id, next) {
-        User.findById(id, function(err, user) {
-            next(err, user);
-        });
+        User.findById(id)
+            .then(user => {
+                next(null, user);
+            })
+            .catch(err => {
+                next(err, null);
+            });
     },
-    getOne: async function(query) {
-        try {
-            const user = await User.findOne(query);
-            return user;
-        } catch (err) {
-            throw err;
-        }
+    getOne: function(query, next) {
+        User.findOne(query)
+            .then(user => {
+                next(null, user);
+            })
+            .catch(err => {
+                next(err, null);
+            });
     }    
 };
+
