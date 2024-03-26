@@ -10,7 +10,7 @@
 
 .signup-container {  
     width: 80%;
-    height: 600px;
+    height: 700px;
     margin: 50px;
 	display: flex;
 	flex-direction: column;
@@ -60,39 +60,9 @@
 	justify-content: center;
 }
 
-.ask-username {
+.form-field {
 	display: flex;
 	flex-direction: row;    
-	justify-content: space-between;
-    align-self: center;
-    line-height: 30px;
-
-    width: 90%;
-    height: 30px;
-    padding: 15px;
-    margin: 3px;
-
-	background-color: #537BAB;
-}
-
-.ask-email {
-	display: flex;
-	flex-direction: row;    
-	justify-content: space-between;
-    align-self: center;
-    line-height: 30px;
-
-    width: 90%;
-    height: 30px;
-    padding: 15px;
-    margin: 3px;
-
-	background-color: #537BAB;
-}
-
-.ask-password {
-	display: flex;
-	flex-direction: row;
 	justify-content: space-between;
     align-self: center;
     line-height: 30px;
@@ -138,7 +108,7 @@
     margin: 20px;
 }
 
-.ask-username input {
+input {
 	width: 80%;
 	height: 95%;
     font-size: large;
@@ -147,60 +117,14 @@
 	border: 0;	
 }
 
-.ask-email input {
-	width: 80%;
-	height: 95%;
-    font-size: large;
+.form-label {
+    display: flex;
+	flex-direction: row;    
+	justify-content: space-between;
 
-	border-radius: 3px;
-	border: 0;	
-}
-
-.ask-password input {
-	width: 80%;
-	height: 95%;
-    font-size: large;
-
-	border-radius: 3px;
-	border: 0;	
-}
-
-.confirm-password input {
-	width: 80%;
-	height: 95%;
-    font-size: large;
-
-	border-radius: 3px;
-	border: 0;	
-}
-
-.user-prompt-text {
-    font-weight: bold;
     font-size: larger;
-    text-align: right;
-    margin-left: 19px;
 }
 
-.email-prompt-text {
-    font-weight: bold;
-    font-size: larger;
-    text-align: right;
-    margin-left: 58px;
-}
-
-.pw-prompt-text {
-    font-weight: bold;
-    font-size: larger;
-    text-align: right;
-    margin-left: 20px;
-}
-
-.confirmpw-prompt-text {
-    font-weight: bold;
-    font-size: larger;
-    text-align: right;
-    margin-left: 10px;
-}
 
 .signup-user-icon {
 	width: 40px;

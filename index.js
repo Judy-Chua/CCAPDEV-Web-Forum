@@ -87,7 +87,7 @@ User.create({
     username: 'Adri20',
     name: 'Adriel Manuel',
     password: 'FirstUser_01',
-    profilePicture:'/images/user1.jpg',    
+    profilePicture:'/images/user1.jpg',
     description:'I am an undergraduate student in De La Salle University, taking a Computer Science degree focusing on software technology.',
     upvotes: [],
     downvotes: [],
