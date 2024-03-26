@@ -1,3 +1,5 @@
+<!-- TODO: remove loggedusers -->
+
 <html>
 <head>
 	<title>
@@ -12,11 +14,11 @@
 	<div class = "main-container">
 		<div class = "menu-bar">
             <ul class = "menu-actions">
-                <a href = "/mainpage/{{loggeduser.username}}"><li class = "forum-logo"></li></a>
+                <li class = "forum-logo"></li>
             </ul>
 
 			<ul class="menu-actions">
-				<li><a href="/mainpage/{{loggeduser.username}}" class="home-button">Home</a></li>
+				<li class="home-button">Home</li>
 				<li class = "search-bar">
 					<form action="/searchresults/{{loggeduser.username}}" method="GET">
 						<input type="text" class="search-bar" id="searchquery" name="searchquery" placeholder="Search...">
@@ -25,8 +27,8 @@
 			</ul>
             <ul class = "menu-actions">
                 <ul class = "menu-actions">
-                    <li><a href = "/signup-page/{{loggeduser.username}}"><button type="button" class="register-button">Register</button></a></li>
-                    <li><a href = "/login-page/{{loggeduser.username}}"><button class="login-button">Login</button></a></li>
+                    <li><a href = "/signup"><button type="button" class="register-button">Register</button></a></li>
+                    <li><a href = "/login"><button class="login-button">Login</button></a></li>
                 </ul>
                 <li> <span class = "user-name">{{loggeduser.username}}</span></li>
                 <li><a href = "/user-profile/{{loggeduser.username}}-posts"><img class = "user-icon" src="{{loggeduser.profilePicture}}"/></a></li>

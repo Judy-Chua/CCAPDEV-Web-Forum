@@ -16,7 +16,6 @@ router.get('/signup', (req, res) => {
     });
 });
 
-
 // POST methods for form submissions
 router.post('/signup', signupValidation, userController.signupUser);
 router.post('/login', loginValidation, userController.loginUser);

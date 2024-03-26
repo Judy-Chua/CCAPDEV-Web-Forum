@@ -11,24 +11,25 @@
     <body>
         <div class = "main-container">
 			<div class = "menu-bar">
-				<ul class = "menu-actions">
-					<a href = "/mainpage/{{loggeduser.username}}"><li class = "forum-logo"></li></a>
-				</ul>
-
-				<ul class="menu-actions">
-					<li><a href="/mainpage/{{loggeduser.username}}" class="home-button">Home</a></li>
-					<li class = "search-bar">
-						<form action="/searchresults/{{loggeduser.username}}" method="GET">
-							<input type="text" class="search-bar" id="searchquery" name="searchquery" placeholder="Search...">
-					</li>
-					<li class = "search-button"><button type="submit" id="query-button" name="qb"></button></form></li>
-				</ul>
-
-				<ul class = "menu-actions">
-					<li> <span class = "user-name">{{loggeduser.username}}</span></li>
-                	<li><a href = "/user-profile/{{loggeduser.username}}-posts"><img class = "user-icon" src="{{loggeduser.profilePicture}}"/></a></li>
-				</ul>
-			</div>
+                <ul class = "menu-actions">
+                    <a href = "/mainpage/{{loggeduser.username}}"><li class ="forum-logo"></li></a>
+                </ul>
+                <ul class="menu-actions">
+                    <li><a href="/mainpage/{{loggeduser.username}}" class="home-button">Home</a></li>
+                    <li class = "search-bar">
+                        <form action="/searchresults/{{loggeduser.username}}" method="GET">
+                            <input type="text" class="search-bar" id="searchquery" name="searchquery" placeholder="Search...">
+                    </li>
+                    <li class = "search-button"><button type="submit" id="query-button" name="qb"></button></form></li>
+			    </ul>
+                <ul class = "menu-actions">
+                    <ul class = "menu-actions">
+                        <li><a href = "/logout"><button type="button" class="logout-button">Logout</button></a></li>
+                    </ul>
+                    <li> <span class = "user-name">{{loggeduser.username}}</span></li>
+                    <li><a href = "/user-profile/{{loggeduser.username}}-posts"><img class = "user-icon" src="{{loggeduser.profilePicture}}"/></a></li>
+                </ul>
+            </div>
 		</div>
         <div class="main-div">
             <div class="main-postpage pagecolor"> 

@@ -224,10 +224,11 @@ exports.loginUser = (req, res) => {
 };
 
 exports.logoutUser = (req, res) => {
-
-
-
-
-    res.redirect('/login');
+  if (req.session) {
+    req.session.destroy(() => {
+      console.log("Logged out ...");
+      res.clearCookie('connect.sid');
+      res.redirect('/login');
+    });
+  }
 };
-

@@ -104,6 +104,16 @@
 	margin: 0px 8px;
 }
 
+.logout-button {
+	font-size: 18px;
+	font-weight: 400;
+	padding: 6px 12px;
+	color: #3a4149;
+	background: #efe897;
+	line-height: 1.15;
+	margin: 0px 8px;
+}
+
 button {
 	display: inline-block;
 	outline: none;
