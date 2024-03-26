@@ -60,39 +60,9 @@
 	justify-content: center;
 }
 
-.ask-username {
+.form-field {
 	display: flex;
 	flex-direction: row;    
-	justify-content: space-between;
-    align-self: center;
-    line-height: 30px;
-
-    width: 90%;
-    height: 30px;
-    padding: 15px;
-    margin: 3px;
-
-	background-color: #537BAB;
-}
-
-.ask-password {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-    align-self: center;
-    line-height: 30px;
-
-    width: 90%;
-    height: 30px;
-    padding: 15px;
-    margin: 3px;
-
-	background-color: #537BAB;
-}
-
-.confirm-password {
-	display: flex;
-	flex-direction: row;
 	justify-content: space-between;
     align-self: center;
     line-height: 30px;
@@ -123,25 +93,10 @@
     margin: 20px;
 }
 
-.ask-username input {
+input {
 	width: 80%;
 	height: 95%;
-
-	border-radius: 3px;
-	border: 0;	
-}
-
-.ask-password input {
-	width: 80%;
-	height: 95%;
-
-	border-radius: 3px;
-	border: 0;	
-}
-
-.confirm-password input {
-	width: 80%;
-	height: 95%;
+    font-size: large;
 
 	border-radius: 3px;
 	border: 0;	

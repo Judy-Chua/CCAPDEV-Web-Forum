@@ -5,14 +5,15 @@ const bcrypt = require('bcrypt');
 
 // TODO: move instantiation of default users to index page
 exports.signupUser = (req, res) => {
-  const saltRounds1 = 10;
 
+  // Default users instantiation
+  const saltRounds1 = 10;
   // Hash password (for default users, all have 123456 as password)
   bcrypt.hash('123456', saltRounds1, (err, hashed) => {
 
     // console.log('Hashing password ...');
     const user1 = {
-      userId: 10000,
+      userId: 11000,
       username: '0',
       name: '',
       password: hashed,
@@ -38,7 +39,7 @@ exports.signupUser = (req, res) => {
     }});
 
     const user2 = {
-      userId: 10001,
+      userId: 10000,
       username: 'Adri20',
       name: 'Adriel Manuel',
       password: hashed,
@@ -64,7 +65,7 @@ exports.signupUser = (req, res) => {
     }});
 
     const user3 = {
-      userId: 10002,
+      userId: 10001,
       username: 'Clarisse35',
       name: 'Clarissa Albarracin',
       password: hashed,
@@ -90,7 +91,7 @@ exports.signupUser = (req, res) => {
     }});
 
     const user4 = {
-      userId: 10003,
+      userId: 10002,
       username: 'Judy89',
       name: 'Judy Chua',
       password: hashed,
@@ -124,7 +125,6 @@ exports.signupUser = (req, res) => {
       const { username, name, email, pwd1, pwd2 } = req.body;
       // console.log(username);
         
-      // TODO: replace this with email
       userModel.getOne({ email: email }, (err, result) => {
           if (result) {
             console.log(result);
@@ -132,7 +132,8 @@ exports.signupUser = (req, res) => {
             req.flash('error_msg', 'User already exists. Please login.');
             res.redirect('/login');
           } else {
-            // find last userId
+            // TODO: adjust userId according to latest userId
+
               const saltRounds = 10;
 
               // Hash password
@@ -142,7 +143,7 @@ exports.signupUser = (req, res) => {
                 const newUser = {
                   userId: 100005,
                   username: username,
-                  name: 'Sample Name Here',
+                  name: name,
                   password: hashed,
                   profilePicture:'/images/user3.jpg',    
                   description: 'I am new to this forum. Nice to meet you all! :) ',
@@ -180,10 +181,10 @@ exports.loginUser = (req, res) => {
     console.log("No errors detected ...");
     const { username, pwd } = req.body;
   
-    // TODO: replace this with email
     userModel.getOne({ username: username }, (err, user) => {
       if (err) {
         // Database error occurred...
+        console.log(err);
         req.flash('error_msg', 'Something happened! Please try again.');
         res.redirect('/login');
       } else {
@@ -192,7 +193,7 @@ exports.loginUser = (req, res) => {
           // authenticate user
 
           // Check password with hashed value in the database
-          bcrypt.compare(password, user.password, (err, result) => {
+          bcrypt.compare(pwd, user.password, (err, result) => {
             // passwords match (result == true)
             if (result) {
               // Update session object once matched!
@@ -200,16 +201,13 @@ exports.loginUser = (req, res) => {
               req.session.name = user.name;
 
               console.log(req.session);
-              res.redirect('/');
+              res.redirect('/mainpage/' + user.username);
             } else {
               // passwords don't match
               req.flash('error_msg', 'Incorrect password. Please try again.');
               res.redirect('/login');
             }
           });
-    
-          // next block of code goes here
-          res.redirect('/');
         } else {
           // No user found
           req.flash('error_msg', 'No registered user with that email. Please register.');

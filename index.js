@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
+const router = require('express').Router();
 
 mongoose.connect('mongodb://localhost/archerGuildDB')
   .then(() => {
@@ -43,7 +44,7 @@ module.exports = app;
 
 const Post = require("./database/models/Post")
 const Comment = require("./database/models/Comment")
-const User = require("./database/models/User")
+const {User} = require('./database/models/User')
 const path = require('path') 
 
 //for file upload
@@ -224,6 +225,34 @@ app.get('/login-page/:username', async(req, res) => {
     console.log(loggeduser);
 
     res.render('login-page', {loggeduser});
+});
+
+
+// temp route for mainpage
+router.get('/mainpage/:username', async(req, res) => {
+    const uname = req.params.username;
+    const loggeduser = await User.findOne({username: uname});
+    console.log(loggeduser.username);
+    console.log(loggeduser.userId);
+
+    const allPosts = await Post.find({});
+    console.log(allPosts);
+
+    var post_array = []
+
+    for (var i=0;i < allPosts.length;i++){
+        const oneUser = await User.findOne({userId: allPosts[i].postUser});
+
+        console.log(oneUser.username)
+        var post_info = {
+            post: allPosts[i],
+            username: oneUser.username
+        }
+
+        post_array.push(post_info)
+    }
+
+    res.render('mainpage',{post_array, loggeduser});
 });
 
 app.get('/mainpage/:username', async(req, res) => {
