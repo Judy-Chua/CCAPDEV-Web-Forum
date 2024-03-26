@@ -12,7 +12,8 @@ const UserSchema = new mongoose.Schema({
     dateCreated: {
         type: Date,
         default: Date.now
-    }
+    },
+    email: String
 });
 
 const User = mongoose.model('User', UserSchema)

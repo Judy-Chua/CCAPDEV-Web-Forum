@@ -41,7 +41,6 @@ app.use((req, res, next) => {
 
 module.exports = app;
 
-
 const Post = require("./database/models/Post")
 const Comment = require("./database/models/Comment")
 const User = require("./database/models/User")
@@ -68,6 +67,8 @@ var jsonParser = bodyParser.json()
 
 const date = new Date();
 
+
+
 /*
 // for not logged in
 User.create({
@@ -79,7 +80,7 @@ User.create({
     description:'',
     upvotes: [],
     downvotes: [],
-    dateCreated: date
+    email: 'default@gmail.com'
  });
 
 User.create({
@@ -91,7 +92,7 @@ User.create({
     description:'I am an undergraduate student in De La Salle University, taking a Computer Science degree focusing on software technology.',
     upvotes: [],
     downvotes: [],
-    dateCreated: date
+    email: 'adri20@gmail.com'
  });
 
 User.create({
@@ -103,7 +104,7 @@ User.create({
     description:'I am a dog enthusiast! I love playing dog games!',
     upvotes: [],
     downvotes: [],
-    dateCreated: date
+    email:'clarisse35@gmail.com'
 });
 
 User.create({
@@ -115,9 +116,10 @@ User.create({
     description:'I am new to this forum. Nice to meet you all! :) ',
     upvotes: [],
     downvotes: [],
-    dateCreated: date
+    email: 'judy89@gmail.com'
 });
 
+/*
 Post.create({
     postId: 20000,
     postUser: 10001,
